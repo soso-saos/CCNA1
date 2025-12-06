@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen Checkpoint - CCNA 2 Modules 10-13</title>
+    <title>Examen Final CCNA 2 (SRWE v7.0) - COMPLET</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -26,7 +26,7 @@
             overflow: hidden;
         }
         .quiz-header {
-            background-color: #fa5005; /* Couleur du thème source */
+            background-color: #2c3e50;
             color: white;
             padding: 1.5rem 2rem;
         }
@@ -68,11 +68,11 @@
         }
         .answer-item:hover:not(.disabled) {
             background-color: #e9ecef;
-            border-color: #fa5005;
+            border-color: #34495e;
         }
         .answer-item.selected {
-             background-color: #ffe5d9;
-             border-color: #ffbba6;
+             background-color: #d6eaf8;
+             border-color: #85c1e9;
         }
         .answer-item.correct {
             background-color: #d4edda;
@@ -102,7 +102,7 @@
             font-weight: bold;
         }
         .next-btn {
-            background-color: #fa5005;
+            background-color: #3498db;
             color: white;
             border: none;
             border-radius: 8px;
@@ -113,7 +113,7 @@
             display: none; /* Hidden by default */
         }
         .next-btn:hover {
-            background-color: #d94404;
+            background-color: #2980b9;
         }
         .result-screen {
             text-align: center;
@@ -124,7 +124,7 @@
             margin-bottom: 1rem;
         }
         .restart-btn {
-            background-color: #28a745;
+            background-color: #27ae60;
             color: white;
             border: none;
             border-radius: 8px;
@@ -138,7 +138,7 @@
 
 <div class="quiz-container" id="quiz">
     <div class="quiz-header">
-        <h1>Examen Sécurité L2 & WLAN (Modules 10-13)</h1>
+        <h1>Examen Final CCNA 2 (SRWE v7.0)</h1>
         <p id="progress">Question 1</p>
     </div>
     <div class="quiz-body">
@@ -155,730 +155,1464 @@
 <script>
     const questions = [
     {
-        "question": "Quelle méthode d'authentification stocke les noms d'utilisateur et les mots de passe dans le routeur et est idéale pour les petits réseaux ?",
+        "question": "Dans quelle situation un technicien utilise-t-il la commande de commutateur show interfaces ?",
         "answers": [
-            { "text": "AAA local", "correct": true },
-            { "text": "AAA local sur TACACS+", "correct": false },
-            { "text": "AAA basé sur un serveur", "correct": false },
-            { "text": "AAA basé sur un serveur via RADIUS", "correct": false },
-            { "text": "AAA basé sur un serveur via TACACS+", "correct": false },
-            { "text": "AAA local sur RADIUS", "correct": false }
+            { "text": "Pour déterminer l'adresse MAC d'un périphérique réseau directement connecté sur une interface donnée", "correct": false },
+            { "text": "Lorsque des paquets sont reçus d'un hôte donné qui est directement connecté", "correct": true },
+            { "text": "Lorsqu'un terminal peut atteindre les périphériques locaux, et non les périphériques distants", "correct": false },
+            { "text": "Pour déterminer si l'accès à distance est activé", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel est le résultat d'une attaque par épuisement de ressources DHCP ?",
+        "question": "Un administrateur tente de configurer une route statique IPv6 sur le routeur R1 pour atteindre le réseau connecté au routeur R2. Après la saisie de la commande, la connectivité échoue. Quelle est l'erreur probable ?",
         "answers": [
-            { "text": "Les clients légitimes ne peuvent pas louer d'adresses IP.", "correct": true },
-            { "text": "Le hacker transmet aux clients des informations incorrectes sur le DNS et la passerelle par défaut.", "correct": false },
-            { "text": "Les clients reçoivent des attributions d'adresses IP d'un serveur DHCP non autorisé.", "correct": false },
-            { "text": "Les adresses IP attribuées aux clients légitimes sont détournées.", "correct": false }
+            { "text": "L'adresse du tronçon suivant est incorrecte.", "correct": false },
+            { "text": "Le réseau de destination est incorrect.", "correct": false },
+            { "text": "L'interface est incorrecte.", "correct": true },
+            { "text": "Le préfixe réseau est incorrect.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quelle instruction décrit le comportement d'un commutateur lorsque la table d'adresses MAC est pleine ?",
+        "question": "Un nouveau commutateur de couche 3 est connecté à un routeur et est en cours de configuration pour le routage InterVLAN. Quelles sont les trois étapes requises pour la configuration? (Choisissez trois propositions.)",
         "answers": [
-            { "text": "Il traite les trames comme une monodiffusion inconnue et inonde toutes les trames entrantes sur tous les ports du commutateur.", "correct": false },
-            { "text": "Il traite les trames comme une monodiffusion inconnue et inonde toutes les trames entrantes à tous les ports du domaine de collision.", "correct": false },
-            { "text": "Il traite les trames comme des monodiffusions inconnues et inonde toutes les trames entrantes vers tous les ports via plusieurs commutateurs.", "correct": false },
-            { "text": "Il traite les trames comme une monodiffusion inconnue et inonde toutes les trames entrantes sur tous les ports du VLAN local.", "correct": true }
+            { "text": "Attribution des ports au VLAN natif", "correct": false },
+            { "text": "la mise en œuvre des protocoles de routage", "correct": false },
+            { "text": "Attribution de ports aux VLAN", "correct": true },
+            { "text": "Activation du routage IP", "correct": true },
+            { "text": "Création d'interfaces SVI", "correct": true },
+            { "text": "Installation d'une route statique", "correct": false },
+            { "text": "Modification du VLAN par défaut", "correct": false }
+        ],
+        "type": "multiple", "required": 3
+    },
+    {
+        "question": "En fonction d'une configuration où le VLAN 99 manque, pourquoi cela se produit-il généralement ?",
+        "answers": [
+            { "text": "Parce qu’il y a un problème de câblage sur le VLAN 99", "correct": false },
+            { "text": "Parce que le VLAN 1 est activé et qu’il ne peut y avoir qu’un VLAN de gestion sur le commutateur", "correct": false },
+            { "text": "Parce que le VLAN 99 n’est pas un VLAN de gestion valide", "correct": false },
+            { "text": "Parce que le VLAN 99 n'a pas encore été créé", "correct": true }
         ],
         "type": "single"
     },
     {
-        "question": "Quelle composante du modèle AAA permet à un administrateur d'effectuer le suivi des personnes qui accèdent aux ressources réseau, ainsi que des modifications qui sont apportées à ces ressources ?",
+        "question": "Quelles paires de modes d'agrégation (EtherChannel) établissent une liaison agrégée fonctionnelle entre deux commutateurs Cisco ? (Choisissez trois réponses.)",
         "answers": [
-            { "text": "accessibilité", "correct": false },
-            { "text": "authentification", "correct": false },
-            { "text": "traçabilité", "correct": true },
-            { "text": "autorisation", "correct": false }
+            { "text": "dynamic auto – dynamic auto", "correct": false },
+            { "text": "dynamic desirable – dynamic desirable", "correct": true },
+            { "text": "dynamic desirable – trunk", "correct": true },
+            { "text": "dynamic desirable – dynamic auto", "correct": true },
+            { "text": "access – dynamic auto", "correct": false },
+            { "text": "access – trunk", "correct": false }
+        ],
+        "type": "multiple", "required": 3
+    },
+    {
+        "question": "Quel protocole ou technologie nécessite que les commutateurs soient en mode serveur ou client ?",
+        "answers": [
+            { "text": "Protocole VTP", "correct": true },
+            { "text": "HSRP", "correct": false },
+            { "text": "EtherChannel", "correct": false },
+            { "text": "DTP", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel appareil est considéré comme demandeur lors de la procédure d'authentification 802.1X ?",
+        "question": "Après avoir essayé de saisir la configuration dans le routeur RTA, les utilisateurs du VLAN 20 ne peuvent pas communiquer avec ceux du VLAN 30. Quelle est l'origine probable du problème (Router-on-a-Stick) ?",
         "answers": [
-            { "text": "le serveur d'authentification qui réalise l'authentification du client", "correct": false },
-            { "text": "le commutateur qui contrôle l'accès au réseau", "correct": false },
-            { "text": "le routeur qui sert de passerelle par défaut", "correct": false },
-            { "text": "le client qui demande l'authentification", "correct": true }
+            { "text": "La commande no shutdown aurait dû être exécutée sur les sous-interfaces.", "correct": false },
+            { "text": "RTA utilise le même sous-réseau pour le VLAN 20 et le VLAN 30.", "correct": true },
+            { "text": "Fa0/0 ne contient aucune adresse à utiliser comme passerelle par défaut.", "correct": false },
+            { "text": "Dot1q ne prend pas en charge les sous-interfaces.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "L'interface Fa 0/2 du commutateur S1 a été configurée avec la commande switchport port-security mac-address 0023.189d.6456 et une station de travail a été connectée. Quelle pourrait être la raison de l'arrêt de l'interface Fa 0/2 ?",
+        "question": "Quels sont les deux modes VTP qui permettent la création, la modification et la suppression des VLAN sur le commutateur local ? (Choisissez deux propositions.)",
         "answers": [
-            { "text": "L'adresse MAC de PC1 qui se connecte à l'interface Fa 0/2 n'est pas l'adresse MAC configurée.", "correct": true },
-            { "text": "PC1 et connecté au S1 à partir d'un câble croisé.", "correct": false },
-            { "text": "S1 a été configuré avec la commande switchport port-security aging .", "correct": false },
-            { "text": "L'interface Fa 0/24 de S1 est configurée avec la même adresse MAC que l'interface Fa 0/2.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle configuration du commutateur est la plus appropriée pour le port Fa0/2 si l'administrateur réseau vise les objectifs suivants : Personne n'est autorisé à changer de périphérique, si un périphérique différent est connecté le port s'arrête, et le commutateur doit détecter automatiquement l'adresse MAC ?",
-        "answers": [
-            { "text": "switchport port-security violation restrict", "correct": false },
-            { "text": "switchport port-security mac-address sticky (seul)", "correct": false },
-            { "text": "switchport port-security mac-address sticky; switchport port-security maximum 2", "correct": false },
-            { "text": "switchport port-security; switchport port-security maximum 2; switchport port-security mac-address sticky", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Le PC1 et le PC2 doivent pouvoir obtenir des affectations d'adresses IP à partir du serveur DHCP. Combien de ports parmi les commutateurs doivent être affectés comme ports fiables dans le cadre de la configuration de la surveillance DHCP ?",
-        "answers": [
-            { "text": "1", "correct": false },
-            { "text": "3", "correct": false },
-            { "text": "5", "correct": false },
-            { "text": "7", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Un expert en sécurité informatique active la sécurité des ports sur un port de commutateur d'un commutateur Cisco. Quel mode de violation par défaut est utilisé avant qu'un autre mode de violation soit configuré sur le port de commutateur ?",
-        "answers": [
-            { "text": "protect", "correct": false },
-            { "text": "shutdown", "correct": true },
-            { "text": "restrict", "correct": false },
-            { "text": "désactivé", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles sont les deux commandes qui peuvent être utilisées pour activer la protection BPDU sur un commutateur ? (Choisissez deux.)",
-        "answers": [
-            { "text": "S1(config)# spanning-tree portfast bpduguard default", "correct": true },
-            { "text": "S1(config)# spanning-tree bpduguard default", "correct": false },
-            { "text": "S1(config-if)# enable spanning-tree bpduguard", "correct": false },
-            { "text": "S1(config-if)# spanning-tree portfast bpduguard", "correct": false },
-            { "text": "S1(config-if)# spanning-tree bpduguard enable", "correct": true }
+            { "text": "client", "correct": false },
+            { "text": "distribution", "correct": false },
+            { "text": "principal", "correct": false },
+            { "text": "serveur", "correct": true },
+            { "text": "esclave", "correct": false },
+            { "text": "transparent", "correct": true }
         ],
         "type": "multiple", "required": 2
     },
     {
-        "question": "Quelle configuration de la sécurité des ports a activé la conservation des adresses MAC apprises dynamiquement après une panne d'alimentation ?",
+        "question": "Un administrateur réseau configure R1 pour le routage inter-VLAN. Si les périphériques des VLAN 10 et 20 ne communiquent pas, quelle est la cause probable liée à l'encapsulation ?",
         "answers": [
-            { "text": "adresses MAC sécurisées automatiques", "correct": false },
-            { "text": "adresses MAC sécurisées dynamiques", "correct": false },
-            { "text": "adresses MAC sécurisées statiques", "correct": false },
-            { "text": "adresses MAC sécurisées rémanente (sticky)", "correct": true }
+            { "text": "L'encapsulation est mal configurée sur une sous-interface.", "correct": false },
+            { "text": "Une commande no shutdown doit être ajoutée dans chaque configuration de sous-interface.", "correct": false },
+            { "text": "La commande interface gigabitEthernet 0/0.1 est fausse (mauvais ID de VLAN dans l'encapsulation).", "correct": true },
+            { "text": "Le port Gi0/0 doit être configuré comme port de jonction.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel type d'antenne sans fil est la mieux adaptée à la couverture de grands espaces ouverts, tels que des couloirs ou de grandes salles de conférence ?",
+        "question": "Un administrateur réseau est en train de configurer un WLAN. Pourquoi l'administrateur utiliserait-il un contrôleur WLAN (WLC) ?",
         "answers": [
-            { "text": "omnidirectionnelle", "correct": true },
-            { "text": "Yagi", "correct": false },
-            { "text": "directionnelle", "correct": false },
-            { "text": "parabolique", "correct": false }
+            { "text": "pour centraliser la gestion de plusieurs réseaux WLAN", "correct": false },
+            { "text": "fournir un service prioritaire pour les applications sensibles au temps", "correct": false },
+            { "text": "pour réduire le risque d'ajout de points d'accès non autorisés au réseau", "correct": false },
+            { "text": "pour faciliter la configuration de groupe et la gestion de plusieurs WLAN via un WLC", "correct": true }
         ],
         "type": "single"
     },
     {
-        "question": "Quelle topologie réseau sans fil doit être utilisée par les techniciens réseau souhaitant proposer une connexion sans fil dans l'ensemble d'un bâtiment universitaire ?",
+        "question": "Comment une trame envoyée depuis PCA est-elle transmise à PCC si la table d'adresses MAC du commutateur SW1 est vide ?",
         "answers": [
-            { "text": "mode mixte", "correct": false },
-            { "text": "infrastructure", "correct": true },
-            { "text": "hotspot", "correct": false },
-            { "text": "ad hoc", "correct": false }
+            { "text": "SW1 abandonne la trame car il ne connaît pas l'adresse MAC de destination.", "correct": false },
+            { "text": "SW1 diffuse la trame sur tous les ports de SW1, à l'exception du port d'entrée de la trame dans le commutateur.", "correct": true },
+            { "text": "SW1 diffuse la trame sur tous les ports du commutateur, à l'exception du port interconnecté au commutateur SW2.", "correct": false },
+            { "text": "SW1 transmet la trame directement à SW2 uniquement.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quelles sont les deux normes sans fil IEEE 802.11 qui ne fonctionnent que dans la gamme de 5 GHz ? (Choisissez deux.)",
+        "question": "Quel est le moyen d'avoir une configuration sécurisée pour l'accès à distance à un appareil sur le réseau ?",
         "answers": [
-            { "text": "802.11b", "correct": false },
-            { "text": "802.11a", "correct": true },
-            { "text": "802.11g", "correct": false },
-            { "text": "802.11n", "correct": false },
-            { "text": "802.11ac", "correct": true },
-            { "text": "802.11ad", "correct": false }
+            { "text": "Configurer SSH.", "correct": true },
+            { "text": "Configurer Telnet.", "correct": false },
+            { "text": "Configurer une ACL et l'appliquer aux lignes VTY.", "correct": false },
+            { "text": "Configurez 802.1x.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "L'hôte A a envoyé un paquet à l'hôte B via un routeur. Quelles sont les adresses IP et MAC source sur le paquet lorsqu'il atteint l'hôte B ?",
+        "answers": [
+            { "text": "MAC source : MAC de l'hôte A, IP source : IP de l'hôte A", "correct": false },
+            { "text": "MAC source : MAC du routeur (interface de sortie), IP source : IP de l'hôte A", "correct": true },
+            { "text": "MAC source : MAC du routeur, IP source : IP du routeur", "correct": false },
+            { "text": "MAC source : MAC de l'hôte A, IP source : IP du routeur", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Dans un réseau RSTP, quels sont les rôles possibles pour les ports (dans l'ordre typique : Pont Racine -> Non Racine) ?",
+        "answers": [
+            { "text": "Désigné, racine, alternatif, racine", "correct": false },
+            { "text": "Désigné, alternatif, racine, racine", "correct": false },
+            { "text": "Alternatif, désigné, racine, racine", "correct": true },
+            { "text": "Alternatif, racine, désigné, racine", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Plusieurs actions peuvent pallier une attaque de VLAN. Citez-en trois. (Choisissez trois propositions.)",
+        "answers": [
+            { "text": "Activer la fonction de protection BPDU.", "correct": false },
+            { "text": "Utiliser des VLAN privés.", "correct": false },
+            { "text": "Activer manuellement le trunking.", "correct": true },
+            { "text": "Faire d'un VLAN inutilisé le VLAN natif.", "correct": true },
+            { "text": "Désactiver le protocole DTP.", "correct": true },
+            { "text": "Activer la fonction de protection de source.", "correct": false }
+        ],
+        "type": "multiple", "required": 3
+    },
+    {
+        "question": "Quelle méthode de chiffrement sans fil offre la meilleure sécurité ?",
+        "answers": [
+            { "text": "WPA2 avec AES", "correct": true },
+            { "text": "WPA2 avec TKIP", "correct": false },
+            { "text": "WEP", "correct": false },
+            { "text": "WPA", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Après qu'un hôte a généré une adresse IPv6 (DHCPv6 ou SLAAC), comment vérifie-t-il que l'adresse est unique ?",
+        "answers": [
+            { "text": "L'hôte envoie une demande d'écho ICMPv6.", "correct": false },
+            { "text": "L'hôte vérifie le cache du voisin local.", "correct": false },
+            { "text": "L'hôte envoie une diffusion ARP.", "correct": false },
+            { "text": "L'hôte envoie un message de sollicitation de voisin ICMPv6 (DAD) et attend une annonce de voisin.", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Après avoir exécuté `erase startup-config` et rechargé le commutateur, les VLAN 10 et 100 existent toujours. Pourquoi ?",
+        "answers": [
+            { "text": "Ces VLAN sont enregistrés dans vlan.dat dans la mémoire Flash, ce fichier doit être supprimé manuellement.", "correct": true },
+            { "text": "Ces VLAN ne peuvent pas être supprimés, sauf si le commutateur est en mode client VTP.", "correct": false },
+            { "text": "Ces VLAN peuvent être uniquement supprimés avec `no vlan`.", "correct": false },
+            { "text": "Ces VLAN sont des VLAN par défaut.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Lors de la configuration du routage inter-VLAN 'Router-on-a-stick', quel paramètre manque dans la commande `encapsulation dot1q` ?",
+        "answers": [
+            { "text": "Il identifie le numéro du VLAN.", "correct": true },
+            { "text": "Il identifie la sous-interface.", "correct": false },
+            { "text": "Il identifie le numéro du VLAN natif.", "correct": false },
+            { "text": "Il identifie le type d'encapsulation utilisé.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel type de périphérique réseau inclut un commutateur, un point d'accès, et un pare-feu pour un petit réseau de bureau ?",
+        "answers": [
+            { "text": "commutateur", "correct": false },
+            { "text": "pare-feu", "correct": false },
+            { "text": "point d'accès sans fil autonome", "correct": false },
+            { "text": "routeur sans fil", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel est l'objectif de la commande `ip route 0.0.0.0 0.0.0.0 serial 0/1/1` sur un routeur ?",
+        "answers": [
+            { "text": "Les paquets dont le réseau de destination n'est pas trouvé dans la table de routage seront transférés à Internet (route par défaut).", "correct": true },
+            { "text": "Les paquets reçus depuis Internet seront transférés au LAN.", "correct": false },
+            { "text": "Les paquets destinés aux réseaux inconnus seront abandonnés.", "correct": false },
+            { "text": "Les paquets seront transférés entre les réseaux 10.10.0.0/16 et 10.20.0.0/16.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle adresse MAC de destination est utilisée lorsque des trames sont envoyées depuis une station de travail vers la passerelle par défaut dans un environnement HSRP ?",
+        "answers": [
+            { "text": "Les adresses MAC du routeur de transfert et du routeur en veille.", "correct": false },
+            { "text": "L'adresse MAC du routeur de transfert", "correct": false },
+            { "text": "L'adresse MAC du routeur en veille", "correct": false },
+            { "text": "L'adresse MAC du routeur virtuel", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Un administrateur réseau a relié deux commutateurs via EtherChannel. Si STP fonctionne, quel sera le résultat final ?",
+        "answers": [
+            { "text": "Les commutateurs équilibreront la charge sur les deux liens.", "correct": false },
+            { "text": "La boucle générée créera une tempête de diffusion.", "correct": false },
+            { "text": "STP bloquera une des liaisons redondantes (si EtherChannel est mal configuré ou vu comme liens séparés).", "correct": true },
+            { "text": "Les deux canaux de port seront fermés.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle route statique permet de créer une route de secours (flottante) vers le réseau 172.16.1.0 (sachant que RIP a une AD de 120) ?",
+        "answers": [
+            { "text": "ip route 172.16.1.0 255.255.255.0 s0/0/0 121", "correct": true },
+            { "text": "ip route 172.16.1.0 255.255.255.0 s0/0/0 111", "correct": false },
+            { "text": "ip route 172.16.1.0 255.255.255.0 s0/0/0 91", "correct": false },
+            { "text": "ip route 172.16.1.0 255.255.255.0 s0/0/0", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel est l'effet de l'entrée de la commande de configuration `shutdown` sur un port de commutateur ?",
+        "answers": [
+            { "text": "Il active portfast sur une interface.", "correct": false },
+            { "text": "Il désactive un port inutilisé.", "correct": true },
+            { "text": "Il désactive le DTP.", "correct": false },
+            { "text": "Il active la garde BPDU.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelles sont les trois normes Wi-Fi fonctionnant dans la plage de fréquences 2,4 GHz ? (Choisissez trois réponses.)",
+        "answers": [
+            { "text": "802.11b", "correct": true },
+            { "text": "802.11a", "correct": false },
+            { "text": "802.11ac", "correct": false },
+            { "text": "802.11n", "correct": true },
+            { "text": "802.11g", "correct": true }
+        ],
+        "type": "multiple", "required": 3
+    },
+    {
+        "question": "En quoi configurer un SSID sur la bande 5 GHz améliore-t-il les performances pour le streaming multimédia ?",
+        "answers": [
+            { "text": "La bande 5 GHz offre une plage plus étendue.", "correct": false },
+            { "text": "La bande 5 GHz offre davantage de canaux et est moins encombrée que la bande 2,4 GHz.", "correct": true },
+            { "text": "Obliger les utilisateurs à passer à la bande 5 GHz limite le nombre d'utilisateurs.", "correct": false },
+            { "text": "Seuls les utilisateurs récents peuvent basculer vers la bande 5 GHz.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Sélectionnez les trois modes d'établissement de canaux PAgP. (Choisissez trois propositions.)",
+        "answers": [
+            { "text": "actif", "correct": false },
+            { "text": "étendu", "correct": false },
+            { "text": "Activé (On)", "correct": true },
+            { "text": "desirable", "correct": true },
+            { "text": "automatique (auto)", "correct": true },
+            { "text": "passif", "correct": false }
+        ],
+        "type": "multiple", "required": 3
+    },
+    {
+        "question": "Si `show port-security` montre 0 violation, le statut 'Secure-up', et 'Shutdown' comme action. Que peut-on conclure ? (Choisissez trois propositions.)",
+        "answers": [
+            { "text": "Le port est configuré en tant que liaison de trunk.", "correct": false },
+            { "text": "Les violations de sécurité entraîneront l'arrêt immédiat de ce port.", "correct": true },
+            { "text": "Ce port est actuellement en service.", "correct": true },
+            { "text": "Le mode de port de commutation pour cette interface est le mode d'accès.", "correct": true },
+            { "text": "Trois violations de sécurité ont été détectées sur cette interface.", "correct": false },
+            { "text": "Aucun périphérique n'est actuellement connecté à ce port.", "correct": false }
+        ],
+        "type": "multiple", "required": 3
+    },
+    {
+        "question": "Quel protocole doit être désactivé pour pallier les attaques de saut de VLAN (VLAN hopping) ?",
+        "answers": [
+            { "text": "CDP", "correct": false },
+            { "text": "STP", "correct": false },
+            { "text": "DTP", "correct": true },
+            { "text": "ARP", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle technique d'atténuation empêcherait les serveurs DHCP malveillants de fournir de faux paramètres ?",
+        "answers": [
+            { "text": "mise en œuvre des solutions de sécurisation des ports", "correct": false },
+            { "text": "mise en œuvre de la sécurité des ports sur les ports périphériques", "correct": false },
+            { "text": "désactivation des ports CDP", "correct": false },
+            { "text": "activation de l'espionnage DHCP (DHCP Snooping)", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle méthode d'attribution de préfixe IPv6 repose sur le préfixe contenu dans les messages RA ?",
+        "answers": [
+            { "text": "statique", "correct": false },
+            { "text": "DHCPv6 dynamique", "correct": false },
+            { "text": "SLAAC", "correct": true },
+            { "text": "EUI-64", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Un analyste utilise l'outil 'macof'. Quel type d'attaque LAN cible-t-il ?",
+        "answers": [
+            { "text": "Usurpation DHCP (ou spoofing)", "correct": false },
+            { "text": "Sauts VLAN", "correct": false },
+            { "text": "Débordement de la table d'adresses MAC (CAM table overflow)", "correct": true },
+            { "text": "Double marquage VLAN", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Au cours du processus AAA, quand l'autorisation est-elle implémentée ?",
+        "answers": [
+            { "text": "dès que la fonction de traçabilité a reçu des rapports", "correct": false },
+            { "text": "immédiatement après une authentification réussie", "correct": true },
+            { "text": "aussitôt qu'un client AAA a envoyé des informations d'authentification", "correct": false },
+            { "text": "dès que les ressources accessibles ont été déterminées", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle commande permet de configurer une route par défaut IPv6 vers Internet via Serial 0/1/1 ?",
+        "answers": [
+            { "text": "ipv6 route ::/0 serial 0/0/0", "correct": false },
+            { "text": "ipv6 route ::/0 serial 0/1/1", "correct": true },
+            { "text": "ipv6 route ::1/0 serial 0/1/1", "correct": false },
+            { "text": "ip route 0.0.0.0 0.0.0.0 serial 0/1/1", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel type de route statique est configuré avec une plus grande distance administrative pour fournir une route de secours ?",
+        "answers": [
+            { "text": "route statique flottante", "correct": true },
+            { "text": "Route statique récapitulative", "correct": false },
+            { "text": "Route statique par défaut", "correct": false },
+            { "text": "route statique standard", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle réponse indique une route statique par défaut IPv4 correctement configurée ?",
+        "answers": [
+            { "text": "ip route 0.0.0.0 255.255.255.255 S0/0/0", "correct": false },
+            { "text": "ip route 0.0.0.0 255.255.255.0 S0/0/0", "correct": false },
+            { "text": "ip route 0.0.0.0 255.0.0.0 S0/0/0", "correct": false },
+            { "text": "ip route 0.0.0.0 0.0.0.0 S0/0/0", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle commande de route statique IPv6 transfère le trafic vers le réseau 2001:db8:12:10::/64 via l'adresse du saut suivant fe80::2 ?",
+        "answers": [
+            { "text": "ipv6 route 2001:db8:12:10::/64 S0/0/0 fe80::2", "correct": false },
+            { "text": "ipv6 route 2001:db8:12:10::/64 S0/0/1 2001:db8:12:10::1", "correct": false },
+            { "text": "ipv6 route 2001:db8:12:10::/64 S0/0/0", "correct": false },
+            { "text": "ipv6 route 2001:db8:12:10::/64 S0/0/1 fe80::2", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle modification doit être apportée à une route statique flottante (AD 100) pour qu'elle serve de secours à OSPF (AD 110) ?",
+        "answers": [
+            { "text": "Configuration du réseau de destination.", "correct": false },
+            { "text": "Ajout de l'adresse voisine du tronçon suivant.", "correct": false },
+            { "text": "Réglage de la distance administrative sur 1.", "correct": false },
+            { "text": "Réglage de la distance administrative sur 120 (ou > 110).", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle route a été configurée comme route statique vers un réseau spécifique en utilisant l’adresse du tronçon suivant ?",
+        "answers": [
+            { "text": "C 10.16.2.0/24 is directly connected...", "correct": false },
+            { "text": "S 0.0.0.0/0 [1/0] via 10.16.2.2", "correct": false },
+            { "text": "S 10.17.2.0/24 is directly connected...", "correct": false },
+            { "text": "S 10.17.2.0/24 [1/0] via 10.16.2.2", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quels sont les deux types de protocoles STP pouvant générer des flux de trafic non optimaux parce qu'ils ne supposent qu'une seule instance Spanning Tree ? (Choisissez deux réponses.)",
+        "answers": [
+            { "text": "MSTP", "correct": false },
+            { "text": "STP", "correct": true },
+            { "text": "RSTP", "correct": true },
+            { "text": "PVST+", "correct": false },
+            { "text": "Rapid PVST+", "correct": false }
         ],
         "type": "multiple", "required": 2
     },
     {
-        "question": "Un technicien configure un routeur sans fil pour qu'il utilise le canal 1, 6 ou 11. À quoi sert le réglage du canal ?",
+        "question": "Quelles informations la commande `show spanning-tree` permet-elle d'afficher ? (Choisissez deux réponses.)",
         "answers": [
-            { "text": "À activer différentes normes 802.11", "correct": false },
-            { "text": "À désactiver la diffusion du SSID", "correct": false },
-            { "text": "À fournir des modes de sécurité renforcée", "correct": false },
-            { "text": "À éviter les interférences générées par des périphériques sans fil à proximité", "correct": true }
+            { "text": "L'adresse IP de l'interface VLAN de gestion.", "correct": false },
+            { "text": "L'ID de pont racine.", "correct": true },
+            { "text": "Le statut des ports VLAN natifs.", "correct": false },
+            { "text": "Le rôle des ports sur tous les VLAN.", "correct": true },
+            { "text": "Le nombre de diffusions reçues.", "correct": false }
+        ],
+        "type": "multiple", "required": 2
+    },
+    {
+        "question": "Quelle action se déroule lorsqu'une trame entrant dans un commutateur a une adresse MAC de destination monodiffusion apparaissant dans la table d'adresses MAC ?",
+        "answers": [
+            { "text": "Le commutateur réinitialise le minuteur d'actualisation.", "correct": false },
+            { "text": "Le commutateur met à jour le minuteur.", "correct": false },
+            { "text": "Le commutateur transmet la trame à tous les ports.", "correct": false },
+            { "text": "Le commutateur transmet le cadre hors du port spécifié.", "correct": true }
         ],
         "type": "single"
     },
     {
-        "question": "Lorsqu'un présentateur tente de se connecter au réseau, l'ordinateur portable n'affiche aucun des réseaux sans fil disponibles. Le point d'accès doit fonctionner dans quel mode ?",
+        "question": "Quelles commandes permettent aux hôtes d'un nouveau sous-réseau de recevoir des adresses du serveur DHCPv4 via un relais ? (Choisissez deux réponses.)",
         "answers": [
-            { "text": "Actif", "correct": true },
-            { "text": "Ouvert", "correct": false },
-            { "text": "Passif", "correct": false },
-            { "text": "Mixte", "correct": false }
+            { "text": "R1(config)# interface G0/0 (interface du sous-réseau client)", "correct": true },
+            { "text": "R1(config)# interface G0/1", "correct": false },
+            { "text": "R1(config-if)# ip helper-address 10.1.0.254", "correct": false },
+            { "text": "R2(config-if)# ip helper-address 10.2.0.250", "correct": false },
+            { "text": "R1(config-if)# ip helper-address 10.2.0.250 (adresse du serveur DHCP)", "correct": true },
+            { "text": "R2(config)# interface G0/0", "correct": false }
+        ],
+        "type": "multiple", "required": 2
+    },
+    {
+        "question": "Quelle action prend un client DHCPv4 s'il reçoit plus d'un DHCPOFFER ?",
+        "answers": [
+            { "text": "Il envoie un DHCPNAK.", "correct": false },
+            { "text": "Il envoie un DHCPREQUEST qui identifie l'offre de location que le client accepte.", "correct": true },
+            { "text": "Il rejette les deux offres.", "correct": false },
+            { "text": "Il accepte les deux messages DHCPOFFER.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quelle est la première mesure de sécurité qu'un technicien doit appliquer juste après avoir allumé un nouveau routeur sans fil ?",
+        "question": "Quel est le problème typique si l'adresse IP du routeur de passerelle par défaut n'est pas exclue du pool DHCP ?",
         "answers": [
-            { "text": "Désactiver la diffusion des SSID sur le réseau sans fil", "correct": false },
-            { "text": "Changer le nom d'utilisateur et le mot de passe par défaut du routeur sans fil", "correct": true },
-            { "text": "Activer le filtrage d'adresses MAC sur le routeur sans fil", "correct": false },
-            { "text": "Configurer le chiffrement sur le routeur sans fil et les périphériques sans fil connectés", "correct": false }
+            { "text": "Les commandes default-router doivent être configurées avec des masques.", "correct": false },
+            { "text": "L'adresse IP du DNS ne figure pas dans la liste d'adresses exclues.", "correct": false },
+            { "text": "L'adresse IP du routeur de passerelle par défaut ne figure pas dans la liste d'adresses exclues (risque de conflit).", "correct": true },
+            { "text": "Le serveur DNS et la passerelle doivent faire partie du même sous-réseau.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Sur un tableau de bord Cisco 3504 WLC, quelle option permet l'accès au menu complet des fonctionnalités ?",
+        "question": "Les utilisateurs n'ont pas de connectivité avec un site depuis un moment. Que faut-il faire en premier ?",
         "answers": [
-            { "text": "Avancé", "correct": true },
-            { "text": "Points d’accès", "correct": false },
-            { "text": "Des voleurs", "correct": false },
-            { "text": "Résumé du réseau", "correct": false }
+            { "text": "Vérifiez la configuration sur l'itinéraire statique flottant.", "correct": false },
+            { "text": "Utilisez la commande « show ip interface brief » pour voir si une interface est en panne.", "correct": true },
+            { "text": "Créez un itinéraire statique flottant.", "correct": false },
+            { "text": "Vérifiez que la route statique vers le serveur est présente.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Sur la page Summary du WLC Cisco 3504 (Advanced > Summary), quel onglet permet à un administrateur réseau d'accéder et de configurer un WLAN pour une option de sécurité spécifique telle que WPA2 ?",
+        "question": "Quelles informations un commutateur utilise-t-il pour renseigner (apprendre) la table d'adresses MAC ?",
         "answers": [
-            { "text": "WLAN", "correct": true },
+            { "text": "les adresses MAC source et de destination et le port entrant", "correct": false },
+            { "text": "l'adresse MAC de destination et le port sortant", "correct": false },
+            { "text": "l'adresse MAC source et le port sortant", "correct": false },
+            { "text": "l'adresse MAC source et le port entrant", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Pour quelles raisons un administrateur réseau segmenterait-il un réseau avec un commutateur de couche 2 ? (Choisissez deux réponses.)",
+        "answers": [
+            { "text": "Pour créer moins de domaines de collision.", "correct": false },
+            { "text": "Pour éliminer les circuits virtuels.", "correct": false },
+            { "text": "Pour créer plus de domaines de diffusion.", "correct": false },
+            { "text": "Pour isoler les messages de requête ARP.", "correct": false },
+            { "text": "Pour isoler le trafic entre les segments.", "correct": true },
+            { "text": "Pour améliorer la bande passante utilisateur.", "correct": true }
+        ],
+        "type": "multiple", "required": 2
+    },
+    {
+        "question": "Un technicien dépanne un WLAN lent et décide d'utiliser l'approche de répartition du trafic. Quels deux paramètres devraient être configurés ? (Choisissez deux propositions.)",
+        "answers": [
+            { "text": "Configurer le mode de sécurité sur WPA Personal TKIP/AES...", "correct": false },
+            { "text": "Configurez le mode de sécurité sur WPA Personal TKIP/AES pour les deux.", "correct": false },
+            { "text": "Configurez la bande 5 GHz pour le streaming multimédia et le trafic temporel.", "correct": true },
+            { "text": "Configurez un SSID commun.", "correct": false },
+            { "text": "Configurez la bande 2,4 GHz pour le trafic Internet de base qui n'est pas sensible au temps.", "correct": true }
+        ],
+        "type": "multiple", "required": 2
+    },
+    {
+        "question": "Sur un WLC Cisco 3504, quel onglet permet de configurer un WLAN particulier avec WPA2 ?",
+        "answers": [
             { "text": "SÉCURITÉ", "correct": false },
+            { "text": "SANS FIL", "correct": false },
+            { "text": "Réseaux locaux sans fil (WLANs)", "correct": true },
+            { "text": "GESTION", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel onglet l'administrateur doit-il utiliser pour créer une nouvelle interface VLAN à utiliser pour le nouveau WLAN sur un WLC ?",
+        "answers": [
             { "text": "GESTION", "correct": false },
+            { "text": "CONTRÔLEUR", "correct": true },
+            { "text": "Réseaux locaux sans fil", "correct": false },
             { "text": "SANS FIL", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel est le service qui peut être utilisé sur un routeur sans fil pour prioriser le trafic réseau (voix et données vidéo) ?",
+        "question": "Quel est l'effet de l'entrée de la commande `switchport mode access` sur un commutateur ?",
         "answers": [
-            { "text": "NAT", "correct": false },
-            { "text": "QoS", "correct": true },
-            { "text": "DNS", "correct": false },
-            { "text": "DHCP", "correct": false }
+            { "text": "Il spécifie le nombre maximal d'adresses L2.", "correct": false },
+            { "text": "Il désactive le DTP sur une interface non-trunking.", "correct": true },
+            { "text": "Il active le DAI.", "correct": false },
+            { "text": "Il active manuellement un lien de trunk.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Pourquoi configurer un SSID de bande de fréquences de 5 GHz améliore-t-il les performances pour le streaming multimédia ?",
+        "question": "L'hôte C ne peut pas pinger l'hôte D. Quelle action l'administrateur doit-il effectuer pour activer cette communication (configuration DTP) ?",
         "answers": [
-            { "text": "Les seuls utilisateurs qui pourront passer à la bande de 5 GHz seront ceux qui disposeront des NIC sans fil plus récents.", "correct": false },
-            { "text": "La bande de 5 GHz a une gamme plus étendue.", "correct": false },
-            { "text": "La bande de 5 GHz comprend plusieurs canaux et est moins encombrée que la bande de 2,4 GHz.", "correct": true },
-            { "text": "Forcer les utilisateurs de basculer à la bande de 5 GHz réduit le nombre d'utilisateurs.", "correct": false }
+            { "text": "Inclure un routeur dans la topologie.", "correct": false },
+            { "text": "Associer les hôtes A et B avec le VLAN 10.", "correct": false },
+            { "text": "Configurer un port trunk en mode dynamic desirable (pour négocier avec auto).", "correct": true },
+            { "text": "Supprimer le VLAN natif.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Un administrateur réseau configure une connexion au serveur RADIUS sur un WLC. Quel est le but du mot de passe secret partagé ?",
+        "question": "Quel préfixe IPv6 est conçu pour la communication lien-local ?",
         "answers": [
-            { "text": "Il est utilisé pour chiffrer les messages entre le WLC et le serveur RADIUS.", "correct": true },
-            { "text": "Il est utilisé par le serveur RADIUS pour authentifier les utilisateurs WLAN.", "correct": false },
-            { "text": "Il est utilisé pour authentifier et chiffrer les données d'utilisateur sur le WLAN.", "correct": false },
-            { "text": "Il permet aux utilisateurs d'authentifier et d'accéder au WLAN.", "correct": false }
+            { "text": "2001::/3", "correct": false },
+            { "text": "fe80::/10", "correct": true },
+            { "text": "fc::/07", "correct": false },
+            { "text": "ff00::/8", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel est le composant, la mise en œuvre ou le protocole de contrôle d'accès qui indique le succès ou l'échec d'un service demandé par le client avec un message PASS ou FAIL ?",
+        "question": "Comment un routeur gère-t-il le routage statique si Cisco Express Forwarding (CEF) est désactivé ?",
         "answers": [
-            { "text": "Gestion des comptes", "correct": false },
-            { "text": "802.1X", "correct": false },
-            { "text": "Authentification", "correct": false },
-            { "text": "Autorisation", "correct": true }
+            { "text": "Il n'effectue pas de recherches récursives.", "correct": false },
+            { "text": "Les interfaces série point à point nécessitent des routes entièrement spécifiées.", "correct": false },
+            { "text": "Les interfaces Ethernet à accès multiple nécessitent des routes statiques entièrement spécifiées pour éviter des incohérences.", "correct": true },
+            { "text": "Les routes statiques utilisant une interface de sortie sont inutiles.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel sont les WLAN qui sont basés sur la norme 802.11 et une fréquence radio 2,4 GHz ou 5 GHz ?",
+        "question": "Que peut-on conclure si `ip helper-address` est configuré sur une interface de routeur ?",
         "answers": [
-            { "text": "Réseau étendu sans fil (WAN)", "correct": false },
-            { "text": "Réseau métropolitain sans fil", "correct": false },
-            { "text": "Réseau local sans fil (WLAN)", "correct": true },
-            { "text": "Réseau personnel sans fil", "correct": false }
+            { "text": "R1 fonctionne comme un serveur DHCPv4.", "correct": false },
+            { "text": "R1 diffusera les demandes DHCPv4.", "correct": false },
+            { "text": "R1 est configuré en tant qu'agent de relais DHCP.", "correct": true }
         ],
         "type": "single"
     },
     {
-        "question": "(Question 25 adaptée) Quels sont les trois composants fonctionnels du modèle de sécurité AAA ?",
+        "question": "Quelle action se déroule lorsque l'adresse MAC source d'un cadre entrant dans un commutateur n'est pas dans la table d'adresses MAC ?",
         "answers": [
-            { "text": "Automatisation, Administration, Audit", "correct": false },
-            { "text": "Authentification, Autorisation, Traçabilité (Accounting)", "correct": true },
-            { "text": "Authentification, Application, Audit", "correct": false },
-            { "text": "Accès, Administration, Accounting", "correct": false }
+            { "text": "Le commutateur ajoute à la table l'adresse MAC et le numéro de port entrant.", "correct": true },
+            { "text": "Le commutateur transmet la trame à tous les ports.", "correct": false },
+            { "text": "Le commutateur ajoute un mappage pour l'adresse MAC de destination.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quelles sont les deux solutions Cisco qui aident à prévenir les attaques d’insuffisance de ressources DHCP ? (Choisissez deux.)",
+        "question": "Si les hôtes de certains VLAN ne peuvent pas accéder aux ressources après un basculement STP sur un lien de secours, quelle est la cause probable ?",
         "answers": [
-            { "text": "Sécurité des ports", "correct": true },
-            { "text": "Protection de la source IP", "correct": false },
-            { "text": "Espionnage (snooping) DHCP", "correct": true },
-            { "text": "Inspection ARP dynamique", "correct": false },
-            { "text": "Appliances de sécurisation du Web", "correct": false }
+            { "text": "Le routage inter-VLAN a échoué.", "correct": false },
+            { "text": "Le protocole de jonction dynamique a échoué.", "correct": false },
+            { "text": "Les VLAN autorisés sur la liaison de sauvegarde n'ont pas été configurés correctement.", "correct": true },
+            { "text": "La fonction de port de bord protégé a été désactivée.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Comment le port du commutateur connecté au routeur (Router-on-a-Stick) doit-il être configuré ?",
+        "answers": [
+            { "text": "Il doit être configuré comme port agrégé (trunk) 802.1q.", "correct": true },
+            { "text": "Il doit être configuré comme port d'accès.", "correct": false },
+            { "text": "Il doit être configuré comme port agrégé et affecté au VLAN 1.", "correct": false },
+            { "text": "Il doit autoriser uniquement le trafic non étiqueté.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Pourquoi l'espionnage DHCP (Snooping) est-il nécessaire pour Dynamic ARP Inspection (DAI) ?",
+        "answers": [
+            { "text": "Il utilise la table d'adresses MAC pour vérifier la passerelle.", "correct": false },
+            { "text": "Il s'appuie sur les paramètres des ports approuvés.", "correct": false },
+            { "text": "Il utilise la base de données de liaison d'adresse MAC à adresse IP pour valider un paquet ARP.", "correct": true },
+            { "text": "Il redirige les demandes ARP vers le serveur DHCP.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Pour acquérir la connectivité à Internet via HSRP, quelle entrée doit apparaître dans la table ARP de l'hôte ?",
+        "answers": [
+            { "text": "L'adresse IP virtuelle et l'adresse MAC virtuelle du groupe HSRP.", "correct": true },
+            { "text": "L'adresse IP virtuelle et l'adresse MAC de R1.", "correct": false },
+            { "text": "L'adresse IP virtuelle et l'adresse MAC de R2.", "correct": false },
+            { "text": "L'adresse IP et l'adresse MAC de R1.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Que doit faire un administrateur pour supprimer une route statique si le réseau de destination n'existe plus ?",
+        "answers": [
+            { "text": "Rien.", "correct": false },
+            { "text": "Supprimez l'itinéraire en utilisant la commande `no ip route`.", "correct": true },
+            { "text": "Modifier la distance administrative.", "correct": false },
+            { "text": "Modifier les mesures de routage.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle méthode d'authentification sans fil dépend d'un serveur d'authentification RADIUS ?",
+        "answers": [
+            { "text": "WPA Personal", "correct": false },
+            { "text": "WPA2 Personal", "correct": false },
+            { "text": "WEP", "correct": false },
+            { "text": "WPA2 Enterprise", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quels sont les deux paramètres définis par défaut sur un routeur sans fil pouvant affecter la sécurité du réseau ? (Choisissez deux propositions.)",
+        "answers": [
+            { "text": "Le SSID est diffusé.", "correct": true },
+            { "text": "Le filtrage des adresses MAC est activé.", "correct": false },
+            { "text": "Le chiffrement WEP est activé.", "correct": false },
+            { "text": "Le canal sans fil est automatiquement sélectionné.", "correct": false },
+            { "text": "Un mot de passe administrateur réservé (par défaut) est défini.", "correct": true }
         ],
         "type": "multiple", "required": 2
     },
     {
-        "question": "Plusieurs actions peuvent pallier une attaque de VLAN. Citez-en trois. (Choisissez trois.)",
+        "question": "Quelles informations d'identification les utilisateurs ont-ils besoin pour WPA2 Personal (PSK) ?",
         "answers": [
-            { "text": "Faire d'un VLAN inutilisé le VLAN natif.", "correct": true },
-            { "text": "Désactiver le protocole DTP.", "correct": true },
-            { "text": "Activer manuellement le trunking.", "correct": true },
-            { "text": "Activer la fonction de protection BPDU.", "correct": false },
-            { "text": "Activer la fonction de protection de source.", "correct": false },
-            { "text": "Utiliser des VLAN privés.", "correct": false }
+            { "text": "une clé qui correspond à la clé sur l'AP", "correct": false },
+            { "text": "un nom d'utilisateur et un mot de passe configurés sur l'AP", "correct": false },
+            { "text": "le nom d'utilisateur et le mot de passe de l'entreprise", "correct": false },
+            { "text": "Phrase secrète de l'utilisateur", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Comment une route statique doit-elle être modifiée si les utilisateurs ne peuvent pas accéder à Internet à cause d'un mauvais masque de destination ?",
+        "answers": [
+            { "text": "En ajoutant une distance administrative de 254.", "correct": false },
+            { "text": "En configurant le réseau et le masque de destination sur 0.0.0.0 0.0.0.0.", "correct": true },
+            { "text": "En choisissant une autre interface.", "correct": false },
+            { "text": "En ajoutant l'adresse voisine.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel est le risque associé à la méthode de la base de données locale pour la sécurisation de l'accès des appareils ?",
+        "answers": [
+            { "text": "Les mots de passe peuvent être stockés uniquement en texte brut.", "correct": false },
+            { "text": "Elle est très vulnérable aux attaques de force brute.", "correct": false },
+            { "text": "Elle n'offre aucun moyen d'établir les responsabilités.", "correct": false },
+            { "text": "Les comptes des utilisateurs doivent être configurés localement sur chaque appareil (non évolutif).", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Qu'est-ce qu'une méthode pour lancer une attaque de saut VLAN (VLAN hopping) ?",
+        "answers": [
+            { "text": "inondation du commutateur avec des adresses MAC", "correct": false },
+            { "text": "envoi d'adresses IP usurpées", "correct": false },
+            { "text": "introduction d'un commutateur non fiable et activation du trunking", "correct": true },
+            { "text": "envoi d'informations de VLAN natif usurpé", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel protocole utilise l'adresse IP source vers l'adresse IP de destination comme mécanisme d'équilibrage de charge ?",
+        "answers": [
+            { "text": "EtherChannel", "correct": true },
+            { "text": "HSRP", "correct": false },
+            { "text": "Protocole VTP", "correct": false },
+            { "text": "DTP", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Pourquoi le trafic de données est-il en texte clair entre un WLC et un AP alors que DTLS est activé ?",
+        "answers": [
+            { "text": "Bien que DTLS soit activé par défaut pour le canal de contrôle, il est désactivé par défaut pour le canal de données.", "correct": true },
+            { "text": "Le chiffrement des données nécessite une licence.", "correct": false },
+            { "text": "DTLS est uniquement pour AP et client.", "correct": false },
+            { "text": "DTLS ne fournit pas de chiffrement.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Contrairement aux routes dynamiques, quels sont les avantages des routes statiques ? (Choisissez deux réponses.)",
+        "answers": [
+            { "text": "Elles changent automatiquement le chemin.", "correct": false },
+            { "text": "Elles améliorent l'efficacité de découverte.", "correct": false },
+            { "text": "Elles utilisent moins de ressources du routeur.", "correct": true },
+            { "text": "Elles améliorent la sécurité du réseau.", "correct": true },
+            { "text": "Elles prennent moins de temps pour converger.", "correct": false }
+        ],
+        "type": "multiple", "required": 2
+    },
+    {
+        "question": "Si PC1 ne reçoit pas d'adresse IPv4 via un relais DHCP, quel est le problème probable ?",
+        "answers": [
+            { "text": "La commande ip address dhcp n'a pas été exécutée.", "correct": false },
+            { "text": "R1 n'est pas configuré comme serveur DHCPv4.", "correct": false },
+            { "text": "La commande ip helper-address n'a pas été exécutée sur l'interface correcte (face au client).", "correct": true },
+            { "text": "Un serveur DHCP doit être installé sur le même LAN.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel est l'effet de la commande `ip arp inspection vlan 10` ?",
+        "answers": [
+            { "text": "Il active le DAI sur des interfaces de commutation spécifiques pour le VLAN 10.", "correct": true },
+            { "text": "Activez globalement la surveillance DHCP.", "correct": false },
+            { "text": "Il spécifie le nombre maximal d'adresses L2.", "correct": false },
+            { "text": "Il permet globalement la garde BPDU.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle action se déroule lorsque l'adresse MAC source d'un cadre entrant apparaît dans la table d'adresses MAC associée à un port différent ?",
+        "answers": [
+            { "text": "Le commutateur transmet le cadre hors du port spécifié.", "correct": false },
+            { "text": "Le commutateur met à jour le minuteur.", "correct": false },
+            { "text": "Le commutateur purge toute la table.", "correct": false },
+            { "text": "Le commutateur remplace l'ancienne entrée et utilise le port le plus courant (récent).", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelles sont les trois étapes à suivre avant de transférer un commutateur Cisco vers un nouveau domaine de gestion VTP ? (Choisissez trois réponses.)",
+        "answers": [
+            { "text": "Redémarrer le commutateur.", "correct": true },
+            { "text": "Télécharger la base de données VTP.", "correct": false },
+            { "text": "Configurer le commutateur avec le nom du nouveau domaine de gestion.", "correct": true },
+            { "text": "Réinitialiser les compteurs VTP.", "correct": false },
+            { "text": "Sélectionner le mode et la version VTP appropriés.", "correct": true },
+            { "text": "Configurer le serveur VTP.", "correct": false }
         ],
         "type": "multiple", "required": 3
     },
     {
-        "question": "Que peut-on conclure à propos de la sécurité des ports si le mode violation est 'shutdown' et les 'Sticky MAC Addresses' sont à 1 ?",
+        "question": "Quelle opération effectue le routeur sur un paquet IPv6 si la seule route correspondante est `::/0` ?",
         "answers": [
-            { "text": "Le port est désactivé.", "correct": false },
-            { "text": "Le port possède le nombre maximal d'adresses MAC pris en charge.", "correct": false },
-            { "text": "Deux périphériques sont connectés au port.", "correct": false },
-            { "text": "Le mode de violation du port utilisé est le mode par défaut pour n'importe quel port dont la sécurité est activée.", "correct": true }
+            { "text": "supprimer le paquet", "correct": false },
+            { "text": "transmettre le paquet en sortie sur l'interface spécifiée dans la route par défaut.", "correct": true },
+            { "text": "transmettre le paquet en sortie sur toutes les interfaces.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel serveur vérifie le nom d'utilisateur et le mot de passe dans le cadre de l'authentification WLAN ?",
+        "question": "Quelle est la principale raison pour un cybercriminel de lancer une attaque par dépassement d'adresses MAC ?",
         "answers": [
-            { "text": "AAA", "correct": false },
-            { "text": "SNMP", "correct": false },
-            { "text": "NAT", "correct": false },
-            { "text": "RADIUS", "correct": true }
+            { "text": "pour que le cybercriminel puisse voir les trames destinées à d'autres hôtes (le switch agit comme un hub)", "correct": true },
+            { "text": "pour que le commutateur cesse d'acheminer le trafic", "correct": false },
+            { "text": "pour exécuter un code arbitraire", "correct": false },
+            { "text": "pour bloquer les hôtes légitimes", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Un routeur double bande 802.11n/ac a été déployé. Que peut faire le technicien pour résoudre la lenteur de la vitesse sans fil ?",
+        "question": "Quelle proposition décrit le résultat de l'interconnexion de plusieurs commutateurs Cisco LAN ?",
         "answers": [
-            { "text": "Modifier le SSID.", "correct": false },
-            { "text": "Configurer les périphériques pour qu'ils utilisent un autre canal.", "correct": false },
-            { "text": "Mettre à jour le firmware du nouveau routeur.", "correct": false },
-            { "text": "Diviser le trafic sans fil entre la bande 802.11n 2,4 GHz et la bande 5 GHz.", "correct": true }
+            { "text": "Chaque commutateur comprend un espace de diffusion.", "correct": false },
+            { "text": "Les collisions de trames augmentent.", "correct": false },
+            { "text": "Le domaine de diffusion s'étend sur tous les commutateurs.", "correct": true },
+            { "text": "Chaque commutateur comprend un espace de collision.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel risque lié à la sécurité des réseaux sans fil l'interdiction des fours à micro-ondes dans les bureaux tente-t-elle d'éviter ?",
+        "question": "Quel protocole a été implémenté pour regrouper plusieurs ports physiques en une liaison logique (propriétaire Cisco) ?",
         "answers": [
-            { "text": "les interférences accidentelles", "correct": true },
-            { "text": "les points d'accès indésirables", "correct": false },
-            { "text": "une configuration incorrecte des périphériques", "correct": false },
-            { "text": "l'interception de données", "correct": false }
+            { "text": "DTP", "correct": false },
+            { "text": "STP", "correct": false },
+            { "text": "PAgP", "correct": true },
+            { "text": "LACP", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quelle est la fonction fournie par le protocole CAPWAP dans un réseau sans fil d'entreprise ?",
+        "question": "Quelle configuration de sécurité des ports permet d'enregistrer dynamiquement l'adresse MAC dans la configuration en cours ?",
         "answers": [
-            { "text": "CAPWAP fournit le chiffrement du trafic utilisateur sans fil entre un point d'accès et un client sans fil.", "correct": false },
-            { "text": "CAPWAP crée un tunnel sur les ports TCP pour permettre à un WLC de configurer un point d'accès autonome.", "correct": false },
-            { "text": "CAPWAP fournit l'encapsulation et le transfert du trafic utilisateur sans fil entre un point d'accès et un contrôleur LAN sans fil.", "correct": true },
-            { "text": "CAPWAP fournit la connectivité entre un point d'accès IPv6 et un client IPv4.", "correct": false }
+            { "text": "adresses MAC sécurisées automatiques", "correct": false },
+            { "text": "adresses MAC sécurisées dynamiques", "correct": false },
+            { "text": "adresses MAC sécurisées statiques", "correct": false },
+            { "text": "adresses MAC sécurisées fixes (sticky)", "correct": true }
         ],
         "type": "single"
     },
     {
-        "question": "Que se passe-t-il s'il y a une violation de sécurité de port sur l'interface Fa 0/1 si elle est en mode 'protect' ?",
+        "question": "Si BPDU guard est activé par défaut mais pas actif sur tous les ports, quelle est la source du problème ?",
         "answers": [
-            { "text": "Un message syslog est enregistré.", "correct": false },
-            { "text": "Les paquets dont les adresses source sont inconnues sont abandonnés.", "correct": true },
-            { "text": "Une notification est envoyée.", "correct": false },
-            { "text": "L'interface est placée dans l'état de désactivation des erreurs.", "correct": false }
+            { "text": "PortFast n'est pas configuré sur tous les ports d'accès.", "correct": true },
+            { "text": "Les ports d'accès configurés avec la protection racine ne peuvent pas être configurés avec la garde BPDU.", "correct": false },
+            { "text": "Les ports d'accès appartiennent à différents VLAN.", "correct": false },
+            { "text": "BPDU guard doit être activé en mode de commande d'interface.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel est le composant, la mise en œuvre ou le protocole de contrôle d'accès qui vérifie quelles actions des utilisateurs sont effectuées sur le réseau ?",
+        "question": "Quel est l'effet de la commande `ip dhcp snooping` sur un commutateur ?",
         "answers": [
-            { "text": "Autorisation", "correct": false },
-            { "text": "802.1X", "correct": false },
-            { "text": "Authentification", "correct": false },
-            { "text": "Gestion des comptes", "correct": true }
+            { "text": "Activez globalement la surveillance DHCP (snooping) sur le commutateur.", "correct": true },
+            { "text": "Il active manuellement un lien de trunk.", "correct": false },
+            { "text": "Il active PortFast globalement.", "correct": false },
+            { "text": "Désactivez les négociations DTP.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quels sont les trois paramètres qui devraient être modifiés si des meilleurs pratiques sont mises en œuvre pour un point d'accès sans fil domestique ? (Choisissez trois.)",
+        "question": "Pourquoi l'administrateur désactiverait-il la fonction de diffusion pour le SSID ?",
         "answers": [
-            { "text": "Mot de passe du réseau sans fil", "correct": true },
-            { "text": "Mot de passe du système d'exploitation de client sans fil", "correct": false },
-            { "text": "Mot de passe d'AP", "correct": true },
-            { "text": "Heure de la balise sans fil", "correct": false },
-            { "text": "Fréquence de l'antenne", "correct": false },
-            { "text": "SSID", "correct": true }
+            { "text": "pour assurer la confidentialité du trafic", "correct": false },
+            { "text": "pour éliminer l'analyse des SSID disponibles dans la zone (masquage)", "correct": true },
+            { "text": "pour réduire le risque d'interférence", "correct": false },
+            { "text": "pour réduire le risque d'ajout de points d'accès non autorisés", "correct": false }
         ],
-        "type": "multiple", "required": 3
+        "type": "single"
     },
     {
-        "question": "Un ordinateur portable ne peut pas se connecter à un point d'accès sans fil. Quelles sont les deux étapes de dépannage à effectuer en premier? (Choisissez deux.)",
+        "question": "Quels sont les canaux 802.11g (2.4 GHz) sans chevauchement ?",
         "answers": [
-            { "text": "S'assurer que le SSID sans fil est choisi.", "correct": true },
-            { "text": "S'assurer que le support réseau correct est sélectionné.", "correct": false },
-            { "text": "S'assurer que la carte réseau sans fil est activée.", "correct": true },
-            { "text": "S'assurer que la carte réseau est configurée pour la fréquence appropriée.", "correct": false },
-            { "text": "S'assurer que l'antenne de l'ordinateur portable est fixée.", "correct": false }
+            { "text": "Canaux 2, 6 et 10", "correct": false },
+            { "text": "Canaux 1, 7 et 13", "correct": false },
+            { "text": "Canaux 1, 6 et 11", "correct": true },
+            { "text": "Canaux 1, 5 et 9", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle attaque a pour but de créer un DOS pour les clients en les empêchant d'obtenir un crédit-bail DHCP ?",
+        "answers": [
+            { "text": "Attaque par dépassement de table CAM", "correct": false },
+            { "text": "Insuffisance de ressources DHCP (DHCP Starvation)", "correct": true },
+            { "text": "Usurpation d'adresse IP", "correct": false },
+            { "text": "Usurpation DHCP (spoofing)", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle commande permet de lancer le processus de regroupement de deux interfaces physiques via LACP ?",
+        "answers": [
+            { "text": "channel-group 1 mode desirable", "correct": false },
+            { "text": "interface range GigabitEthernet 0/4 – 5", "correct": true },
+            { "text": "channel-group 2 mode auto", "correct": false },
+            { "text": "interface port-channel 2", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle instruction est correcte sur la façon dont un commutateur de couche 2 détermine comment transférer des trames ?",
+        "answers": [
+            { "text": "Les décisions sont basées sur l’adresse MAC et les mappages des ports dans la table CAM.", "correct": true },
+            { "text": "Le transfert cut-through garantit l'abandon des trames invalides.", "correct": false },
+            { "text": "Les trames monodiffusion sont toujours transmises.", "correct": false },
+            { "text": "Seules les trames de diffusion sont transmises à tous les ports.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quels hôtes recevront des requêtes ARP envoyées par l'hôte A (VLAN 1) ?",
+        "answers": [
+            { "text": "Seuls les hôtes dans le même VLAN (VLAN 1).", "correct": true },
+            { "text": "Tous les hôtes du commutateur.", "correct": false },
+            { "text": "Seuls les hôtes du VLAN 2.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Parmi les propositions suivantes, lesquelles caractérisent les ports routés d'un commutateur multicouche ? (Choisissez deux réponses.)",
+        "answers": [
+            { "text": "Ils sont utilisés pour les liaisons point à multipoint.", "correct": false },
+            { "text": "Ils sont principalement configurés entre les commutateurs de distribution.", "correct": false },
+            { "text": "Ils ne sont associés à aucun VLAN particulier.", "correct": true },
+            { "text": "La commande interface vlan est nécessaire.", "correct": false },
+            { "text": "Ils prennent en charge les sous-interfaces.", "correct": false },
+            { "text": "Ils se comportent comme des interfaces de routeur.", "correct": true }
         ],
         "type": "multiple", "required": 2
     },
     {
-        "question": "Quel est le protocole qui peut être utilisé pour surveiller le réseau ?",
+        "question": "Quel protocole définit un groupe de routeurs, l'un actif et l'autre en veille ?",
         "answers": [
-            { "text": "SNMP", "correct": true },
-            { "text": "RADIUS", "correct": false },
-            { "text": "DHCP", "correct": false },
-            { "text": "AAA", "correct": false }
+            { "text": "EtherChannel", "correct": false },
+            { "text": "DTP", "correct": false },
+            { "text": "HSRP", "correct": true },
+            { "text": "Protocole VTP", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Un administrateur réseau tente d'améliorer les performances WLAN d'un routeur sans fil dual-bande. Quelle est la façon la plus simple pour réaliser le résultat de partage du trafic ?",
+        "question": "Comment les types de liaisons Rapid PVST+ sont-ils déterminés sur les interfaces de commutateur ?",
         "answers": [
-            { "text": "Ajouter un extenseur de gamme Wi-Fi au WLAN.", "correct": false },
-            { "text": "Vérifier et tenir à jour le micrologiciel du routeur sans fil.", "correct": false },
-            { "text": "Exiger que tous les périphériques sans fil utilisent la norme 802.11n.", "correct": false },
-            { "text": "S'assurer que différents SSID sont utilisés pour les bandes 2,4 GHz et 5 GHz.", "correct": true }
+            { "text": "Les types de liaisons sont déterminés automatiquement.", "correct": true },
+            { "text": "Les types de liaisons peuvent uniquement être déterminés si PortFast a été configuré.", "correct": false },
+            { "text": "Les types de liaisons peuvent uniquement être configurés sur des ports d'accès.", "correct": false },
+            { "text": "Les types de liaisons doivent être configurés manuellement.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel est le type de réseau sans fil qui convient aux communications nationales et mondiales ?",
+        "question": "Sur quels ports de commutation devrait-on activer la protection BPDU (BPDU Guard) ?",
         "answers": [
-            { "text": "Réseau métropolitain sans fil", "correct": false },
-            { "text": "Réseau personnel sans fil", "correct": false },
-            { "text": "Réseau étendu sans fil (WAN)", "correct": true },
-            { "text": "Réseau local sans fil (WLAN)", "correct": false }
+            { "text": "tous les ports équipés de PortFast", "correct": true },
+            { "text": "tous les ports de trunk qui ne sont pas des ports racines", "correct": false },
+            { "text": "seuls les ports qui s'attachent à un commutateur voisin", "correct": false },
+            { "text": "uniquement les ports qui sont élus comme ports désignés", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quelle fonctionnalité ou configuration d'un commutateur le rend vulnérable aux attaques à double étiquetage VLAN ?",
+        "question": "Pourquoi le nombre de clients actifs DHCPv6 est 0 avec `ipv6 nd other-config-flag` ?",
         "answers": [
-            { "text": "Le VLAN natif du port trunking étant le même qu'un VLAN utilisateur.", "correct": true },
-            { "text": "La taille limitée de l'espace mémoire est adressable au contenu.", "correct": false },
-            { "text": "Le mode duplex mixte est activé par défaut sur tous les ports.", "correct": false },
-            { "text": "La fonctionnalité de port de liaison automatique activée sur tous les ports par défaut.", "correct": false }
+            { "text": "Aucune plage d'adresses IPv6 n'est spécifiée.", "correct": false },
+            { "text": "Aucun client n'a communiqué.", "correct": false },
+            { "text": "L'état n'est pas maintenu par le serveur DHCPv6 en mode sans état (Stateless).", "correct": true },
+            { "text": "L'adresse de la passerelle par défaut n'est pas disponible.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel est l'un des avantages du masquage du SSID ?",
+        "question": "Quelle est la meilleure solution pour prévenir l'attaque de trame 802.1Q (VLAN Hopping) ?",
         "answers": [
-            { "text": "Il s'agit de la meilleure façon de sécuriser un réseau sans fil.", "correct": false },
-            { "text": "Les SSID sont très difficiles à détecter parce que les points d'accès ne les diffusent pas.", "correct": false },
-            { "text": "Les clients devront identifier manuellement le SSID pour se connecter au réseau.", "correct": true },
-            { "text": "Il fournit un accès Internet gratuit dans les endroits publics où il n'est pas important de connaître le SSID.", "correct": false }
+            { "text": "Les VLAN des ports d'accès utilisateur doivent être différents des VLAN natifs utilisés sur les ports de jonction.", "correct": true },
+            { "text": "Le numéro de VLAN natif doit être l'un des VLAN de données.", "correct": false },
+            { "text": "Les ports de trunk doivent être configurés avec la sécurité de port.", "correct": false },
+            { "text": "Les ports de trunk doivent utiliser le VLAN par défaut comme natif.", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Pour fournir des débits de données pouvant atteindre 1,3 Gbit/s et toujours assurer une rétrocompatibilité, quelle norme sans fil doit être implémentée ?",
+        "question": "Quelles deux étapes sont nécessaires pour configurer VTP sur un nouveau commutateur afin qu'il ne puisse pas ajouter de VLAN mais reçoive les mises à jour ? (Choisissez deux propositions.)",
         "answers": [
-            { "text": "802.11b", "correct": false },
-            { "text": "802.11n", "correct": false },
-            { "text": "802.11ac", "correct": true },
-            { "text": "802.11g", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles sont les deux méthodes utilisées par une carte réseau sans fil pour détecter un point d'accès ? (Choisissez deux.)",
-        "answers": [
-            { "text": "transmission d'une requête d'analyse", "correct": true },
-            { "text": "envoi d'une trame de diffusion", "correct": false },
-            { "text": "réception d'une trame de balise de diffusion", "correct": true },
-            { "text": "établissement d'une connexion en trois étapes", "correct": false },
-            { "text": "envoi d'une requête ARP", "correct": false }
+            { "text": "Configurer le nouveau commutateur en tant que client VTP.", "correct": true },
+            { "text": "Activer l'élagage VTP.", "correct": false },
+            { "text": "Configurer une adresse IP.", "correct": false },
+            { "text": "Configurer tous les ports en mode d'accès", "correct": false },
+            { "text": "Configurer le nom de domaine et le mot de passe VTP corrects.", "correct": true }
         ],
         "type": "multiple", "required": 2
     },
     {
-        "question": "La sécurité de port a été configurée sur l'interface Fa 0/12. Quelle action se produira lorsque PC1 (MAC inconnue) est connecté au commutateur S1 avec la configuration appliquée (mode violation défaut) ?",
+        "question": "Deux protocoles sont utilisés pour l'authentification AAA au niveau des serveurs. Lesquels ? (Choisissez deux propositions.)",
         "answers": [
-            { "text": "Les trames de PC1 seront transférées mais aucune entrée de journal ne sera créée.", "correct": false },
-            { "text": "Les trames de PC1 seront transférées et une entrée de journal sera créée.", "correct": false },
-            { "text": "Les trames de PC1 seront supprimées et un message de journal sera créé.", "correct": false },
-            { "text": "Les trames de PC1 seront transférées dans la mesure où la commande switchport port security violation est manquante.", "correct": false },
-            { "text": "Les trames de PC1 seront supprimées, et il n'y aura pas de journal de la violation.", "correct": false },
-            { "text": "Les trames de PC1 provoquent l'arrêt immédiat de l'interface, et une entrée de journal sera effectuée.", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel type d'attaque par saut de VLAN peut être prévenu en définissant un VLAN inutilisé comme VLAN natif ?",
-        "answers": [
-            { "text": "L'attaque de double étiquetage VLAN", "correct": true },
-            { "text": "Usurpation (spoofing) DHCP", "correct": false },
-            { "text": "Insuffisance de ressources DHCP", "correct": false },
-            { "text": "Usurpation de DTP", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Un administrateur réseau configure DAI sur un commutateur avec la commande `ip arp inspection validate src-mac`. Quel est l'objectif de cette commande ?",
-        "answers": [
-            { "text": "Il vérifie l'adresse MAC de source dans l'en-tête Ethernet par rapport aux listes de contrôle d'accès ARP.", "correct": false },
-            { "text": "Il vérifie l'adresse MAC de source dans l'en-tête Ethernet par rapport à l'adresse MAC cible dans le corps ARP.", "correct": false },
-            { "text": "Il vérifie l'adresse MAC de source dans l'en-tête Ethernet par rapport à l'adresse MAC de l'expéditeur dans le corps ARP.", "correct": true },
-            { "text": "Il vérifie l'adresse MAC de source dans l'en-tête Ethernet par rapport à la table d'adresse MAC.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "En cas de violation, les paquets associés à des adresses source inconnues sont à supprimer, et ce sans aucune notification. Quel mode de violation doit être configuré ?",
-        "answers": [
-            { "text": "off", "correct": false },
-            { "text": "restrict", "correct": false },
-            { "text": "protect", "correct": true },
-            { "text": "shutdown", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'avantage en matière de sécurité qui permet la protection BPDU sur les interfaces activées par PortFast ?",
-        "answers": [
-            { "text": "Renforcer la mise en place des ponts de racines", "correct": false },
-            { "text": "Prévenir les attaques par saturation de la mémoire tampon", "correct": false },
-            { "text": "Potection contre les boucles de couche 2", "correct": false },
-            { "text": "Empêcher l'ajout de commutateurs non fiables au réseau", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'effet de la commande `ip dhcp snooping limit rate 6` ?",
-        "answers": [
-            { "text": "Si le port reçoit plus de 6 messages DHCP par seconde, le port sera arrêté.", "correct": false },
-            { "text": "Si le port reçoit plus de 6 messages DHCP par seconde, le port continuera à fonctionner et un message d'erreur sera envoyé.", "correct": false },
-            { "text": "Les ports peuvent recevoir jusqu'à 6 messages DHCP par seconde de tout type.", "correct": false },
-            { "text": "Les ports peuvent recevoir jusqu'à 6 messages de découverte DHCP par seconde.", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel protocole devrait être utilisé pour atténuer la vulnérabilité liée à l'utilisation de Telnet pour gérer des périphériques réseau à distance ?",
-        "answers": [
-            { "text": "SNMP", "correct": false },
-            { "text": "SSH", "correct": true },
-            { "text": "TFTP", "correct": false },
-            { "text": "SCP", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel composant du modèle AAA est utilisé pour déterminer les ressources auxquelles l'utilisateur peut accéder et les opérations qu'il est autorisé à effectuer ?",
-        "answers": [
-            { "text": "traçabilité", "correct": false },
-            { "text": "Audit", "correct": false },
-            { "text": "authentification", "correct": false },
-            { "text": "autorisation", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel type de trame de gestion peut être régulièrement diffusé par un point d'accès ?",
-        "answers": [
-            { "text": "réponse d'analyse", "correct": false },
-            { "text": "authentification", "correct": false },
-            { "text": "requête d'analyse", "correct": false },
-            { "text": "balise", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Certains utilisateurs se plaignent que le réseau sans fil est trop lent (802.11n). Quelle solution est la meilleure méthode pour améliorer la performance ?",
-        "answers": [
-            { "text": "Mettre à niveau le firmware sur le point d'accès sans fil.", "correct": false },
-            { "text": "Désactiver DHCP sur le point d'accès.", "correct": false },
-            { "text": "Répartir le trafic entre les bandes de fréquences 2,4 GHz et 5 GHz.", "correct": true },
-            { "text": "Remplacer les cartes réseau (NIC) sans fil.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le service utilisé sur le routeur sans fil pour permettre aux ordinateurs portables des employés (adresses privées 10.x.x.x) d'accéder à l'internet ?",
-        "answers": [
-            { "text": "RADIUS", "correct": false },
-            { "text": "NAT", "correct": true },
-            { "text": "DNS", "correct": false },
-            { "text": "DHCP", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le composant, la mise en œuvre ou le protocole de contrôle d'accès qui enregistre les commandes d'EXEC et de configuration configurées par un utilisateur ?",
-        "answers": [
-            { "text": "Authentification", "correct": false },
-            { "text": "Autorisation", "correct": false },
-            { "text": "802.1X", "correct": false },
-            { "text": "Gestion des comptes", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le type de réseau sans fil qui est approprié pour une utilisation au maison ou au bureau ?",
-        "answers": [
-            { "text": "Réseau métropolitain sans fil", "correct": false },
-            { "text": "Réseau local sans fil (WLAN)", "correct": true },
-            { "text": "Réseau étendu sans fil (WAN)", "correct": false },
-            { "text": "Réseau personnel sans fil", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quels sont les deux protocoles utilisés par AAA pour authentifier les utilisateurs par rapport à une base de données centrale ? (Choisissez deux.)",
-        "answers": [
-            { "text": "NTP", "correct": false },
             { "text": "SSH", "correct": false },
             { "text": "TACACS+", "correct": true },
             { "text": "RADIUS", "correct": true },
-            { "text": "CHAP", "correct": false },
-            { "text": "HTTPS", "correct": false }
+            { "text": "802.1x", "correct": false },
+            { "text": "SNMP", "correct": false }
         ],
         "type": "multiple", "required": 2
     },
     {
-        "question": "Quelle caractéristique d'un commutateur le rend vulnérable aux attaques par saut de VLAN ?",
+        "question": "Quelle attaque réseau est atténuée en activant la garde BPDU ?",
         "answers": [
-            { "text": "La fonctionnalité de port de liaison automatique activée sur tous les ports par défaut.", "correct": true },
-            { "text": "Prise en charge de la bande passante des ports mixtes activée par défaut.", "correct": false },
-            { "text": "Le mode duplex mixte est activé par défaut sur tous les ports.", "correct": false },
-            { "text": "La taille limitée de l'espace mémoire est adressable au contenu.", "correct": false }
+            { "text": "attaque par débordement de la table CAM", "correct": false },
+            { "text": "serveurs DHCP non fiables", "correct": false },
+            { "text": "commutateurs non fiables sur un réseau", "correct": true },
+            { "text": "Usurpation d'adresse MAC", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel est le composant, la mise en œuvre ou le protocole de contrôle d'accès qui contrôle ce que les utilisateurs peuvent réaliser sur le réseau ?",
+        "question": "Quel est le terme commun donné aux messages de journal SNMP générés par les périphériques réseau (notifications) ?",
         "answers": [
-            { "text": "802.1X", "correct": false },
-            { "text": "Gestion des comptes", "correct": false },
-            { "text": "Autorisation", "correct": true },
-            { "text": "Authentification", "correct": false }
+            { "text": "L'accusé de réception", "correct": false },
+            { "text": "Audit", "correct": false },
+            { "text": "Déroutements (Traps)", "correct": true },
+            { "text": "avertissements", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel est le type de réseau sans fil utilise couramment des appareils Bluetooth ou ZigBee ?",
+        "question": "Quel protocole est un protocole propriétaire Cisco automatiquement activé sur les commutateurs 2960 (pour le trunking) ?",
         "answers": [
-            { "text": "Réseau local sans fil (WLAN)", "correct": false },
-            { "text": "Réseau étendu sans fil (WAN)", "correct": false },
-            { "text": "Réseau métropolitain sans fil", "correct": false },
-            { "text": "Réseau personnel sans fil", "correct": true }
+            { "text": "STP", "correct": false },
+            { "text": "DTP", "correct": true },
+            { "text": "Protocole VTP", "correct": false },
+            { "text": "EtherChannel", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quel mode de sécurité sans fil requiert un serveur RADIUS pour authentifier les utilisateurs sans fil ?",
+        "question": "Pourquoi l'administrateur appliquerait-il WPA2 avec AES au WLAN ?",
         "answers": [
-            { "text": "personnel", "correct": false },
-            { "text": "entreprise", "correct": true },
+            { "text": "pour assurer la confidentialité et l'intégrité du trafic sans fil en utilisant le chiffrement", "correct": true },
+            { "text": "fournir un service prioritaire", "correct": false },
+            { "text": "pour centraliser la gestion", "correct": false },
+            { "text": "pour réduire le risque d'ajout de points d'accès non autorisés", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Un traceroute révèle un mauvais chemin et un état inaccessible. Que faut-il vérifier ?",
+        "answers": [
+            { "text": "Vérifiez que la route statique vers le serveur est présente.", "correct": false },
+            { "text": "Vérifiez la configuration sur la route statique flottante.", "correct": false },
+            { "text": "Vérifiez la configuration de l'interface de sortie sur la nouvelle route statique.", "correct": true },
+            { "text": "Créez une route statique flottante.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quels énoncés décrivent les paramètres de mode bidirectionnel et de débit des commutateurs Cisco 2960 ? (Choisissez trois réponses.)",
+        "answers": [
+            { "text": "Les paramètres peuvent être configurés manuellement.", "correct": true },
+            { "text": "Par défaut, la négociation automatique est désactivée.", "correct": false },
+            { "text": "Si la vitesse est 1000 Mbps, le mode est Full Duplex.", "correct": true },
+            { "text": "Par défaut, le débit est 100 Mbps.", "correct": false },
+            { "text": "L'activation de la négociation automatique prévient les erreurs.", "correct": false },
+            { "text": "La défaillance de la négociation automatique peut causer des problèmes.", "correct": true }
+        ],
+        "type": "multiple", "required": 3
+    },
+    {
+        "question": "Quelle commande permet au routeur R1 de répondre aux demandes DHCPv6 sans état (en envoyant RA avec le flag O) ?",
+        "answers": [
+            { "text": "prefix-delegation...", "correct": false },
+            { "text": "ipv6 unicast-routing", "correct": false },
+            { "text": "dns-server...", "correct": false },
+            { "text": "ipv6 nd other-config-flag", "correct": true },
+            { "text": "ipv6 dhcp server LAN1", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle action se déroule lorsqu'une trame entrant dans un commutateur a une adresse MAC de destination multidiffusion ?",
+        "answers": [
+            { "text": "Le commutateur transmet le cadre hors du port spécifié.", "correct": false },
+            { "text": "Le commutateur ajoute un mappage.", "correct": false },
+            { "text": "Le commutateur remplace l'ancienne entrée.", "correct": false },
+            { "text": "Le commutateur transmet la trame à tous les ports, sauf au port d'arrivée.", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel protocole permet à des données de transmettre via des liaisons de commutation redondantes sans boucle ?",
+        "answers": [
+            { "text": "EtherChannel", "correct": false },
+            { "text": "VTP", "correct": false },
+            { "text": "DTP", "correct": false },
+            { "text": "STP", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Pourquoi l'administrateur modifie-t-il les adresses DHCP IPv4 par défaut sur un point d'accès ?",
+        "answers": [
+            { "text": "pour réduire le risque d'interférence", "correct": false },
+            { "text": "pour restreindre l'accès", "correct": false },
+            { "text": "pour réduire l'interception de données ou l'accès au réseau sans fil à l'aide d'une plage d'adresses bien connue", "correct": true },
+            { "text": "pour surveiller le fonctionnement", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel mode de violation de sécurité abandonne la trame et envoie une notification (Syslog/SNMP) ?",
+        "answers": [
+            { "text": "warning", "correct": false },
+            { "text": "protect", "correct": false },
+            { "text": "shutdown", "correct": false },
+            { "text": "restrict", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelles deux configurations sont nécessaires pour DHCPv6 sans état avec DNS ? (Choisissez deux propositions.)",
+        "answers": [
+            { "text": "La ligne de nom de domaine est incluse.", "correct": false },
+            { "text": "Le ipv6 nd other-config-flag entré pour l’interface LAN.", "correct": true },
+            { "text": "La ligne dns-server est incluse dans la section ipv6 dhcp pool.", "correct": true },
+            { "text": "La ligne de préfixe d'adresse est incluse.", "correct": false },
+            { "text": "Le ipv6 nd managed-config-flag est entré.", "correct": false }
+        ],
+        "type": "multiple", "required": 2
+    },
+    {
+        "question": "Pourquoi l'administrateur utiliserait-il des serveurs RADIUS sur le réseau WLAN ?",
+        "answers": [
+            { "text": "pour restreindre l'accès au WLAN uniquement par les utilisateurs autorisés et authentifiés (Enterprise)", "correct": true },
+            { "text": "pour faciliter la configuration de groupe", "correct": false },
+            { "text": "pour centraliser la gestion", "correct": false },
+            { "text": "pour surveiller le fonctionnement", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel est l'effet de la commande `show ip dhcp snooping binding` ?",
+        "answers": [
+            { "text": "Il limite le nombre de messages.", "correct": false },
+            { "text": "Il passe un port de jonction en mode d'accès.", "correct": false },
+            { "text": "Il vérifie l'adresse MAC.", "correct": false },
+            { "text": "Il affiche les associations d'adresses IP à Mac pour les interfaces de commutation.", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel est l'effet de la saisie de la commande `spanning-tree portfast` ?",
+        "answers": [
+            { "text": "Cela désactive un port inutilisé.", "correct": false },
+            { "text": "Cela désactive tous les ports de jonction.", "correct": false },
+            { "text": "Il active le portfast sur une interface de commutateur spécifique.", "correct": true },
+            { "text": "Il vérifie l'adresse L2.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelles sont les deux fonctions exécutées par un WLC lors de l'utilisation du contrôle d'accès aux médias (MAC) ? (Choisissez deux réponses.)",
+        "answers": [
+            { "text": "accusés de réception et retransmissions", "correct": false },
+            { "text": "Mise en file d'attente des trames", "correct": false },
+            { "text": "balises et réponses des sondes", "correct": false },
+            { "text": "traduction du cadre vers d'autres protocoles", "correct": true },
+            { "text": "association et réassociation de clients itinérants", "correct": true }
+        ],
+        "type": "multiple", "required": 2
+    },
+    {
+        "question": "Quels sont les trois éléments à configurer sur le commutateur pour l'accès à la gestion à distance (SVI) ? (Choisissez trois réponses.)",
+        "answers": [
+            { "text": "Adresse IP", "correct": true },
+            { "text": "Domaine VTP", "correct": false },
+            { "text": "lignes vty", "correct": true },
+            { "text": "VLAN par défaut", "correct": false },
+            { "text": "passerelle par défaut", "correct": true },
+            { "text": "adresse de bouclage", "correct": false }
+        ],
+        "type": "multiple", "required": 3
+    },
+    {
+        "question": "Les employés ne peuvent pas accéder à Internet après un changement de FAI. Que vérifier ?",
+        "answers": [
+            { "text": "Vérifiez que la route statique vers le serveur est présente.", "correct": false },
+            { "text": "Vérifiez la configuration sur la route statique flottante.", "correct": false },
+            { "text": "Assurez-vous que l'ancienne route par défaut a été supprimée des routeurs périphériques.", "correct": true },
+            { "text": "Créez une route statique flottante.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Un technicien configure un routeur pour une petite entreprise avec plusieurs WLAN sans routage dynamique. Que doit-il faire ?",
+        "answers": [
+            { "text": "Vérifiez qu'il n'y a pas de route par défaut.", "correct": false },
+            { "text": "Créez des routes statiques vers tous les réseaux internes et une route par défaut vers Internet.", "correct": true },
+            { "text": "Créez des routes statiques supplémentaires avec un AD de 1.", "correct": false },
+            { "text": "Vérifiez les statistiques sur la route par défaut.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel plan d'atténuation est le meilleur pour contrecarrer une attaque DoS par débordement de table d'adresses MAC ?",
+        "answers": [
+            { "text": "Désactiver la DTP.", "correct": false },
+            { "text": "Désactiver STP.", "correct": false },
+            { "text": "Activer la sécurité des ports.", "correct": true },
+            { "text": "Placez les ports inutilisés dans un VLAN inutilisé.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel message DHCPv4 un client enverra-t-il pour accepter une adresse IPv4 proposée ?",
+        "answers": [
+            { "text": "diffusion DHCPACK", "correct": false },
+            { "text": "diffusion DHCPREQUEST", "correct": true },
+            { "text": "DHCPACK monodiffusion", "correct": false },
+            { "text": "DHCPREQUEST en monodiffusion", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel protocole ajoute de la sécurité aux connexions à distance (remplace Telnet) ?",
+        "answers": [
+            { "text": "FTP", "correct": false },
+            { "text": "HTTP", "correct": false },
+            { "text": "NetBEUI", "correct": false },
+            { "text": "POP", "correct": false },
+            { "text": "SSH", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle commande permettra à un routeur de configurer une adresse lien-local IPv6 sans serveur DHCP ?",
+        "answers": [
+            { "text": "un itinéraire statique", "correct": false },
+            { "text": "la route ipv6 ::/0 commande", "correct": false },
+            { "text": "la commande ipv6 unicast-routing", "correct": true },
+            { "text": "la commande de routage ip", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Les utilisateurs se plaignent d'un accès sporadique à Internet. Que faut-il vérifier ?",
+        "answers": [
+            { "text": "Créez des routes statiques.", "correct": false },
+            { "text": "Vérifiez qu'il n'y a pas de route par défaut.", "correct": false },
+            { "text": "Créez une route statique flottante.", "correct": false },
+            { "text": "Vérifiez les statistiques sur la route par défaut pour la sursaturation.", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Un administrateur remarque qu'un grand nombre de paquets sont supprimés sur l'un des routeurs. Que vérifier ?",
+        "answers": [
+            { "text": "Créez des routes statiques.", "correct": false },
+            { "text": "Créez des routes statiques supplémentaires.", "correct": false },
+            { "text": "Vérifiez les statistiques.", "correct": false },
+            { "text": "Vérifiez la table de routage pour une route statique manquante.", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelles sont les deux caractéristiques du commutateur qui aident à réduire la congestion ? (Choisissez deux réponses.)",
+        "answers": [
+            { "text": "commutation interne rapide", "correct": true },
+            { "text": "tampons de grande taille", "correct": true },
+            { "text": "commutation store-and-forward", "correct": false },
+            { "text": "faible densité de ports", "correct": false },
+            { "text": "contrôle FCS", "correct": false }
+        ],
+        "type": "multiple", "required": 2
+    },
+    {
+        "question": "Quel est le résultat de la connexion de deux ou plusieurs commutateurs ensemble ?",
+        "answers": [
+            { "text": "Le nombre de domaines de diffusion est augmenté.", "correct": false },
+            { "text": "La taille du domaine de diffusion est augmentée.", "correct": true },
+            { "text": "Le nombre de domaines de collision est réduit.", "correct": false },
+            { "text": "La taille du domaine de collision est augmentée.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel est l'effet de la commande `switchport port-security` ?",
+        "answers": [
+            { "text": "Il apprend dynamiquement l'adresse L2.", "correct": false },
+            { "text": "Il active la sécurité des ports sur une interface.", "correct": true },
+            { "text": "Il active la sécurité des ports globalement.", "correct": false },
+            { "text": "Il restreint les messages.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Pourquoi utiliser plusieurs points d'accès légers (Lightweight APs) ?",
+        "answers": [
+            { "text": "pour centraliser la gestion", "correct": false },
+            { "text": "pour surveiller le fonctionnement", "correct": false },
+            { "text": "fournir un service prioritaire", "correct": false },
+            { "text": "pour faciliter la configuration et la gestion de groupe de plusieurs WLAN via un WLC", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "PC-A et PC-B sont dans le VLAN 60 mais ne communiquent pas à travers un trunk. Quel est le problème probable ?",
+        "answers": [
+            { "text": "Le VLAN natif doit être le VLAN 60.", "correct": false },
+            { "text": "Le VLAN natif est supprimé du lien.", "correct": false },
+            { "text": "Le tronc a été configuré avec nonegotiate.", "correct": false },
+            { "text": "Le VLAN 60 ne figure pas dans la liste des VLAN autorisés sur le tronc.", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel protocole gère les négociations de jonction (trunking) entre les commutateurs ?",
+        "answers": [
+            { "text": "VTP", "correct": false },
+            { "text": "EtherChannel", "correct": false },
+            { "text": "DTP", "correct": true },
+            { "text": "STP", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel est l'effet de `ip dhcp snooping limit rate 6` ?",
+        "answers": [
+            { "text": "Il affiche les associations.", "correct": false },
+            { "text": "Il active la sécurité des ports.", "correct": false },
+            { "text": "Il restreint le nombre de messages de découverte DHCP, par seconde, à recevoir sur l'interface.", "correct": true },
+            { "text": "Il apprend dynamiquement l'adresse L2.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel est l'effet de `ip arp inspection validate src-mac` ?",
+        "answers": [
+            { "text": "Il vérifie l'adresse L2 source dans l'en-tête Ethernet par rapport à l'adresse L2 de l'expéditeur dans le corps ARP.", "correct": true },
+            { "text": "Cela désactive tous les ports de jonction.", "correct": false },
+            { "text": "Il affiche les associations.", "correct": false },
+            { "text": "Il active le portfast.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle longueur de préfixe est utilisée pour une route statique IPv6 par défaut ?",
+        "answers": [
+            { "text": "::/0", "correct": true },
+            { "text": "FF02::1/8", "correct": false },
+            { "text": "0.0.0.0/0", "correct": false },
+            { "text": "::1/128", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelles sont les deux caractéristiques de Cisco Express Forwarding (CEF) ? (Choisissez deux.)",
+        "answers": [
+            { "text": "Il est transmis au plan de contrôle pour chaque paquet.", "correct": false },
+            { "text": "Il s'agit du mécanisme de transfert le plus rapide.", "correct": true },
+            { "text": "Il utilise le cache à commutation rapide.", "correct": false },
+            { "text": "Les paquets sont transférés en fonction des informations contenues dans le FIB et d'un tableau de contiguïté.", "correct": true },
+            { "text": "Le processeur recherche une correspondance dans le cache.", "correct": false }
+        ],
+        "type": "multiple", "required": 2
+    },
+    {
+        "question": "Quel terme décrit le rôle d'un commutateur Cisco dans 802.1X ?",
+        "answers": [
+            { "text": "agent", "correct": false },
+            { "text": "suppliant", "correct": false },
+            { "text": "authentificateur", "correct": true },
+            { "text": "serveur d'authentification", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelle solution Cisco permet d'éviter l'empoisonnement ARP ?",
+        "answers": [
+            { "text": "Inspection ARP dynamique (DAI)", "correct": true },
+            { "text": "Protection des sources IP", "correct": false },
+            { "text": "Snooping DHCP", "correct": false },
+            { "text": "Sécurité des ports", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quel est l'avantage de PVST+ ?",
+        "answers": [
+            { "text": "Sélection automatique du pont racine.", "correct": false },
+            { "text": "Réduit la consommation de bande passante.", "correct": false },
+            { "text": "Nécessite moins de cycles CPU.", "correct": false },
+            { "text": "PVST+ optimise les performances sur le réseau grâce au partage de charge (par VLAN).", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Comment l'administrateur réseau peut-il réduire le nombre d'appareils recevant du trafic de diffusion dans un grand LAN ?",
+        "answers": [
+            { "text": "Ajoutez plus de commutateurs.", "correct": false },
+            { "text": "Remplacez les commutateurs.", "correct": false },
+            { "text": "Segmentez le réseau local en réseaux locaux plus petits (VLANs) et acheminez entre eux.", "correct": true },
+            { "text": "Remplacez par des concentrateurs.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Qu'est-ce qui définit une route hôte statique IPv4 ?",
+        "answers": [
+            { "text": "L'adresse lien-local est ajoutée.", "correct": false },
+            { "text": "Elle utilise une adresse IP de destination spécifique et un masque /32.", "correct": true },
+            { "text": "Elle est désignée par un C.", "correct": false },
+            { "text": "Elle doit inclure le type d'interface.", "correct": false }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quoi d'autre est requis lors de la configuration d'une route statique IPv6 à l'aide d'une adresse lien-local de prochain saut ?",
+        "answers": [
+            { "text": "distance administrative", "correct": false },
+            { "text": "adresse IP du routeur voisin", "correct": false },
+            { "text": "numéro de réseau", "correct": false },
+            { "text": "numéro et type d'interface de sortie", "correct": true }
+        ],
+        "type": "single"
+    },
+    {
+        "question": "Quelles sont les deux méthodes d'authentification utilisées si le routeur est configuré avec WPA2 ? (Choisissez deux réponses.)",
+        "answers": [
+            { "text": "personnel (Personal)", "correct": true },
+            { "text": "AES", "correct": false },
+            { "text": "TKIP", "correct": false },
             { "text": "WEP", "correct": false },
-            { "text": "clé partagée", "correct": false }
+            { "text": "entreprise (Enterprise)", "correct": true }
+        ],
+        "type": "multiple", "required": 2
+    },
+    {
+        "question": "Quelles sont les deux informations qu'un routeur enverra en réponse à un message RS (Router Solicitation) IPv6 ? (Choisissez deux réponses.)",
+        "answers": [
+            { "text": "longueur du préfixe", "correct": true },
+            { "text": "masque de sous-réseau", "correct": false },
+            { "text": "nom de domaine", "correct": false },
+            { "text": "distance administrative", "correct": false },
+            { "text": "préfixe", "correct": true },
+            { "text": "Adresse IP du serveur DNS", "correct": false }
+        ],
+        "type": "multiple", "required": 2
+    },
+    {
+        "question": "Si un ordinateur ne voit pas le SSID, le point d'accès doit fonctionner dans quel mode (qui nécessite de connaître le SSID) ?",
+        "answers": [
+            { "text": "mixte", "correct": false },
+            { "text": "passif", "correct": false },
+            { "text": "actif (Active/Cloaked)", "correct": true },
+            { "text": "ouvrir", "correct": false }
         ],
         "type": "single"
     },
     {
-        "question": "Quelle est la meilleure pratique concernant les protocoles de découverte tels que CDP et LLDP sur les périphériques réseau ?",
+        "question": "Quels sont les trois composants combinés pour former un identifiant de pont (Bridge ID) ?",
         "answers": [
-            { "text": "Activer CDP sur les périphériques de bord et activer LLDP sur les périphériques intérieurs.", "correct": false },
-            { "text": "Utiliser le LLDP standard ouvert plutôt que CDP.", "correct": false },
-            { "text": "Utiliser les paramètres de routeur par défaut pour CDP et LLDP.", "correct": false },
-            { "text": "Désactiver les deux protocoles sur toutes les interfaces où ils ne sont pas requis.", "correct": true }
+            { "text": "ID système étendu", "correct": true },
+            { "text": "coût", "correct": false },
+            { "text": "Adresse IP", "correct": false },
+            { "text": "priorité du pont", "correct": true },
+            { "text": "Adresse MAC", "correct": true },
+            { "text": "ID de port", "correct": false }
         ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle est l'étape requise avant de créer un nouveau WLAN sur un WLC Cisco 3500 ?",
-        "answers": [
-            { "text": "Créer ou disposer un serveur SNMP.", "correct": false },
-            { "text": "Créer ou disposer un serveur RADIUS.", "correct": false },
-            { "text": "Créer un nouveau SSID.", "correct": false },
-            { "text": "Créer une nouvelle interface de VLAN.", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le type de réseau sans fil qui utilise souvent des appareils montés sur les bâtiments ?",
-        "answers": [
-            { "text": "Réseau personnel sans fil", "correct": false },
-            { "text": "Réseau local sans fil (WLAN)", "correct": false },
-            { "text": "Réseau étendu sans fil (WAN)", "correct": false },
-            { "text": "Réseau métropolitain sans fil", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le composant, la mise en œuvre ou le protocole de contrôle d'accès restreint l'accès au réseau local par des ports de commutateur accessibles au public ?",
-        "answers": [
-            { "text": "autorisation", "correct": false },
-            { "text": "802.1X", "correct": true },
-            { "text": "authentification", "correct": false },
-            { "text": "gestion de comptes", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le type de réseau sans fil qui utilise des transmetteurs pour assurer une couverture sur une zone géographique étendue ?",
-        "answers": [
-            { "text": "Réseau étendu sans fil (WAN)", "correct": true },
-            { "text": "Réseau métropolitain sans fil", "correct": false },
-            { "text": "Réseau personnel sans fil", "correct": false },
-            { "text": "Réseau local sans fil (WLAN)", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le composant, la mise en œuvre ou le protocole de contrôle d'accès qui est basé sur les rôles de périphérique du demandeur, d'authentificateur et du serveur d'authentification ?",
-        "answers": [
-            { "text": "Gestion des comptes", "correct": false },
-            { "text": "Authentification", "correct": false },
-            { "text": "802.1X", "correct": true },
-            { "text": "Autorisation", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le composant, la mise en œuvre ou le protocole de contrôle d'accès basé sur les noms d'utilisateur et les mots de passe ?",
-        "answers": [
-            { "text": "Authentification", "correct": true },
-            { "text": "802.1X", "correct": false },
-            { "text": "Autorisation", "correct": false },
-            { "text": "Gestion des comptes", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le composant, la mise en œuvre ou le protocole de contrôle d'accès qui contrôle ce qui est autorisé à accéder à un réseau ?",
-        "answers": [
-            { "text": "Authentification", "correct": true },
-            { "text": "802.1X", "correct": false },
-            { "text": "Autorisation", "correct": false },
-            { "text": "Gestion des comptes", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le type de réseau sans fil qui utilise des émetteurs de faible puissance pour un réseau à courte gamme, généralement de 6 à 9 mètres (20 à 30 pieds)?",
-        "answers": [
-            { "text": "Réseau personnel sans fil", "correct": true },
-            { "text": "Réseau local sans fil (WLAN)", "correct": false },
-            { "text": "Réseau étendu sans fil (WAN)", "correct": false },
-            { "text": "Réseau métropolitain sans fil", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le type de réseau sans fil qui utilise des émetteurs pour fournir un service sans fil dans une grande région urbaine ?",
-        "answers": [
-            { "text": "Réseau personnel sans fil", "correct": false },
-            { "text": "Réseau local sans fil (WLAN)", "correct": false },
-            { "text": "Réseau métropolitain sans fil", "correct": true },
-            { "text": "Réseau étendu sans fil (WAN)", "correct": false }
-        ],
-        "type": "single"
+        "type": "multiple", "required": 3
     }
 ];
 
