@@ -1,1779 +1,419 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen Final CCNA 2 (SRWE v7.0) - COMPLET</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f7f9;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 20px 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .quiz-container {
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            width: 900px;
-            max-width: 100%;
-            overflow: hidden;
-        }
-        .quiz-header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 1.5rem 2rem;
-        }
-        .quiz-header h1 {
-            margin: 0;
-            font-size: 1.6rem;
-            text-align: center;
-        }
-        .quiz-header p {
-            text-align: center;
-            margin: 10px 0 0;
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-        .quiz-body {
-            padding: 2rem;
-        }
-        .question-text {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-            font-weight: 500;
-        }
-        .answers-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        .answer-item {
-            display: flex;
-            align-items: center;
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-        }
-        .answer-item:hover:not(.disabled) {
-            background-color: #e9ecef;
-            border-color: #34495e;
-        }
-        .answer-item.selected {
-             background-color: #d6eaf8;
-             border-color: #85c1e9;
-        }
-        .answer-item.correct {
-            background-color: #d4edda;
-            border-color: #c3e6cb;
-            color: #155724;
-            font-weight: bold;
-        }
-        .answer-item.incorrect {
-            background-color: #f8d7da;
-            border-color: #f5c6cb;
-            color: #721c24;
-            font-weight: bold;
-        }
-        .answer-item.disabled {
-            cursor: not-allowed;
-            opacity: 0.8;
-        }
-        .quiz-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 2rem;
-            border-top: 1px solid #e9ecef;
-        }
-        .score {
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-        .next-btn {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            display: none; /* Hidden by default */
-        }
-        .next-btn:hover {
-            background-color: #2980b9;
-        }
-        .result-screen {
-            text-align: center;
-            padding: 3rem;
-        }
-        .result-screen h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .restart-btn {
-            background-color: #27ae60;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CCNA Trainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f6fb;--surface:#ffffff;--surface2:#eef1f8;--text:#141826;--muted:#5d6579;
+  --border:#dde2ee;--accent:#0b6bcb;--accent2:#00a3a3;--ok:#14883e;--okbg:#e5f6ec;
+  --ko:#c4302b;--kobg:#fdeceb;--warn:#b26b00;--shadow:0 6px 24px rgba(20,30,60,.08);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d111a;--surface:#161c28;--surface2:#1e2533;--text:#e8ecf4;--muted:#98a2b8;
+  --border:#2a3243;--accent:#4da3ff;--accent2:#2dd4bf;--ok:#3ccf6e;--okbg:#12301f;
+  --ko:#ff6b63;--kobg:#3a1716;--warn:#f0a73a;--shadow:0 6px 24px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#0d111a;--surface:#161c28;--surface2:#1e2533;--text:#e8ecf4;--muted:#98a2b8;
+  --border:#2a3243;--accent:#4da3ff;--accent2:#2dd4bf;--ok:#3ccf6e;--okbg:#12301f;
+  --ko:#ff6b63;--kobg:#3a1716;--warn:#f0a73a;--shadow:0 6px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.5}
+.wrap{max-width:820px;margin:0 auto;padding:24px 16px 60px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem}
+.logo span.dot{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#fff;font-size:.9rem}
+.iconbtn{background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:8px 12px;cursor:pointer;font:inherit}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:var(--shadow);margin-bottom:16px}
+h1{font-size:1.7rem;margin:0 0 6px;letter-spacing:-.02em}
+h2{font-size:1rem;margin:0 0 12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+p.sub{color:var(--muted);margin:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.stat{background:var(--surface2);border-radius:12px;padding:12px;text-align:center}
+.stat b{display:block;font-size:1.4rem}
+.stat small{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--border);background:var(--surface2);color:var(--text);padding:7px 13px;border-radius:999px;cursor:pointer;font:inherit;font-size:.9rem;transition:.15s}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip small{opacity:.75;margin-left:4px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.seg{display:flex;background:var(--surface2);border-radius:12px;padding:4px;gap:4px}
+.seg button{flex:1;border:0;background:transparent;color:var(--muted);padding:9px 14px;border-radius:9px;cursor:pointer;font:inherit;font-weight:600}
+.seg button.on{background:var(--surface);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.btn{border:0;background:var(--accent);color:#fff;font:inherit;font-weight:700;padding:13px 22px;border-radius:12px;cursor:pointer;transition:.15s}
+.btn:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.ghost{background:var(--surface2);color:var(--text)}
+.btn.block{width:100%}
+.mt{margin-top:14px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;color:var(--muted);font-size:.9rem;gap:10px}
+.bar{height:8px;background:var(--surface2);border-radius:99px;overflow:hidden;margin-bottom:18px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;padding:3px 9px;border-radius:6px;background:var(--surface2);color:var(--accent);margin-right:6px}
+.tag.c{color:var(--accent2)}
+.qtext{font-size:1.15rem;font-weight:600;margin:12px 0 4px}
+.multi{color:var(--warn);font-size:.85rem;font-weight:600;margin-bottom:10px}
+pre.code{font-family:"JetBrains Mono",monospace;font-size:.82rem;background:var(--surface2);padding:12px;border-radius:10px;overflow-x:auto;white-space:pre}
+.opts{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:1.5px solid var(--border);background:var(--surface);color:var(--text);padding:12px 14px;border-radius:12px;cursor:pointer;font:inherit;transition:.12s}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .k{flex:none;width:26px;height:26px;border-radius:7px;background:var(--surface2);display:grid;place-items:center;font-weight:700;font-size:.8rem}
+.opt.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--surface))}
+.opt.sel .k{background:var(--accent);color:#fff}
+.opt.good{border-color:var(--ok);background:var(--okbg)}
+.opt.good .k{background:var(--ok);color:#fff}
+.opt.bad{border-color:var(--ko);background:var(--kobg)}
+.opt.bad .k{background:var(--ko);color:#fff}
+.opt:disabled{cursor:default}
+.fb{margin-top:16px;padding:14px 16px;border-radius:12px;border-left:4px solid}
+.fb.ok{background:var(--okbg);border-color:var(--ok)}
+.fb.ko{background:var(--kobg);border-color:var(--ko)}
+.fb b{display:block;margin-bottom:4px}
+.big{font-size:3.4rem;font-weight:800;letter-spacing:-.03em;text-align:center}
+.verdict{text-align:center;font-weight:700;margin-bottom:6px}
+.themes{display:flex;flex-direction:column;gap:8px}
+.trow{display:grid;grid-template-columns:140px 1fr 50px;gap:10px;align-items:center;font-size:.9rem}
+.tbar{height:8px;background:var(--surface2);border-radius:9px;overflow:hidden}
+.tbar i{display:block;height:100%}
+.rev{border-top:1px solid var(--border);padding:12px 0}
+.rev:first-child{border-top:0}
+.rev .ans{color:var(--ok);font-size:.9rem;margin-top:4px}
+.rev .yours{color:var(--ko);font-size:.9rem}
+.kbd{color:var(--muted);font-size:.8rem;text-align:center;margin-top:12px}
+.hide{display:none!important}
+@media (max-width:560px){.stats{grid-template-columns:1fr 1fr 1fr}.trow{grid-template-columns:100px 1fr 44px}.big{font-size:2.6rem}h1{font-size:1.4rem}}
+</style>
 </head>
 <body>
+<div class="wrap">
+<header>
+  <div class="logo"><span class="dot">⌁</span>CCNA Trainer</div>
+  <button class="iconbtn" id="themeBtn" title="Thème">◐</button>
+</header>
 
-<div class="quiz-container" id="quiz">
-    <div class="quiz-header">
-        <h1>Examen Final CCNA 2 (SRWE v7.0)</h1>
-        <p id="progress">Question 1</p>
+<!-- ACCUEIL -->
+<section id="home">
+  <div class="card">
+    <h1>Révise ton CCNA</h1>
+    <p class="sub">CCNA 3 (ENSA) : OSPF, ACL, NAT, VPN, QoS, gestion, automatisation, et révisions CCNA 1 (ITN).</p>
+    <div class="stats">
+      <div class="stat"><b id="sTotal">0</b><small>questions</small></div>
+      <div class="stat"><b id="sBest">–</b><small>meilleur score</small></div>
+      <div class="stat"><b id="sErr">0</b><small>erreurs à revoir</small></div>
     </div>
-    <div class="quiz-body">
-        <h2 id="question" class="question-text">Question text</h2>
-        <ul id="answer-buttons" class="answers-list">
-        </ul>
+  </div>
+
+  <div class="card">
+    <h2>Cours</h2>
+    <div class="chips" id="courseChips"></div>
+    <h2 class="mt" style="margin-top:20px">Thèmes</h2>
+    <div class="chips" id="themeChips"></div>
+  </div>
+
+  <div class="card">
+    <h2>Mode</h2>
+    <div class="seg" id="modeSeg">
+      <button data-v="train" class="on">Entraînement</button>
+      <button data-v="exam">Examen chronométré</button>
     </div>
-    <div class="quiz-footer">
-        <div id="score" class="score">Score: 0</div>
-        <button id="next-btn" class="next-btn">Valider</button>
+    <p class="sub mt" id="modeDesc" style="font-size:.9rem"></p>
+    <h2 style="margin-top:20px">Nombre de questions</h2>
+    <div class="seg" id="countSeg">
+      <button data-v="10" class="on">10</button>
+      <button data-v="20">20</button>
+      <button data-v="40">40</button>
+      <button data-v="999">Toutes</button>
     </div>
+    <button class="btn block mt" id="startBtn" style="margin-top:20px">Commencer</button>
+    <button class="btn ghost block mt" id="errBtn">Revoir mes erreurs</button>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="hide">
+  <div class="topbar"><span id="qCount"></span><span id="timer"></span><button class="iconbtn" id="quitBtn">Quitter</button></div>
+  <div class="bar"><i id="prog"></i></div>
+  <div class="card">
+    <span class="tag c" id="qCourse"></span><span class="tag" id="qTheme"></span>
+    <div class="qtext" id="qText"></div>
+    <div id="qCode"></div>
+    <div class="multi hide" id="qMulti"></div>
+    <div class="opts" id="opts"></div>
+    <div id="fb"></div>
+    <button class="btn block mt" id="actBtn" disabled>Valider</button>
+  </div>
+  <div class="kbd">Clavier : 1–6 pour choisir · Entrée pour valider / continuer</div>
+</section>
+
+<!-- RÉSULTATS -->
+<section id="result" class="hide">
+  <div class="card">
+    <div class="big" id="rScore"></div>
+    <div class="verdict" id="rVerdict"></div>
+    <p class="sub" style="text-align:center" id="rDetail"></p>
+    <div class="row mt" style="justify-content:center;margin-top:18px">
+      <button class="btn" id="againBtn">Rejouer</button>
+      <button class="btn ghost" id="homeBtn">Accueil</button>
+    </div>
+  </div>
+  <div class="card"><h2>Par thème</h2><div class="themes" id="rThemes"></div></div>
+  <div class="card" id="rWrongCard"><h2>À corriger</h2><div id="rWrong"></div></div>
+</section>
 </div>
 
 <script>
-    const questions = [
-    {
-        "question": "Dans quelle situation un technicien utilise-t-il la commande de commutateur show interfaces ?",
-        "answers": [
-            { "text": "Pour déterminer l'adresse MAC d'un périphérique réseau directement connecté sur une interface donnée", "correct": false },
-            { "text": "Lorsque des paquets sont reçus d'un hôte donné qui est directement connecté", "correct": true },
-            { "text": "Lorsqu'un terminal peut atteindre les périphériques locaux, et non les périphériques distants", "correct": false },
-            { "text": "Pour déterminer si l'accès à distance est activé", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Un administrateur tente de configurer une route statique IPv6 sur le routeur R1 pour atteindre le réseau connecté au routeur R2. Après la saisie de la commande, la connectivité échoue. Quelle est l'erreur probable ?",
-        "answers": [
-            { "text": "L'adresse du tronçon suivant est incorrecte.", "correct": false },
-            { "text": "Le réseau de destination est incorrect.", "correct": false },
-            { "text": "L'interface est incorrecte.", "correct": true },
-            { "text": "Le préfixe réseau est incorrect.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Un nouveau commutateur de couche 3 est connecté à un routeur et est en cours de configuration pour le routage InterVLAN. Quelles sont les trois étapes requises pour la configuration? (Choisissez trois propositions.)",
-        "answers": [
-            { "text": "Attribution des ports au VLAN natif", "correct": false },
-            { "text": "la mise en œuvre des protocoles de routage", "correct": false },
-            { "text": "Attribution de ports aux VLAN", "correct": true },
-            { "text": "Activation du routage IP", "correct": true },
-            { "text": "Création d'interfaces SVI", "correct": true },
-            { "text": "Installation d'une route statique", "correct": false },
-            { "text": "Modification du VLAN par défaut", "correct": false }
-        ],
-        "type": "multiple", "required": 3
-    },
-    {
-        "question": "En fonction d'une configuration où le VLAN 99 manque, pourquoi cela se produit-il généralement ?",
-        "answers": [
-            { "text": "Parce qu’il y a un problème de câblage sur le VLAN 99", "correct": false },
-            { "text": "Parce que le VLAN 1 est activé et qu’il ne peut y avoir qu’un VLAN de gestion sur le commutateur", "correct": false },
-            { "text": "Parce que le VLAN 99 n’est pas un VLAN de gestion valide", "correct": false },
-            { "text": "Parce que le VLAN 99 n'a pas encore été créé", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles paires de modes d'agrégation (EtherChannel) établissent une liaison agrégée fonctionnelle entre deux commutateurs Cisco ? (Choisissez trois réponses.)",
-        "answers": [
-            { "text": "dynamic auto – dynamic auto", "correct": false },
-            { "text": "dynamic desirable – dynamic desirable", "correct": true },
-            { "text": "dynamic desirable – trunk", "correct": true },
-            { "text": "dynamic desirable – dynamic auto", "correct": true },
-            { "text": "access – dynamic auto", "correct": false },
-            { "text": "access – trunk", "correct": false }
-        ],
-        "type": "multiple", "required": 3
-    },
-    {
-        "question": "Quel protocole ou technologie nécessite que les commutateurs soient en mode serveur ou client ?",
-        "answers": [
-            { "text": "Protocole VTP", "correct": true },
-            { "text": "HSRP", "correct": false },
-            { "text": "EtherChannel", "correct": false },
-            { "text": "DTP", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Après avoir essayé de saisir la configuration dans le routeur RTA, les utilisateurs du VLAN 20 ne peuvent pas communiquer avec ceux du VLAN 30. Quelle est l'origine probable du problème (Router-on-a-Stick) ?",
-        "answers": [
-            { "text": "La commande no shutdown aurait dû être exécutée sur les sous-interfaces.", "correct": false },
-            { "text": "RTA utilise le même sous-réseau pour le VLAN 20 et le VLAN 30.", "correct": true },
-            { "text": "Fa0/0 ne contient aucune adresse à utiliser comme passerelle par défaut.", "correct": false },
-            { "text": "Dot1q ne prend pas en charge les sous-interfaces.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quels sont les deux modes VTP qui permettent la création, la modification et la suppression des VLAN sur le commutateur local ? (Choisissez deux propositions.)",
-        "answers": [
-            { "text": "client", "correct": false },
-            { "text": "distribution", "correct": false },
-            { "text": "principal", "correct": false },
-            { "text": "serveur", "correct": true },
-            { "text": "esclave", "correct": false },
-            { "text": "transparent", "correct": true }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Un administrateur réseau configure R1 pour le routage inter-VLAN. Si les périphériques des VLAN 10 et 20 ne communiquent pas, quelle est la cause probable liée à l'encapsulation ?",
-        "answers": [
-            { "text": "L'encapsulation est mal configurée sur une sous-interface.", "correct": false },
-            { "text": "Une commande no shutdown doit être ajoutée dans chaque configuration de sous-interface.", "correct": false },
-            { "text": "La commande interface gigabitEthernet 0/0.1 est fausse (mauvais ID de VLAN dans l'encapsulation).", "correct": true },
-            { "text": "Le port Gi0/0 doit être configuré comme port de jonction.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Un administrateur réseau est en train de configurer un WLAN. Pourquoi l'administrateur utiliserait-il un contrôleur WLAN (WLC) ?",
-        "answers": [
-            { "text": "pour centraliser la gestion de plusieurs réseaux WLAN", "correct": false },
-            { "text": "fournir un service prioritaire pour les applications sensibles au temps", "correct": false },
-            { "text": "pour réduire le risque d'ajout de points d'accès non autorisés au réseau", "correct": false },
-            { "text": "pour faciliter la configuration de groupe et la gestion de plusieurs WLAN via un WLC", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Comment une trame envoyée depuis PCA est-elle transmise à PCC si la table d'adresses MAC du commutateur SW1 est vide ?",
-        "answers": [
-            { "text": "SW1 abandonne la trame car il ne connaît pas l'adresse MAC de destination.", "correct": false },
-            { "text": "SW1 diffuse la trame sur tous les ports de SW1, à l'exception du port d'entrée de la trame dans le commutateur.", "correct": true },
-            { "text": "SW1 diffuse la trame sur tous les ports du commutateur, à l'exception du port interconnecté au commutateur SW2.", "correct": false },
-            { "text": "SW1 transmet la trame directement à SW2 uniquement.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le moyen d'avoir une configuration sécurisée pour l'accès à distance à un appareil sur le réseau ?",
-        "answers": [
-            { "text": "Configurer SSH.", "correct": true },
-            { "text": "Configurer Telnet.", "correct": false },
-            { "text": "Configurer une ACL et l'appliquer aux lignes VTY.", "correct": false },
-            { "text": "Configurez 802.1x.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "L'hôte A a envoyé un paquet à l'hôte B via un routeur. Quelles sont les adresses IP et MAC source sur le paquet lorsqu'il atteint l'hôte B ?",
-        "answers": [
-            { "text": "MAC source : MAC de l'hôte A, IP source : IP de l'hôte A", "correct": false },
-            { "text": "MAC source : MAC du routeur (interface de sortie), IP source : IP de l'hôte A", "correct": true },
-            { "text": "MAC source : MAC du routeur, IP source : IP du routeur", "correct": false },
-            { "text": "MAC source : MAC de l'hôte A, IP source : IP du routeur", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Dans un réseau RSTP, quels sont les rôles possibles pour les ports (dans l'ordre typique : Pont Racine -> Non Racine) ?",
-        "answers": [
-            { "text": "Désigné, racine, alternatif, racine", "correct": false },
-            { "text": "Désigné, alternatif, racine, racine", "correct": false },
-            { "text": "Alternatif, désigné, racine, racine", "correct": true },
-            { "text": "Alternatif, racine, désigné, racine", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Plusieurs actions peuvent pallier une attaque de VLAN. Citez-en trois. (Choisissez trois propositions.)",
-        "answers": [
-            { "text": "Activer la fonction de protection BPDU.", "correct": false },
-            { "text": "Utiliser des VLAN privés.", "correct": false },
-            { "text": "Activer manuellement le trunking.", "correct": true },
-            { "text": "Faire d'un VLAN inutilisé le VLAN natif.", "correct": true },
-            { "text": "Désactiver le protocole DTP.", "correct": true },
-            { "text": "Activer la fonction de protection de source.", "correct": false }
-        ],
-        "type": "multiple", "required": 3
-    },
-    {
-        "question": "Quelle méthode de chiffrement sans fil offre la meilleure sécurité ?",
-        "answers": [
-            { "text": "WPA2 avec AES", "correct": true },
-            { "text": "WPA2 avec TKIP", "correct": false },
-            { "text": "WEP", "correct": false },
-            { "text": "WPA", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Après qu'un hôte a généré une adresse IPv6 (DHCPv6 ou SLAAC), comment vérifie-t-il que l'adresse est unique ?",
-        "answers": [
-            { "text": "L'hôte envoie une demande d'écho ICMPv6.", "correct": false },
-            { "text": "L'hôte vérifie le cache du voisin local.", "correct": false },
-            { "text": "L'hôte envoie une diffusion ARP.", "correct": false },
-            { "text": "L'hôte envoie un message de sollicitation de voisin ICMPv6 (DAD) et attend une annonce de voisin.", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Après avoir exécuté `erase startup-config` et rechargé le commutateur, les VLAN 10 et 100 existent toujours. Pourquoi ?",
-        "answers": [
-            { "text": "Ces VLAN sont enregistrés dans vlan.dat dans la mémoire Flash, ce fichier doit être supprimé manuellement.", "correct": true },
-            { "text": "Ces VLAN ne peuvent pas être supprimés, sauf si le commutateur est en mode client VTP.", "correct": false },
-            { "text": "Ces VLAN peuvent être uniquement supprimés avec `no vlan`.", "correct": false },
-            { "text": "Ces VLAN sont des VLAN par défaut.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Lors de la configuration du routage inter-VLAN 'Router-on-a-stick', quel paramètre manque dans la commande `encapsulation dot1q` ?",
-        "answers": [
-            { "text": "Il identifie le numéro du VLAN.", "correct": true },
-            { "text": "Il identifie la sous-interface.", "correct": false },
-            { "text": "Il identifie le numéro du VLAN natif.", "correct": false },
-            { "text": "Il identifie le type d'encapsulation utilisé.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel type de périphérique réseau inclut un commutateur, un point d'accès, et un pare-feu pour un petit réseau de bureau ?",
-        "answers": [
-            { "text": "commutateur", "correct": false },
-            { "text": "pare-feu", "correct": false },
-            { "text": "point d'accès sans fil autonome", "correct": false },
-            { "text": "routeur sans fil", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'objectif de la commande `ip route 0.0.0.0 0.0.0.0 serial 0/1/1` sur un routeur ?",
-        "answers": [
-            { "text": "Les paquets dont le réseau de destination n'est pas trouvé dans la table de routage seront transférés à Internet (route par défaut).", "correct": true },
-            { "text": "Les paquets reçus depuis Internet seront transférés au LAN.", "correct": false },
-            { "text": "Les paquets destinés aux réseaux inconnus seront abandonnés.", "correct": false },
-            { "text": "Les paquets seront transférés entre les réseaux 10.10.0.0/16 et 10.20.0.0/16.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle adresse MAC de destination est utilisée lorsque des trames sont envoyées depuis une station de travail vers la passerelle par défaut dans un environnement HSRP ?",
-        "answers": [
-            { "text": "Les adresses MAC du routeur de transfert et du routeur en veille.", "correct": false },
-            { "text": "L'adresse MAC du routeur de transfert", "correct": false },
-            { "text": "L'adresse MAC du routeur en veille", "correct": false },
-            { "text": "L'adresse MAC du routeur virtuel", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Un administrateur réseau a relié deux commutateurs via EtherChannel. Si STP fonctionne, quel sera le résultat final ?",
-        "answers": [
-            { "text": "Les commutateurs équilibreront la charge sur les deux liens.", "correct": false },
-            { "text": "La boucle générée créera une tempête de diffusion.", "correct": false },
-            { "text": "STP bloquera une des liaisons redondantes (si EtherChannel est mal configuré ou vu comme liens séparés).", "correct": true },
-            { "text": "Les deux canaux de port seront fermés.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle route statique permet de créer une route de secours (flottante) vers le réseau 172.16.1.0 (sachant que RIP a une AD de 120) ?",
-        "answers": [
-            { "text": "ip route 172.16.1.0 255.255.255.0 s0/0/0 121", "correct": true },
-            { "text": "ip route 172.16.1.0 255.255.255.0 s0/0/0 111", "correct": false },
-            { "text": "ip route 172.16.1.0 255.255.255.0 s0/0/0 91", "correct": false },
-            { "text": "ip route 172.16.1.0 255.255.255.0 s0/0/0", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'effet de l'entrée de la commande de configuration `shutdown` sur un port de commutateur ?",
-        "answers": [
-            { "text": "Il active portfast sur une interface.", "correct": false },
-            { "text": "Il désactive un port inutilisé.", "correct": true },
-            { "text": "Il désactive le DTP.", "correct": false },
-            { "text": "Il active la garde BPDU.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles sont les trois normes Wi-Fi fonctionnant dans la plage de fréquences 2,4 GHz ? (Choisissez trois réponses.)",
-        "answers": [
-            { "text": "802.11b", "correct": true },
-            { "text": "802.11a", "correct": false },
-            { "text": "802.11ac", "correct": false },
-            { "text": "802.11n", "correct": true },
-            { "text": "802.11g", "correct": true }
-        ],
-        "type": "multiple", "required": 3
-    },
-    {
-        "question": "En quoi configurer un SSID sur la bande 5 GHz améliore-t-il les performances pour le streaming multimédia ?",
-        "answers": [
-            { "text": "La bande 5 GHz offre une plage plus étendue.", "correct": false },
-            { "text": "La bande 5 GHz offre davantage de canaux et est moins encombrée que la bande 2,4 GHz.", "correct": true },
-            { "text": "Obliger les utilisateurs à passer à la bande 5 GHz limite le nombre d'utilisateurs.", "correct": false },
-            { "text": "Seuls les utilisateurs récents peuvent basculer vers la bande 5 GHz.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Sélectionnez les trois modes d'établissement de canaux PAgP. (Choisissez trois propositions.)",
-        "answers": [
-            { "text": "actif", "correct": false },
-            { "text": "étendu", "correct": false },
-            { "text": "Activé (On)", "correct": true },
-            { "text": "desirable", "correct": true },
-            { "text": "automatique (auto)", "correct": true },
-            { "text": "passif", "correct": false }
-        ],
-        "type": "multiple", "required": 3
-    },
-    {
-        "question": "Si `show port-security` montre 0 violation, le statut 'Secure-up', et 'Shutdown' comme action. Que peut-on conclure ? (Choisissez trois propositions.)",
-        "answers": [
-            { "text": "Le port est configuré en tant que liaison de trunk.", "correct": false },
-            { "text": "Les violations de sécurité entraîneront l'arrêt immédiat de ce port.", "correct": true },
-            { "text": "Ce port est actuellement en service.", "correct": true },
-            { "text": "Le mode de port de commutation pour cette interface est le mode d'accès.", "correct": true },
-            { "text": "Trois violations de sécurité ont été détectées sur cette interface.", "correct": false },
-            { "text": "Aucun périphérique n'est actuellement connecté à ce port.", "correct": false }
-        ],
-        "type": "multiple", "required": 3
-    },
-    {
-        "question": "Quel protocole doit être désactivé pour pallier les attaques de saut de VLAN (VLAN hopping) ?",
-        "answers": [
-            { "text": "CDP", "correct": false },
-            { "text": "STP", "correct": false },
-            { "text": "DTP", "correct": true },
-            { "text": "ARP", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle technique d'atténuation empêcherait les serveurs DHCP malveillants de fournir de faux paramètres ?",
-        "answers": [
-            { "text": "mise en œuvre des solutions de sécurisation des ports", "correct": false },
-            { "text": "mise en œuvre de la sécurité des ports sur les ports périphériques", "correct": false },
-            { "text": "désactivation des ports CDP", "correct": false },
-            { "text": "activation de l'espionnage DHCP (DHCP Snooping)", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle méthode d'attribution de préfixe IPv6 repose sur le préfixe contenu dans les messages RA ?",
-        "answers": [
-            { "text": "statique", "correct": false },
-            { "text": "DHCPv6 dynamique", "correct": false },
-            { "text": "SLAAC", "correct": true },
-            { "text": "EUI-64", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Un analyste utilise l'outil 'macof'. Quel type d'attaque LAN cible-t-il ?",
-        "answers": [
-            { "text": "Usurpation DHCP (ou spoofing)", "correct": false },
-            { "text": "Sauts VLAN", "correct": false },
-            { "text": "Débordement de la table d'adresses MAC (CAM table overflow)", "correct": true },
-            { "text": "Double marquage VLAN", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Au cours du processus AAA, quand l'autorisation est-elle implémentée ?",
-        "answers": [
-            { "text": "dès que la fonction de traçabilité a reçu des rapports", "correct": false },
-            { "text": "immédiatement après une authentification réussie", "correct": true },
-            { "text": "aussitôt qu'un client AAA a envoyé des informations d'authentification", "correct": false },
-            { "text": "dès que les ressources accessibles ont été déterminées", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle commande permet de configurer une route par défaut IPv6 vers Internet via Serial 0/1/1 ?",
-        "answers": [
-            { "text": "ipv6 route ::/0 serial 0/0/0", "correct": false },
-            { "text": "ipv6 route ::/0 serial 0/1/1", "correct": true },
-            { "text": "ipv6 route ::1/0 serial 0/1/1", "correct": false },
-            { "text": "ip route 0.0.0.0 0.0.0.0 serial 0/1/1", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel type de route statique est configuré avec une plus grande distance administrative pour fournir une route de secours ?",
-        "answers": [
-            { "text": "route statique flottante", "correct": true },
-            { "text": "Route statique récapitulative", "correct": false },
-            { "text": "Route statique par défaut", "correct": false },
-            { "text": "route statique standard", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle réponse indique une route statique par défaut IPv4 correctement configurée ?",
-        "answers": [
-            { "text": "ip route 0.0.0.0 255.255.255.255 S0/0/0", "correct": false },
-            { "text": "ip route 0.0.0.0 255.255.255.0 S0/0/0", "correct": false },
-            { "text": "ip route 0.0.0.0 255.0.0.0 S0/0/0", "correct": false },
-            { "text": "ip route 0.0.0.0 0.0.0.0 S0/0/0", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle commande de route statique IPv6 transfère le trafic vers le réseau 2001:db8:12:10::/64 via l'adresse du saut suivant fe80::2 ?",
-        "answers": [
-            { "text": "ipv6 route 2001:db8:12:10::/64 S0/0/0 fe80::2", "correct": false },
-            { "text": "ipv6 route 2001:db8:12:10::/64 S0/0/1 2001:db8:12:10::1", "correct": false },
-            { "text": "ipv6 route 2001:db8:12:10::/64 S0/0/0", "correct": false },
-            { "text": "ipv6 route 2001:db8:12:10::/64 S0/0/1 fe80::2", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle modification doit être apportée à une route statique flottante (AD 100) pour qu'elle serve de secours à OSPF (AD 110) ?",
-        "answers": [
-            { "text": "Configuration du réseau de destination.", "correct": false },
-            { "text": "Ajout de l'adresse voisine du tronçon suivant.", "correct": false },
-            { "text": "Réglage de la distance administrative sur 1.", "correct": false },
-            { "text": "Réglage de la distance administrative sur 120 (ou > 110).", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle route a été configurée comme route statique vers un réseau spécifique en utilisant l’adresse du tronçon suivant ?",
-        "answers": [
-            { "text": "C 10.16.2.0/24 is directly connected...", "correct": false },
-            { "text": "S 0.0.0.0/0 [1/0] via 10.16.2.2", "correct": false },
-            { "text": "S 10.17.2.0/24 is directly connected...", "correct": false },
-            { "text": "S 10.17.2.0/24 [1/0] via 10.16.2.2", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quels sont les deux types de protocoles STP pouvant générer des flux de trafic non optimaux parce qu'ils ne supposent qu'une seule instance Spanning Tree ? (Choisissez deux réponses.)",
-        "answers": [
-            { "text": "MSTP", "correct": false },
-            { "text": "STP", "correct": true },
-            { "text": "RSTP", "correct": true },
-            { "text": "PVST+", "correct": false },
-            { "text": "Rapid PVST+", "correct": false }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Quelles informations la commande `show spanning-tree` permet-elle d'afficher ? (Choisissez deux réponses.)",
-        "answers": [
-            { "text": "L'adresse IP de l'interface VLAN de gestion.", "correct": false },
-            { "text": "L'ID de pont racine.", "correct": true },
-            { "text": "Le statut des ports VLAN natifs.", "correct": false },
-            { "text": "Le rôle des ports sur tous les VLAN.", "correct": true },
-            { "text": "Le nombre de diffusions reçues.", "correct": false }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Quelle action se déroule lorsqu'une trame entrant dans un commutateur a une adresse MAC de destination monodiffusion apparaissant dans la table d'adresses MAC ?",
-        "answers": [
-            { "text": "Le commutateur réinitialise le minuteur d'actualisation.", "correct": false },
-            { "text": "Le commutateur met à jour le minuteur.", "correct": false },
-            { "text": "Le commutateur transmet la trame à tous les ports.", "correct": false },
-            { "text": "Le commutateur transmet le cadre hors du port spécifié.", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles commandes permettent aux hôtes d'un nouveau sous-réseau de recevoir des adresses du serveur DHCPv4 via un relais ? (Choisissez deux réponses.)",
-        "answers": [
-            { "text": "R1(config)# interface G0/0 (interface du sous-réseau client)", "correct": true },
-            { "text": "R1(config)# interface G0/1", "correct": false },
-            { "text": "R1(config-if)# ip helper-address 10.1.0.254", "correct": false },
-            { "text": "R2(config-if)# ip helper-address 10.2.0.250", "correct": false },
-            { "text": "R1(config-if)# ip helper-address 10.2.0.250 (adresse du serveur DHCP)", "correct": true },
-            { "text": "R2(config)# interface G0/0", "correct": false }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Quelle action prend un client DHCPv4 s'il reçoit plus d'un DHCPOFFER ?",
-        "answers": [
-            { "text": "Il envoie un DHCPNAK.", "correct": false },
-            { "text": "Il envoie un DHCPREQUEST qui identifie l'offre de location que le client accepte.", "correct": true },
-            { "text": "Il rejette les deux offres.", "correct": false },
-            { "text": "Il accepte les deux messages DHCPOFFER.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le problème typique si l'adresse IP du routeur de passerelle par défaut n'est pas exclue du pool DHCP ?",
-        "answers": [
-            { "text": "Les commandes default-router doivent être configurées avec des masques.", "correct": false },
-            { "text": "L'adresse IP du DNS ne figure pas dans la liste d'adresses exclues.", "correct": false },
-            { "text": "L'adresse IP du routeur de passerelle par défaut ne figure pas dans la liste d'adresses exclues (risque de conflit).", "correct": true },
-            { "text": "Le serveur DNS et la passerelle doivent faire partie du même sous-réseau.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Les utilisateurs n'ont pas de connectivité avec un site depuis un moment. Que faut-il faire en premier ?",
-        "answers": [
-            { "text": "Vérifiez la configuration sur l'itinéraire statique flottant.", "correct": false },
-            { "text": "Utilisez la commande « show ip interface brief » pour voir si une interface est en panne.", "correct": true },
-            { "text": "Créez un itinéraire statique flottant.", "correct": false },
-            { "text": "Vérifiez que la route statique vers le serveur est présente.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles informations un commutateur utilise-t-il pour renseigner (apprendre) la table d'adresses MAC ?",
-        "answers": [
-            { "text": "les adresses MAC source et de destination et le port entrant", "correct": false },
-            { "text": "l'adresse MAC de destination et le port sortant", "correct": false },
-            { "text": "l'adresse MAC source et le port sortant", "correct": false },
-            { "text": "l'adresse MAC source et le port entrant", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Pour quelles raisons un administrateur réseau segmenterait-il un réseau avec un commutateur de couche 2 ? (Choisissez deux réponses.)",
-        "answers": [
-            { "text": "Pour créer moins de domaines de collision.", "correct": false },
-            { "text": "Pour éliminer les circuits virtuels.", "correct": false },
-            { "text": "Pour créer plus de domaines de diffusion.", "correct": false },
-            { "text": "Pour isoler les messages de requête ARP.", "correct": false },
-            { "text": "Pour isoler le trafic entre les segments.", "correct": true },
-            { "text": "Pour améliorer la bande passante utilisateur.", "correct": true }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Un technicien dépanne un WLAN lent et décide d'utiliser l'approche de répartition du trafic. Quels deux paramètres devraient être configurés ? (Choisissez deux propositions.)",
-        "answers": [
-            { "text": "Configurer le mode de sécurité sur WPA Personal TKIP/AES...", "correct": false },
-            { "text": "Configurez le mode de sécurité sur WPA Personal TKIP/AES pour les deux.", "correct": false },
-            { "text": "Configurez la bande 5 GHz pour le streaming multimédia et le trafic temporel.", "correct": true },
-            { "text": "Configurez un SSID commun.", "correct": false },
-            { "text": "Configurez la bande 2,4 GHz pour le trafic Internet de base qui n'est pas sensible au temps.", "correct": true }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Sur un WLC Cisco 3504, quel onglet permet de configurer un WLAN particulier avec WPA2 ?",
-        "answers": [
-            { "text": "SÉCURITÉ", "correct": false },
-            { "text": "SANS FIL", "correct": false },
-            { "text": "Réseaux locaux sans fil (WLANs)", "correct": true },
-            { "text": "GESTION", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel onglet l'administrateur doit-il utiliser pour créer une nouvelle interface VLAN à utiliser pour le nouveau WLAN sur un WLC ?",
-        "answers": [
-            { "text": "GESTION", "correct": false },
-            { "text": "CONTRÔLEUR", "correct": true },
-            { "text": "Réseaux locaux sans fil", "correct": false },
-            { "text": "SANS FIL", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'effet de l'entrée de la commande `switchport mode access` sur un commutateur ?",
-        "answers": [
-            { "text": "Il spécifie le nombre maximal d'adresses L2.", "correct": false },
-            { "text": "Il désactive le DTP sur une interface non-trunking.", "correct": true },
-            { "text": "Il active le DAI.", "correct": false },
-            { "text": "Il active manuellement un lien de trunk.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "L'hôte C ne peut pas pinger l'hôte D. Quelle action l'administrateur doit-il effectuer pour activer cette communication (configuration DTP) ?",
-        "answers": [
-            { "text": "Inclure un routeur dans la topologie.", "correct": false },
-            { "text": "Associer les hôtes A et B avec le VLAN 10.", "correct": false },
-            { "text": "Configurer un port trunk en mode dynamic desirable (pour négocier avec auto).", "correct": true },
-            { "text": "Supprimer le VLAN natif.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel préfixe IPv6 est conçu pour la communication lien-local ?",
-        "answers": [
-            { "text": "2001::/3", "correct": false },
-            { "text": "fe80::/10", "correct": true },
-            { "text": "fc::/07", "correct": false },
-            { "text": "ff00::/8", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Comment un routeur gère-t-il le routage statique si Cisco Express Forwarding (CEF) est désactivé ?",
-        "answers": [
-            { "text": "Il n'effectue pas de recherches récursives.", "correct": false },
-            { "text": "Les interfaces série point à point nécessitent des routes entièrement spécifiées.", "correct": false },
-            { "text": "Les interfaces Ethernet à accès multiple nécessitent des routes statiques entièrement spécifiées pour éviter des incohérences.", "correct": true },
-            { "text": "Les routes statiques utilisant une interface de sortie sont inutiles.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Que peut-on conclure si `ip helper-address` est configuré sur une interface de routeur ?",
-        "answers": [
-            { "text": "R1 fonctionne comme un serveur DHCPv4.", "correct": false },
-            { "text": "R1 diffusera les demandes DHCPv4.", "correct": false },
-            { "text": "R1 est configuré en tant qu'agent de relais DHCP.", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle action se déroule lorsque l'adresse MAC source d'un cadre entrant dans un commutateur n'est pas dans la table d'adresses MAC ?",
-        "answers": [
-            { "text": "Le commutateur ajoute à la table l'adresse MAC et le numéro de port entrant.", "correct": true },
-            { "text": "Le commutateur transmet la trame à tous les ports.", "correct": false },
-            { "text": "Le commutateur ajoute un mappage pour l'adresse MAC de destination.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Si les hôtes de certains VLAN ne peuvent pas accéder aux ressources après un basculement STP sur un lien de secours, quelle est la cause probable ?",
-        "answers": [
-            { "text": "Le routage inter-VLAN a échoué.", "correct": false },
-            { "text": "Le protocole de jonction dynamique a échoué.", "correct": false },
-            { "text": "Les VLAN autorisés sur la liaison de sauvegarde n'ont pas été configurés correctement.", "correct": true },
-            { "text": "La fonction de port de bord protégé a été désactivée.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Comment le port du commutateur connecté au routeur (Router-on-a-Stick) doit-il être configuré ?",
-        "answers": [
-            { "text": "Il doit être configuré comme port agrégé (trunk) 802.1q.", "correct": true },
-            { "text": "Il doit être configuré comme port d'accès.", "correct": false },
-            { "text": "Il doit être configuré comme port agrégé et affecté au VLAN 1.", "correct": false },
-            { "text": "Il doit autoriser uniquement le trafic non étiqueté.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Pourquoi l'espionnage DHCP (Snooping) est-il nécessaire pour Dynamic ARP Inspection (DAI) ?",
-        "answers": [
-            { "text": "Il utilise la table d'adresses MAC pour vérifier la passerelle.", "correct": false },
-            { "text": "Il s'appuie sur les paramètres des ports approuvés.", "correct": false },
-            { "text": "Il utilise la base de données de liaison d'adresse MAC à adresse IP pour valider un paquet ARP.", "correct": true },
-            { "text": "Il redirige les demandes ARP vers le serveur DHCP.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Pour acquérir la connectivité à Internet via HSRP, quelle entrée doit apparaître dans la table ARP de l'hôte ?",
-        "answers": [
-            { "text": "L'adresse IP virtuelle et l'adresse MAC virtuelle du groupe HSRP.", "correct": true },
-            { "text": "L'adresse IP virtuelle et l'adresse MAC de R1.", "correct": false },
-            { "text": "L'adresse IP virtuelle et l'adresse MAC de R2.", "correct": false },
-            { "text": "L'adresse IP et l'adresse MAC de R1.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Que doit faire un administrateur pour supprimer une route statique si le réseau de destination n'existe plus ?",
-        "answers": [
-            { "text": "Rien.", "correct": false },
-            { "text": "Supprimez l'itinéraire en utilisant la commande `no ip route`.", "correct": true },
-            { "text": "Modifier la distance administrative.", "correct": false },
-            { "text": "Modifier les mesures de routage.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle méthode d'authentification sans fil dépend d'un serveur d'authentification RADIUS ?",
-        "answers": [
-            { "text": "WPA Personal", "correct": false },
-            { "text": "WPA2 Personal", "correct": false },
-            { "text": "WEP", "correct": false },
-            { "text": "WPA2 Enterprise", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quels sont les deux paramètres définis par défaut sur un routeur sans fil pouvant affecter la sécurité du réseau ? (Choisissez deux propositions.)",
-        "answers": [
-            { "text": "Le SSID est diffusé.", "correct": true },
-            { "text": "Le filtrage des adresses MAC est activé.", "correct": false },
-            { "text": "Le chiffrement WEP est activé.", "correct": false },
-            { "text": "Le canal sans fil est automatiquement sélectionné.", "correct": false },
-            { "text": "Un mot de passe administrateur réservé (par défaut) est défini.", "correct": true }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Quelles informations d'identification les utilisateurs ont-ils besoin pour WPA2 Personal (PSK) ?",
-        "answers": [
-            { "text": "une clé qui correspond à la clé sur l'AP", "correct": false },
-            { "text": "un nom d'utilisateur et un mot de passe configurés sur l'AP", "correct": false },
-            { "text": "le nom d'utilisateur et le mot de passe de l'entreprise", "correct": false },
-            { "text": "Phrase secrète de l'utilisateur", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Comment une route statique doit-elle être modifiée si les utilisateurs ne peuvent pas accéder à Internet à cause d'un mauvais masque de destination ?",
-        "answers": [
-            { "text": "En ajoutant une distance administrative de 254.", "correct": false },
-            { "text": "En configurant le réseau et le masque de destination sur 0.0.0.0 0.0.0.0.", "correct": true },
-            { "text": "En choisissant une autre interface.", "correct": false },
-            { "text": "En ajoutant l'adresse voisine.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le risque associé à la méthode de la base de données locale pour la sécurisation de l'accès des appareils ?",
-        "answers": [
-            { "text": "Les mots de passe peuvent être stockés uniquement en texte brut.", "correct": false },
-            { "text": "Elle est très vulnérable aux attaques de force brute.", "correct": false },
-            { "text": "Elle n'offre aucun moyen d'établir les responsabilités.", "correct": false },
-            { "text": "Les comptes des utilisateurs doivent être configurés localement sur chaque appareil (non évolutif).", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Qu'est-ce qu'une méthode pour lancer une attaque de saut VLAN (VLAN hopping) ?",
-        "answers": [
-            { "text": "inondation du commutateur avec des adresses MAC", "correct": false },
-            { "text": "envoi d'adresses IP usurpées", "correct": false },
-            { "text": "introduction d'un commutateur non fiable et activation du trunking", "correct": true },
-            { "text": "envoi d'informations de VLAN natif usurpé", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel protocole utilise l'adresse IP source vers l'adresse IP de destination comme mécanisme d'équilibrage de charge ?",
-        "answers": [
-            { "text": "EtherChannel", "correct": true },
-            { "text": "HSRP", "correct": false },
-            { "text": "Protocole VTP", "correct": false },
-            { "text": "DTP", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Pourquoi le trafic de données est-il en texte clair entre un WLC et un AP alors que DTLS est activé ?",
-        "answers": [
-            { "text": "Bien que DTLS soit activé par défaut pour le canal de contrôle, il est désactivé par défaut pour le canal de données.", "correct": true },
-            { "text": "Le chiffrement des données nécessite une licence.", "correct": false },
-            { "text": "DTLS est uniquement pour AP et client.", "correct": false },
-            { "text": "DTLS ne fournit pas de chiffrement.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Contrairement aux routes dynamiques, quels sont les avantages des routes statiques ? (Choisissez deux réponses.)",
-        "answers": [
-            { "text": "Elles changent automatiquement le chemin.", "correct": false },
-            { "text": "Elles améliorent l'efficacité de découverte.", "correct": false },
-            { "text": "Elles utilisent moins de ressources du routeur.", "correct": true },
-            { "text": "Elles améliorent la sécurité du réseau.", "correct": true },
-            { "text": "Elles prennent moins de temps pour converger.", "correct": false }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Si PC1 ne reçoit pas d'adresse IPv4 via un relais DHCP, quel est le problème probable ?",
-        "answers": [
-            { "text": "La commande ip address dhcp n'a pas été exécutée.", "correct": false },
-            { "text": "R1 n'est pas configuré comme serveur DHCPv4.", "correct": false },
-            { "text": "La commande ip helper-address n'a pas été exécutée sur l'interface correcte (face au client).", "correct": true },
-            { "text": "Un serveur DHCP doit être installé sur le même LAN.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'effet de la commande `ip arp inspection vlan 10` ?",
-        "answers": [
-            { "text": "Il active le DAI sur des interfaces de commutation spécifiques pour le VLAN 10.", "correct": true },
-            { "text": "Activez globalement la surveillance DHCP.", "correct": false },
-            { "text": "Il spécifie le nombre maximal d'adresses L2.", "correct": false },
-            { "text": "Il permet globalement la garde BPDU.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle action se déroule lorsque l'adresse MAC source d'un cadre entrant apparaît dans la table d'adresses MAC associée à un port différent ?",
-        "answers": [
-            { "text": "Le commutateur transmet le cadre hors du port spécifié.", "correct": false },
-            { "text": "Le commutateur met à jour le minuteur.", "correct": false },
-            { "text": "Le commutateur purge toute la table.", "correct": false },
-            { "text": "Le commutateur remplace l'ancienne entrée et utilise le port le plus courant (récent).", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles sont les trois étapes à suivre avant de transférer un commutateur Cisco vers un nouveau domaine de gestion VTP ? (Choisissez trois réponses.)",
-        "answers": [
-            { "text": "Redémarrer le commutateur.", "correct": true },
-            { "text": "Télécharger la base de données VTP.", "correct": false },
-            { "text": "Configurer le commutateur avec le nom du nouveau domaine de gestion.", "correct": true },
-            { "text": "Réinitialiser les compteurs VTP.", "correct": false },
-            { "text": "Sélectionner le mode et la version VTP appropriés.", "correct": true },
-            { "text": "Configurer le serveur VTP.", "correct": false }
-        ],
-        "type": "multiple", "required": 3
-    },
-    {
-        "question": "Quelle opération effectue le routeur sur un paquet IPv6 si la seule route correspondante est `::/0` ?",
-        "answers": [
-            { "text": "supprimer le paquet", "correct": false },
-            { "text": "transmettre le paquet en sortie sur l'interface spécifiée dans la route par défaut.", "correct": true },
-            { "text": "transmettre le paquet en sortie sur toutes les interfaces.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle est la principale raison pour un cybercriminel de lancer une attaque par dépassement d'adresses MAC ?",
-        "answers": [
-            { "text": "pour que le cybercriminel puisse voir les trames destinées à d'autres hôtes (le switch agit comme un hub)", "correct": true },
-            { "text": "pour que le commutateur cesse d'acheminer le trafic", "correct": false },
-            { "text": "pour exécuter un code arbitraire", "correct": false },
-            { "text": "pour bloquer les hôtes légitimes", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle proposition décrit le résultat de l'interconnexion de plusieurs commutateurs Cisco LAN ?",
-        "answers": [
-            { "text": "Chaque commutateur comprend un espace de diffusion.", "correct": false },
-            { "text": "Les collisions de trames augmentent.", "correct": false },
-            { "text": "Le domaine de diffusion s'étend sur tous les commutateurs.", "correct": true },
-            { "text": "Chaque commutateur comprend un espace de collision.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel protocole a été implémenté pour regrouper plusieurs ports physiques en une liaison logique (propriétaire Cisco) ?",
-        "answers": [
-            { "text": "DTP", "correct": false },
-            { "text": "STP", "correct": false },
-            { "text": "PAgP", "correct": true },
-            { "text": "LACP", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle configuration de sécurité des ports permet d'enregistrer dynamiquement l'adresse MAC dans la configuration en cours ?",
-        "answers": [
-            { "text": "adresses MAC sécurisées automatiques", "correct": false },
-            { "text": "adresses MAC sécurisées dynamiques", "correct": false },
-            { "text": "adresses MAC sécurisées statiques", "correct": false },
-            { "text": "adresses MAC sécurisées fixes (sticky)", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Si BPDU guard est activé par défaut mais pas actif sur tous les ports, quelle est la source du problème ?",
-        "answers": [
-            { "text": "PortFast n'est pas configuré sur tous les ports d'accès.", "correct": true },
-            { "text": "Les ports d'accès configurés avec la protection racine ne peuvent pas être configurés avec la garde BPDU.", "correct": false },
-            { "text": "Les ports d'accès appartiennent à différents VLAN.", "correct": false },
-            { "text": "BPDU guard doit être activé en mode de commande d'interface.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'effet de la commande `ip dhcp snooping` sur un commutateur ?",
-        "answers": [
-            { "text": "Activez globalement la surveillance DHCP (snooping) sur le commutateur.", "correct": true },
-            { "text": "Il active manuellement un lien de trunk.", "correct": false },
-            { "text": "Il active PortFast globalement.", "correct": false },
-            { "text": "Désactivez les négociations DTP.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Pourquoi l'administrateur désactiverait-il la fonction de diffusion pour le SSID ?",
-        "answers": [
-            { "text": "pour assurer la confidentialité du trafic", "correct": false },
-            { "text": "pour éliminer l'analyse des SSID disponibles dans la zone (masquage)", "correct": true },
-            { "text": "pour réduire le risque d'interférence", "correct": false },
-            { "text": "pour réduire le risque d'ajout de points d'accès non autorisés", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quels sont les canaux 802.11g (2.4 GHz) sans chevauchement ?",
-        "answers": [
-            { "text": "Canaux 2, 6 et 10", "correct": false },
-            { "text": "Canaux 1, 7 et 13", "correct": false },
-            { "text": "Canaux 1, 6 et 11", "correct": true },
-            { "text": "Canaux 1, 5 et 9", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle attaque a pour but de créer un DOS pour les clients en les empêchant d'obtenir un crédit-bail DHCP ?",
-        "answers": [
-            { "text": "Attaque par dépassement de table CAM", "correct": false },
-            { "text": "Insuffisance de ressources DHCP (DHCP Starvation)", "correct": true },
-            { "text": "Usurpation d'adresse IP", "correct": false },
-            { "text": "Usurpation DHCP (spoofing)", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle commande permet de lancer le processus de regroupement de deux interfaces physiques via LACP ?",
-        "answers": [
-            { "text": "channel-group 1 mode desirable", "correct": false },
-            { "text": "interface range GigabitEthernet 0/4 – 5", "correct": true },
-            { "text": "channel-group 2 mode auto", "correct": false },
-            { "text": "interface port-channel 2", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle instruction est correcte sur la façon dont un commutateur de couche 2 détermine comment transférer des trames ?",
-        "answers": [
-            { "text": "Les décisions sont basées sur l’adresse MAC et les mappages des ports dans la table CAM.", "correct": true },
-            { "text": "Le transfert cut-through garantit l'abandon des trames invalides.", "correct": false },
-            { "text": "Les trames monodiffusion sont toujours transmises.", "correct": false },
-            { "text": "Seules les trames de diffusion sont transmises à tous les ports.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quels hôtes recevront des requêtes ARP envoyées par l'hôte A (VLAN 1) ?",
-        "answers": [
-            { "text": "Seuls les hôtes dans le même VLAN (VLAN 1).", "correct": true },
-            { "text": "Tous les hôtes du commutateur.", "correct": false },
-            { "text": "Seuls les hôtes du VLAN 2.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Parmi les propositions suivantes, lesquelles caractérisent les ports routés d'un commutateur multicouche ? (Choisissez deux réponses.)",
-        "answers": [
-            { "text": "Ils sont utilisés pour les liaisons point à multipoint.", "correct": false },
-            { "text": "Ils sont principalement configurés entre les commutateurs de distribution.", "correct": false },
-            { "text": "Ils ne sont associés à aucun VLAN particulier.", "correct": true },
-            { "text": "La commande interface vlan est nécessaire.", "correct": false },
-            { "text": "Ils prennent en charge les sous-interfaces.", "correct": false },
-            { "text": "Ils se comportent comme des interfaces de routeur.", "correct": true }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Quel protocole définit un groupe de routeurs, l'un actif et l'autre en veille ?",
-        "answers": [
-            { "text": "EtherChannel", "correct": false },
-            { "text": "DTP", "correct": false },
-            { "text": "HSRP", "correct": true },
-            { "text": "Protocole VTP", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Comment les types de liaisons Rapid PVST+ sont-ils déterminés sur les interfaces de commutateur ?",
-        "answers": [
-            { "text": "Les types de liaisons sont déterminés automatiquement.", "correct": true },
-            { "text": "Les types de liaisons peuvent uniquement être déterminés si PortFast a été configuré.", "correct": false },
-            { "text": "Les types de liaisons peuvent uniquement être configurés sur des ports d'accès.", "correct": false },
-            { "text": "Les types de liaisons doivent être configurés manuellement.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Sur quels ports de commutation devrait-on activer la protection BPDU (BPDU Guard) ?",
-        "answers": [
-            { "text": "tous les ports équipés de PortFast", "correct": true },
-            { "text": "tous les ports de trunk qui ne sont pas des ports racines", "correct": false },
-            { "text": "seuls les ports qui s'attachent à un commutateur voisin", "correct": false },
-            { "text": "uniquement les ports qui sont élus comme ports désignés", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Pourquoi le nombre de clients actifs DHCPv6 est 0 avec `ipv6 nd other-config-flag` ?",
-        "answers": [
-            { "text": "Aucune plage d'adresses IPv6 n'est spécifiée.", "correct": false },
-            { "text": "Aucun client n'a communiqué.", "correct": false },
-            { "text": "L'état n'est pas maintenu par le serveur DHCPv6 en mode sans état (Stateless).", "correct": true },
-            { "text": "L'adresse de la passerelle par défaut n'est pas disponible.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle est la meilleure solution pour prévenir l'attaque de trame 802.1Q (VLAN Hopping) ?",
-        "answers": [
-            { "text": "Les VLAN des ports d'accès utilisateur doivent être différents des VLAN natifs utilisés sur les ports de jonction.", "correct": true },
-            { "text": "Le numéro de VLAN natif doit être l'un des VLAN de données.", "correct": false },
-            { "text": "Les ports de trunk doivent être configurés avec la sécurité de port.", "correct": false },
-            { "text": "Les ports de trunk doivent utiliser le VLAN par défaut comme natif.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles deux étapes sont nécessaires pour configurer VTP sur un nouveau commutateur afin qu'il ne puisse pas ajouter de VLAN mais reçoive les mises à jour ? (Choisissez deux propositions.)",
-        "answers": [
-            { "text": "Configurer le nouveau commutateur en tant que client VTP.", "correct": true },
-            { "text": "Activer l'élagage VTP.", "correct": false },
-            { "text": "Configurer une adresse IP.", "correct": false },
-            { "text": "Configurer tous les ports en mode d'accès", "correct": false },
-            { "text": "Configurer le nom de domaine et le mot de passe VTP corrects.", "correct": true }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Deux protocoles sont utilisés pour l'authentification AAA au niveau des serveurs. Lesquels ? (Choisissez deux propositions.)",
-        "answers": [
-            { "text": "SSH", "correct": false },
-            { "text": "TACACS+", "correct": true },
-            { "text": "RADIUS", "correct": true },
-            { "text": "802.1x", "correct": false },
-            { "text": "SNMP", "correct": false }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Quelle attaque réseau est atténuée en activant la garde BPDU ?",
-        "answers": [
-            { "text": "attaque par débordement de la table CAM", "correct": false },
-            { "text": "serveurs DHCP non fiables", "correct": false },
-            { "text": "commutateurs non fiables sur un réseau", "correct": true },
-            { "text": "Usurpation d'adresse MAC", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est le terme commun donné aux messages de journal SNMP générés par les périphériques réseau (notifications) ?",
-        "answers": [
-            { "text": "L'accusé de réception", "correct": false },
-            { "text": "Audit", "correct": false },
-            { "text": "Déroutements (Traps)", "correct": true },
-            { "text": "avertissements", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel protocole est un protocole propriétaire Cisco automatiquement activé sur les commutateurs 2960 (pour le trunking) ?",
-        "answers": [
-            { "text": "STP", "correct": false },
-            { "text": "DTP", "correct": true },
-            { "text": "Protocole VTP", "correct": false },
-            { "text": "EtherChannel", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Pourquoi l'administrateur appliquerait-il WPA2 avec AES au WLAN ?",
-        "answers": [
-            { "text": "pour assurer la confidentialité et l'intégrité du trafic sans fil en utilisant le chiffrement", "correct": true },
-            { "text": "fournir un service prioritaire", "correct": false },
-            { "text": "pour centraliser la gestion", "correct": false },
-            { "text": "pour réduire le risque d'ajout de points d'accès non autorisés", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Un traceroute révèle un mauvais chemin et un état inaccessible. Que faut-il vérifier ?",
-        "answers": [
-            { "text": "Vérifiez que la route statique vers le serveur est présente.", "correct": false },
-            { "text": "Vérifiez la configuration sur la route statique flottante.", "correct": false },
-            { "text": "Vérifiez la configuration de l'interface de sortie sur la nouvelle route statique.", "correct": true },
-            { "text": "Créez une route statique flottante.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quels énoncés décrivent les paramètres de mode bidirectionnel et de débit des commutateurs Cisco 2960 ? (Choisissez trois réponses.)",
-        "answers": [
-            { "text": "Les paramètres peuvent être configurés manuellement.", "correct": true },
-            { "text": "Par défaut, la négociation automatique est désactivée.", "correct": false },
-            { "text": "Si la vitesse est 1000 Mbps, le mode est Full Duplex.", "correct": true },
-            { "text": "Par défaut, le débit est 100 Mbps.", "correct": false },
-            { "text": "L'activation de la négociation automatique prévient les erreurs.", "correct": false },
-            { "text": "La défaillance de la négociation automatique peut causer des problèmes.", "correct": true }
-        ],
-        "type": "multiple", "required": 3
-    },
-    {
-        "question": "Quelle commande permet au routeur R1 de répondre aux demandes DHCPv6 sans état (en envoyant RA avec le flag O) ?",
-        "answers": [
-            { "text": "prefix-delegation...", "correct": false },
-            { "text": "ipv6 unicast-routing", "correct": false },
-            { "text": "dns-server...", "correct": false },
-            { "text": "ipv6 nd other-config-flag", "correct": true },
-            { "text": "ipv6 dhcp server LAN1", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle action se déroule lorsqu'une trame entrant dans un commutateur a une adresse MAC de destination multidiffusion ?",
-        "answers": [
-            { "text": "Le commutateur transmet le cadre hors du port spécifié.", "correct": false },
-            { "text": "Le commutateur ajoute un mappage.", "correct": false },
-            { "text": "Le commutateur remplace l'ancienne entrée.", "correct": false },
-            { "text": "Le commutateur transmet la trame à tous les ports, sauf au port d'arrivée.", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel protocole permet à des données de transmettre via des liaisons de commutation redondantes sans boucle ?",
-        "answers": [
-            { "text": "EtherChannel", "correct": false },
-            { "text": "VTP", "correct": false },
-            { "text": "DTP", "correct": false },
-            { "text": "STP", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Pourquoi l'administrateur modifie-t-il les adresses DHCP IPv4 par défaut sur un point d'accès ?",
-        "answers": [
-            { "text": "pour réduire le risque d'interférence", "correct": false },
-            { "text": "pour restreindre l'accès", "correct": false },
-            { "text": "pour réduire l'interception de données ou l'accès au réseau sans fil à l'aide d'une plage d'adresses bien connue", "correct": true },
-            { "text": "pour surveiller le fonctionnement", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel mode de violation de sécurité abandonne la trame et envoie une notification (Syslog/SNMP) ?",
-        "answers": [
-            { "text": "warning", "correct": false },
-            { "text": "protect", "correct": false },
-            { "text": "shutdown", "correct": false },
-            { "text": "restrict", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles deux configurations sont nécessaires pour DHCPv6 sans état avec DNS ? (Choisissez deux propositions.)",
-        "answers": [
-            { "text": "La ligne de nom de domaine est incluse.", "correct": false },
-            { "text": "Le ipv6 nd other-config-flag entré pour l’interface LAN.", "correct": true },
-            { "text": "La ligne dns-server est incluse dans la section ipv6 dhcp pool.", "correct": true },
-            { "text": "La ligne de préfixe d'adresse est incluse.", "correct": false },
-            { "text": "Le ipv6 nd managed-config-flag est entré.", "correct": false }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Pourquoi l'administrateur utiliserait-il des serveurs RADIUS sur le réseau WLAN ?",
-        "answers": [
-            { "text": "pour restreindre l'accès au WLAN uniquement par les utilisateurs autorisés et authentifiés (Enterprise)", "correct": true },
-            { "text": "pour faciliter la configuration de groupe", "correct": false },
-            { "text": "pour centraliser la gestion", "correct": false },
-            { "text": "pour surveiller le fonctionnement", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'effet de la commande `show ip dhcp snooping binding` ?",
-        "answers": [
-            { "text": "Il limite le nombre de messages.", "correct": false },
-            { "text": "Il passe un port de jonction en mode d'accès.", "correct": false },
-            { "text": "Il vérifie l'adresse MAC.", "correct": false },
-            { "text": "Il affiche les associations d'adresses IP à Mac pour les interfaces de commutation.", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'effet de la saisie de la commande `spanning-tree portfast` ?",
-        "answers": [
-            { "text": "Cela désactive un port inutilisé.", "correct": false },
-            { "text": "Cela désactive tous les ports de jonction.", "correct": false },
-            { "text": "Il active le portfast sur une interface de commutateur spécifique.", "correct": true },
-            { "text": "Il vérifie l'adresse L2.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles sont les deux fonctions exécutées par un WLC lors de l'utilisation du contrôle d'accès aux médias (MAC) ? (Choisissez deux réponses.)",
-        "answers": [
-            { "text": "accusés de réception et retransmissions", "correct": false },
-            { "text": "Mise en file d'attente des trames", "correct": false },
-            { "text": "balises et réponses des sondes", "correct": false },
-            { "text": "traduction du cadre vers d'autres protocoles", "correct": true },
-            { "text": "association et réassociation de clients itinérants", "correct": true }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Quels sont les trois éléments à configurer sur le commutateur pour l'accès à la gestion à distance (SVI) ? (Choisissez trois réponses.)",
-        "answers": [
-            { "text": "Adresse IP", "correct": true },
-            { "text": "Domaine VTP", "correct": false },
-            { "text": "lignes vty", "correct": true },
-            { "text": "VLAN par défaut", "correct": false },
-            { "text": "passerelle par défaut", "correct": true },
-            { "text": "adresse de bouclage", "correct": false }
-        ],
-        "type": "multiple", "required": 3
-    },
-    {
-        "question": "Les employés ne peuvent pas accéder à Internet après un changement de FAI. Que vérifier ?",
-        "answers": [
-            { "text": "Vérifiez que la route statique vers le serveur est présente.", "correct": false },
-            { "text": "Vérifiez la configuration sur la route statique flottante.", "correct": false },
-            { "text": "Assurez-vous que l'ancienne route par défaut a été supprimée des routeurs périphériques.", "correct": true },
-            { "text": "Créez une route statique flottante.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Un technicien configure un routeur pour une petite entreprise avec plusieurs WLAN sans routage dynamique. Que doit-il faire ?",
-        "answers": [
-            { "text": "Vérifiez qu'il n'y a pas de route par défaut.", "correct": false },
-            { "text": "Créez des routes statiques vers tous les réseaux internes et une route par défaut vers Internet.", "correct": true },
-            { "text": "Créez des routes statiques supplémentaires avec un AD de 1.", "correct": false },
-            { "text": "Vérifiez les statistiques sur la route par défaut.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel plan d'atténuation est le meilleur pour contrecarrer une attaque DoS par débordement de table d'adresses MAC ?",
-        "answers": [
-            { "text": "Désactiver la DTP.", "correct": false },
-            { "text": "Désactiver STP.", "correct": false },
-            { "text": "Activer la sécurité des ports.", "correct": true },
-            { "text": "Placez les ports inutilisés dans un VLAN inutilisé.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel message DHCPv4 un client enverra-t-il pour accepter une adresse IPv4 proposée ?",
-        "answers": [
-            { "text": "diffusion DHCPACK", "correct": false },
-            { "text": "diffusion DHCPREQUEST", "correct": true },
-            { "text": "DHCPACK monodiffusion", "correct": false },
-            { "text": "DHCPREQUEST en monodiffusion", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel protocole ajoute de la sécurité aux connexions à distance (remplace Telnet) ?",
-        "answers": [
-            { "text": "FTP", "correct": false },
-            { "text": "HTTP", "correct": false },
-            { "text": "NetBEUI", "correct": false },
-            { "text": "POP", "correct": false },
-            { "text": "SSH", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle commande permettra à un routeur de configurer une adresse lien-local IPv6 sans serveur DHCP ?",
-        "answers": [
-            { "text": "un itinéraire statique", "correct": false },
-            { "text": "la route ipv6 ::/0 commande", "correct": false },
-            { "text": "la commande ipv6 unicast-routing", "correct": true },
-            { "text": "la commande de routage ip", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Les utilisateurs se plaignent d'un accès sporadique à Internet. Que faut-il vérifier ?",
-        "answers": [
-            { "text": "Créez des routes statiques.", "correct": false },
-            { "text": "Vérifiez qu'il n'y a pas de route par défaut.", "correct": false },
-            { "text": "Créez une route statique flottante.", "correct": false },
-            { "text": "Vérifiez les statistiques sur la route par défaut pour la sursaturation.", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Un administrateur remarque qu'un grand nombre de paquets sont supprimés sur l'un des routeurs. Que vérifier ?",
-        "answers": [
-            { "text": "Créez des routes statiques.", "correct": false },
-            { "text": "Créez des routes statiques supplémentaires.", "correct": false },
-            { "text": "Vérifiez les statistiques.", "correct": false },
-            { "text": "Vérifiez la table de routage pour une route statique manquante.", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles sont les deux caractéristiques du commutateur qui aident à réduire la congestion ? (Choisissez deux réponses.)",
-        "answers": [
-            { "text": "commutation interne rapide", "correct": true },
-            { "text": "tampons de grande taille", "correct": true },
-            { "text": "commutation store-and-forward", "correct": false },
-            { "text": "faible densité de ports", "correct": false },
-            { "text": "contrôle FCS", "correct": false }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Quel est le résultat de la connexion de deux ou plusieurs commutateurs ensemble ?",
-        "answers": [
-            { "text": "Le nombre de domaines de diffusion est augmenté.", "correct": false },
-            { "text": "La taille du domaine de diffusion est augmentée.", "correct": true },
-            { "text": "Le nombre de domaines de collision est réduit.", "correct": false },
-            { "text": "La taille du domaine de collision est augmentée.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'effet de la commande `switchport port-security` ?",
-        "answers": [
-            { "text": "Il apprend dynamiquement l'adresse L2.", "correct": false },
-            { "text": "Il active la sécurité des ports sur une interface.", "correct": true },
-            { "text": "Il active la sécurité des ports globalement.", "correct": false },
-            { "text": "Il restreint les messages.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Pourquoi utiliser plusieurs points d'accès légers (Lightweight APs) ?",
-        "answers": [
-            { "text": "pour centraliser la gestion", "correct": false },
-            { "text": "pour surveiller le fonctionnement", "correct": false },
-            { "text": "fournir un service prioritaire", "correct": false },
-            { "text": "pour faciliter la configuration et la gestion de groupe de plusieurs WLAN via un WLC", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "PC-A et PC-B sont dans le VLAN 60 mais ne communiquent pas à travers un trunk. Quel est le problème probable ?",
-        "answers": [
-            { "text": "Le VLAN natif doit être le VLAN 60.", "correct": false },
-            { "text": "Le VLAN natif est supprimé du lien.", "correct": false },
-            { "text": "Le tronc a été configuré avec nonegotiate.", "correct": false },
-            { "text": "Le VLAN 60 ne figure pas dans la liste des VLAN autorisés sur le tronc.", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel protocole gère les négociations de jonction (trunking) entre les commutateurs ?",
-        "answers": [
-            { "text": "VTP", "correct": false },
-            { "text": "EtherChannel", "correct": false },
-            { "text": "DTP", "correct": true },
-            { "text": "STP", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'effet de `ip dhcp snooping limit rate 6` ?",
-        "answers": [
-            { "text": "Il affiche les associations.", "correct": false },
-            { "text": "Il active la sécurité des ports.", "correct": false },
-            { "text": "Il restreint le nombre de messages de découverte DHCP, par seconde, à recevoir sur l'interface.", "correct": true },
-            { "text": "Il apprend dynamiquement l'adresse L2.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'effet de `ip arp inspection validate src-mac` ?",
-        "answers": [
-            { "text": "Il vérifie l'adresse L2 source dans l'en-tête Ethernet par rapport à l'adresse L2 de l'expéditeur dans le corps ARP.", "correct": true },
-            { "text": "Cela désactive tous les ports de jonction.", "correct": false },
-            { "text": "Il affiche les associations.", "correct": false },
-            { "text": "Il active le portfast.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle longueur de préfixe est utilisée pour une route statique IPv6 par défaut ?",
-        "answers": [
-            { "text": "::/0", "correct": true },
-            { "text": "FF02::1/8", "correct": false },
-            { "text": "0.0.0.0/0", "correct": false },
-            { "text": "::1/128", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles sont les deux caractéristiques de Cisco Express Forwarding (CEF) ? (Choisissez deux.)",
-        "answers": [
-            { "text": "Il est transmis au plan de contrôle pour chaque paquet.", "correct": false },
-            { "text": "Il s'agit du mécanisme de transfert le plus rapide.", "correct": true },
-            { "text": "Il utilise le cache à commutation rapide.", "correct": false },
-            { "text": "Les paquets sont transférés en fonction des informations contenues dans le FIB et d'un tableau de contiguïté.", "correct": true },
-            { "text": "Le processeur recherche une correspondance dans le cache.", "correct": false }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Quel terme décrit le rôle d'un commutateur Cisco dans 802.1X ?",
-        "answers": [
-            { "text": "agent", "correct": false },
-            { "text": "suppliant", "correct": false },
-            { "text": "authentificateur", "correct": true },
-            { "text": "serveur d'authentification", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelle solution Cisco permet d'éviter l'empoisonnement ARP ?",
-        "answers": [
-            { "text": "Inspection ARP dynamique (DAI)", "correct": true },
-            { "text": "Protection des sources IP", "correct": false },
-            { "text": "Snooping DHCP", "correct": false },
-            { "text": "Sécurité des ports", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quel est l'avantage de PVST+ ?",
-        "answers": [
-            { "text": "Sélection automatique du pont racine.", "correct": false },
-            { "text": "Réduit la consommation de bande passante.", "correct": false },
-            { "text": "Nécessite moins de cycles CPU.", "correct": false },
-            { "text": "PVST+ optimise les performances sur le réseau grâce au partage de charge (par VLAN).", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Comment l'administrateur réseau peut-il réduire le nombre d'appareils recevant du trafic de diffusion dans un grand LAN ?",
-        "answers": [
-            { "text": "Ajoutez plus de commutateurs.", "correct": false },
-            { "text": "Remplacez les commutateurs.", "correct": false },
-            { "text": "Segmentez le réseau local en réseaux locaux plus petits (VLANs) et acheminez entre eux.", "correct": true },
-            { "text": "Remplacez par des concentrateurs.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Qu'est-ce qui définit une route hôte statique IPv4 ?",
-        "answers": [
-            { "text": "L'adresse lien-local est ajoutée.", "correct": false },
-            { "text": "Elle utilise une adresse IP de destination spécifique et un masque /32.", "correct": true },
-            { "text": "Elle est désignée par un C.", "correct": false },
-            { "text": "Elle doit inclure le type d'interface.", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quoi d'autre est requis lors de la configuration d'une route statique IPv6 à l'aide d'une adresse lien-local de prochain saut ?",
-        "answers": [
-            { "text": "distance administrative", "correct": false },
-            { "text": "adresse IP du routeur voisin", "correct": false },
-            { "text": "numéro de réseau", "correct": false },
-            { "text": "numéro et type d'interface de sortie", "correct": true }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quelles sont les deux méthodes d'authentification utilisées si le routeur est configuré avec WPA2 ? (Choisissez deux réponses.)",
-        "answers": [
-            { "text": "personnel (Personal)", "correct": true },
-            { "text": "AES", "correct": false },
-            { "text": "TKIP", "correct": false },
-            { "text": "WEP", "correct": false },
-            { "text": "entreprise (Enterprise)", "correct": true }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Quelles sont les deux informations qu'un routeur enverra en réponse à un message RS (Router Solicitation) IPv6 ? (Choisissez deux réponses.)",
-        "answers": [
-            { "text": "longueur du préfixe", "correct": true },
-            { "text": "masque de sous-réseau", "correct": false },
-            { "text": "nom de domaine", "correct": false },
-            { "text": "distance administrative", "correct": false },
-            { "text": "préfixe", "correct": true },
-            { "text": "Adresse IP du serveur DNS", "correct": false }
-        ],
-        "type": "multiple", "required": 2
-    },
-    {
-        "question": "Si un ordinateur ne voit pas le SSID, le point d'accès doit fonctionner dans quel mode (qui nécessite de connaître le SSID) ?",
-        "answers": [
-            { "text": "mixte", "correct": false },
-            { "text": "passif", "correct": false },
-            { "text": "actif (Active/Cloaked)", "correct": true },
-            { "text": "ouvrir", "correct": false }
-        ],
-        "type": "single"
-    },
-    {
-        "question": "Quels sont les trois composants combinés pour former un identifiant de pont (Bridge ID) ?",
-        "answers": [
-            { "text": "ID système étendu", "correct": true },
-            { "text": "coût", "correct": false },
-            { "text": "Adresse IP", "correct": false },
-            { "text": "priorité du pont", "correct": true },
-            { "text": "Adresse MAC", "correct": true },
-            { "text": "ID de port", "correct": false }
-        ],
-        "type": "multiple", "required": 3
-    }
+// [cours, thème, question, options, indices bonnes réponses, explication, code facultatif]
+const RAW = [
+// ===================== CCNA 3 – ENSA =====================
+["ENSA","OSPF","Quelle est la distance administrative par défaut d’OSPF ?",["90","100","110","120"],[2],"OSPF = 110. EIGRP interne = 90, RIP = 120, route statique = 1, connectée = 0."],
+["ENSA","OSPF","Dans quel ordre un routeur OSPF choisit-il son Router ID ?",["Loopback la plus haute → router-id → interface active la plus haute","router-id configuré → loopback la plus haute → interface active la plus haute","Interface active la plus haute → loopback → router-id","Adresse MAC la plus basse → router-id"],[1],"La commande router-id est prioritaire, puis l’IP de loopback la plus haute, puis l’IP d’interface physique active la plus haute."],
+["ENSA","OSPF","Timers Hello / Dead par défaut d’OSPF sur un lien Ethernet ?",["5 s / 20 s","10 s / 40 s","30 s / 120 s","10 s / 30 s"],[1],"Broadcast et point-à-point : 10/40. NBMA : 30/120. Le Dead interval vaut 4 × Hello. Les timers doivent être identiques pour former une adjacence."],
+["ENSA","OSPF","Un routeur a une priorité OSPF de 0 sur une interface. Conséquence ?",["Il devient forcément DR","Il devient BDR","Il ne peut être ni DR ni BDR","OSPF est désactivé sur l’interface"],[2],"Priorité 0 = exclu de l’élection DR/BDR. Il reste DROTHER mais continue à former des adjacences."],
+["ENSA","OSPF","Comment est élu le DR sur un segment multiaccès ?",["Router ID le plus bas","Priorité la plus haute, puis Router ID le plus haut","Adresse IP d’interface la plus basse","Le premier routeur démarré, quelle que soit la priorité"],[1],"Priorité la plus haute (défaut 1), puis Router ID le plus haut en cas d’égalité. L’élection n’est pas préemptive : un nouveau routeur ne remplace pas le DR existant."],
+["ENSA","OSPF","Avec la bande passante de référence par défaut, quel est le coût OSPF d’une interface GigabitEthernet ?",["1","10","100","0,1"],[0],"Coût = 100 Mbit/s ÷ bande passante. 100/1000 < 1, donc arrondi à 1, comme FastEthernet. D’où la commande auto-cost reference-bandwidth pour différencier les liens rapides."],
+["ENSA","OSPF","Quel est l’effet de la commande passive-interface sur une interface OSPF ?",["Le réseau n’est plus annoncé","Les paquets Hello ne sont plus envoyés, mais le réseau reste annoncé","L’interface est désactivée","Le coût passe à 65535"],[1],"Passive-interface coupe l’envoi des Hello (pas d’adjacence possible) mais le réseau est toujours annoncé. On l’utilise sur les interfaces LAN côté utilisateurs."],
+["ENSA","OSPF","Quel paquet OSPF contient la liste abrégée de la LSDB échangée lors de la synchronisation ?",["Hello","DBD","LSR","LSAck"],[1],"Les 5 types : Hello, DBD (Database Description), LSR (requête), LSU (mise à jour), LSAck (accusé)."],
+["ENSA","OSPF","Sur un réseau multiaccès, quel état d’adjacence reste stable entre deux routeurs DROTHER ?",["FULL","2-WAY","EXSTART","LOADING"],[1],"Les DROTHER ne forment une adjacence FULL qu’avec le DR et le BDR. Entre eux, ils restent en 2-WAY."],
+["ENSA","OSPF","Quelle commande permet de voir les voisins OSPF et leur état ?",["show ip route ospf","show ip ospf neighbor","show ip protocols","show ip ospf database"],[1],"show ip ospf neighbor affiche le Router ID voisin, la priorité, l’état (FULL/DR, 2WAY/DROTHER…) et l’interface."],
+["ENSA","ACL","Quel masque générique correspond au réseau 192.168.10.0/26 ?",["0.0.0.31","0.0.0.63","0.0.0.127","255.255.255.192"],[1],"/26 = 255.255.255.192 → 255 − 192 = 63, donc 0.0.0.63."],
+["ENSA","ACL","Quel mot-clé équivaut au masque générique 0.0.0.0 ?",["any","host","eq","all"],[1],"host 192.168.1.10 = 192.168.1.10 0.0.0.0. Et any = 0.0.0.0 255.255.255.255."],
+["ENSA","ACL","Où doit-on placer une ACL standard ?",["Au plus près de la source","Au plus près de la destination","Uniquement sur le routeur de bordure","N’importe où"],[1],"Une ACL standard ne filtre que l’IP source. Placée près de la source, elle bloquerait l’accès à toutes les destinations."],
+["ENSA","ACL","Où doit-on placer une ACL étendue ?",["Au plus près de la source","Au plus près de la destination","Sur le commutateur d’accès","Sur l’interface de loopback"],[0],"L’ACL étendue filtre précisément (source, destination, protocole, port). On la place près de la source pour éliminer le trafic indésirable au plus tôt."],
+["ENSA","ACL","Que se passe-t-il pour un paquet qui ne correspond à aucune ligne d’une ACL ?",["Il est autorisé","Il est refusé (deny implicite)","Il est envoyé au CPU","Il est journalisé puis autorisé"],[1],"Chaque ACL se termine par un deny any implicite. Une ACL ne contenant que des deny bloque donc tout."],
+["ENSA","ACL","Quelles plages de numéros correspondent aux ACL IPv4 étendues ? (2 réponses)",["1 à 99","100 à 199","1300 à 1999","2000 à 2699"],[1,3],"Standard : 1–99 et 1300–1999. Étendue : 100–199 et 2000–2699."],
+["ENSA","ACL","Quelle commande applique une ACL pour restreindre l’accès SSH/Telnet aux lignes VTY ?",["ip access-group 10 in","access-class 10 in","ip access-list 10 vty","access-group vty 10"],[1],"Sur les lignes VTY, on utilise access-class. Sur une interface, on utilise ip access-group."],
+["ENSA","ACL","Combien d’ACL peut-on appliquer au maximum sur une interface ?",["Une seule","Une par protocole et par direction","Deux par protocole","Illimité"],[1],"Règle des 3 P : une ACL par Protocole, par direction (in/out), par interface (Port)."],
+["ENSA","ACL","Quelle ligne bloque le trafic Telnet du réseau 10.1.1.0/24 vers n’importe quelle destination ?",["access-list 10 deny tcp 10.1.1.0 0.0.0.255 any eq 23","access-list 110 deny tcp 10.1.1.0 0.0.0.255 any eq 23","access-list 110 deny udp 10.1.1.0 0.0.0.255 any eq 23","access-list 110 deny tcp any 10.1.1.0 0.0.0.255 eq 22"],[1],"Filtrer un port nécessite une ACL étendue (100–199). Telnet = TCP 23. SSH = TCP 22."],
+["ENSA","NAT","En NAT, comment appelle-t-on l’adresse publique qui représente un hôte interne ?",["Inside local","Inside global","Outside local","Outside global"],[1],"Inside = l’hôte est chez nous. Local = vu de l’intérieur (privée), Global = vu de l’extérieur (publique)."],
+["ENSA","NAT","Quel mot-clé active le PAT dans ip nat inside source ?",["translate","overload","port","extendable"],[1],"ip nat inside source list 1 interface g0/1 overload : plusieurs hôtes partagent une IP publique grâce aux numéros de port."],
+["ENSA","NAT","Dans quel cas utilise-t-on une NAT statique ?",["Pour que des dizaines de PC accèdent à Internet","Pour qu’un serveur interne soit joignable depuis Internet avec une IP publique fixe","Pour économiser des adresses publiques","Pour traduire IPv4 en IPv6"],[1],"La NAT statique crée une correspondance 1:1 permanente, idéale pour un serveur web ou mail interne."],
+["ENSA","NAT","Quel est un inconvénient de la NAT ?",["Elle augmente le nombre d’adresses publiques nécessaires","Elle complique la traçabilité de bout en bout et certaines applications (IPsec, VoIP)","Elle empêche le routage dynamique","Elle chiffre le trafic"],[1],"NAT casse la connectivité de bout en bout, ajoute de la latence et pose problème à certains protocoles qui transportent des IP dans leurs données."],
+["ENSA","NAT","Quelle commande affiche les traductions NAT actives ?",["show ip nat statistics","show ip nat translations","show nat table","debug ip nat"],[1],"show ip nat translations liste les correspondances inside local / inside global. show ip nat statistics donne les compteurs."],
+["ENSA","Sécurité","Une attaque qui sature une cible depuis de nombreuses machines compromises est :",["Une attaque par reconnaissance","Un DDoS","Un man-in-the-middle","Du phishing"],[1],"DDoS = déni de service distribué, souvent via un botnet."],
+["ENSA","Sécurité","Lequel est un algorithme de chiffrement symétrique ?",["RSA","Diffie-Hellman","AES","SHA-256"],[2],"AES est symétrique (même clé). RSA est asymétrique, DH sert à l’échange de clés, SHA est une fonction de hachage."],
+["ENSA","Sécurité","Quel élément garantit l’intégrité des données ?",["AES","Une fonction de hachage (SHA)","Le NAT","Diffie-Hellman"],[1],"Le hachage (SHA, MD5) produit une empreinte : toute modification des données change l’empreinte. Avec une clé, on obtient un HMAC qui authentifie aussi l’origine."],
+["ENSA","Sécurité","Une attaque où l’attaquant inonde le commutateur de fausses adresses MAC pour qu’il diffuse tout le trafic s’appelle :",["ARP spoofing","MAC flooding (débordement de table CAM)","DHCP starvation","VLAN hopping"],[1],"Quand la table CAM est pleine, le switch agit comme un hub. Contre-mesure : port-security."],
+["ENSA","WAN/VPN","Quel protocole IPsec assure à la fois chiffrement et authentification ?",["AH","ESP","GRE","IKE"],[1],"ESP chiffre et authentifie. AH authentifie seulement, sans chiffrer. IKE négocie les clés."],
+["ENSA","WAN/VPN","Quelle caractéristique décrit un tunnel GRE ?",["Il chiffre le trafic","Il transporte le multicast et les protocoles de routage, mais sans chiffrement","Il ne fonctionne qu’en IPv6","Il remplace IPsec"],[1],"GRE encapsule tout type de trafic (multicast, OSPF…) mais n’est pas sécurisé. D’où GRE over IPsec."],
+["ENSA","WAN/VPN","Un télétravailleur se connecte au réseau de l’entreprise via son navigateur en HTTPS. De quel type de VPN s’agit-il ?",["VPN site à site","VPN d’accès à distance SSL clientless","DMVPN","MPLS VPN"],[1],"Le VPN SSL sans client passe par le navigateur. Le VPN site à site relie deux réseaux via leurs passerelles."],
+["ENSA","WAN/VPN","Quelle technologie WAN commute le trafic à l’aide d’étiquettes plutôt que d’adresses IP ?",["Frame Relay","MPLS","PPP","DSL"],[1],"MPLS ajoute un label et les routeurs commutent selon ce label. C’est rapide et supporte n’importe quel protocole."],
+["ENSA","QoS","Quel mécanisme de file d’attente offre une file à priorité stricte pour la voix ?",["FIFO","WFQ","CBWFQ","LLQ"],[3],"LLQ = CBWFQ + file prioritaire stricte. La voix passe en premier, ce qui limite la latence et la gigue."],
+["ENSA","QoS","Quelle valeur DSCP est recommandée pour la voix ?",["AF41","CS1","EF (46)","BE (0)"],[2],"EF (Expedited Forwarding) = DSCP 46 pour la voix. AF4x souvent pour la vidéo, CS1 pour le trafic moins prioritaire."],
+["ENSA","QoS","Latence unidirectionnelle maximale recommandée pour la voix ?",["30 ms","150 ms","400 ms","1 s"],[1],"Voix : ≤ 150 ms de latence, ≤ 30 ms de gigue, ≤ 1 % de perte."],
+["ENSA","QoS","Où placer idéalement la limite de confiance (trust boundary) ?",["Au cœur du réseau","Au plus près de la source, par exemple au téléphone IP ou au switch d’accès","Sur le routeur du FAI","Sur le pare-feu"],[1],"On marque et on fait confiance au plus près de la source pour que le marquage soit fiable dans tout le réseau."],
+["ENSA","Gestion","Quelle version/niveau SNMP fournit authentification ET chiffrement ?",["SNMPv1","SNMPv2c","SNMPv3 authNoPriv","SNMPv3 authPriv"],[3],"authPriv = authentification + chiffrement. v1 et v2c utilisent des community strings en clair."],
+["ENSA","Gestion","Quel niveau de gravité syslog correspond à « Warning » ?",["2","3","4","6"],[2],"0 Emergency, 1 Alert, 2 Critical, 3 Error, 4 Warning, 5 Notification, 6 Informational, 7 Debugging."],
+["ENSA","Gestion","Que représente le stratum 0 en NTP ?",["Le serveur NTP de l’entreprise","Les horloges de référence (atomique, GPS)","Un client NTP","Une horloge non synchronisée"],[1],"Stratum 0 = source de référence. Stratum 1 = serveur directement relié. Plus le stratum est élevé, plus la source est éloignée."],
+["ENSA","Gestion","Quelle est la différence principale entre CDP et LLDP ?",["CDP est de couche 3","LLDP est un standard ouvert (IEEE 802.1AB), CDP est propriétaire Cisco","LLDP ne fonctionne que sur la fibre","CDP est désactivé par défaut"],[1],"CDP est propriétaire Cisco et activé par défaut. LLDP est multi-constructeur et s’active avec lldp run."],
+["ENSA","Conception","Quel est le rôle de la couche cœur (core) dans le modèle hiérarchique ?",["Connecter les utilisateurs finaux","Appliquer des ACL et des politiques","Assurer un transport à très haut débit entre les blocs, sans traitement lourd","Fournir le Wi-Fi"],[2],"Accès = utilisateurs. Distribution = politiques, routage inter-VLAN, ACL. Cœur = transport rapide et redondant."],
+["ENSA","Conception","Quelle approche de dépannage commence par la couche physique ?",["Top-down","Bottom-up","Diviser pour régner","Suivre le chemin"],[1],"Bottom-up part de la couche 1 (câbles, voyants) et remonte. Idéal si on suspecte un problème physique."],
+["ENSA","Virt./Auto","Qu’est-ce qu’un hyperviseur de type 1 ?",["Un logiciel installé sur Windows","Un hyperviseur installé directement sur le matériel (bare metal)","Un conteneur Docker","Une VM invitée"],[1],"Type 1 = bare metal (ESXi, Hyper-V Server). Type 2 = au-dessus d’un OS hôte (VirtualBox, VMware Workstation)."],
+["ENSA","Virt./Auto","En SDN, que centralise-t-on dans le contrôleur ?",["Le plan de données","Le plan de contrôle","Le plan de gestion physique","Les câbles"],[1],"Le contrôleur SDN gère le plan de contrôle (décisions). Les équipements gardent le plan de données (acheminement)."],
+["ENSA","Virt./Auto","Quelle méthode HTTP sert à lire des données via une API REST ?",["POST","GET","PUT","DELETE"],[1],"CRUD : POST = créer, GET = lire, PUT/PATCH = modifier, DELETE = supprimer."],
+["ENSA","Virt./Auto","Lequel est du JSON valide ?",["hostname: R1","{\"hostname\": \"R1\"}","<hostname>R1</hostname>","hostname = R1"],[1],"JSON = paires clé/valeur entre accolades, clés entre guillemets. Le 3e est du XML, le 1er ressemble à du YAML."],
+["ENSA","Virt./Auto","Quel outil d’automatisation fonctionne sans agent et utilise des playbooks YAML ?",["Puppet","Chef","Ansible","SaltStack"],[2],"Ansible est agentless (via SSH), avec des playbooks en YAML. Puppet et Chef utilisent des agents."],
+// ===================== CCNA 1 – ITN (révision) =====================
+["ITN","Sécurité","Quelle caractéristique décrit un logiciel espion ?",["Logiciel installé sur un appareil qui collecte secrètement des informations sur l’utilisateur","Une attaque qui ralentit ou bloque un service réseau","Un périphérique qui filtre le trafic entrant","L’utilisation d’identifiants volés"],[0],"Spyware = collecte cachée d’informations. Le 2e est un DoS, le 3e un pare-feu, le 4e un vol d’identité."],
+["ITN","Bases","Quels dispositifs sont des périphériques intermédiaires ? (2 réponses)",["Scanner de vente au détail","IPS","Serveur","Robot de chaîne de montage","Console de jeux","Contrôleur LAN sans fil"],[1,5],"Les intermédiaires (switch, routeur, IPS, pare-feu, WLC) relient et contrôlent le trafic. Les autres sont des terminaux."],
+["ITN","Sécurité","Quelle déclaration décrit la sécurité du réseau ?",["Elle synchronise le trafic par horodatage","Elle garantit que les données sensibles sont disponibles pour les utilisateurs autorisés","Elle soutient la croissance du réseau","Elle priorise le trafic sensible aux délais"],[1],"Sécurité = confidentialité, intégrité, disponibilité. Évolutivité = croissance. QoS = priorisation."],
+["ITN","IOS","Un admin tape configure terminal à l’invite Switch> et reçoit une erreur. Pourquoi ?",["Il doit d’abord passer en mode privilégié avec enable","Il faut taper la commande complète","Il est déjà en configuration globale","Il doit utiliser le port console"],[0],"Le > indique le mode utilisateur. Il faut taper enable (invite #), puis configure terminal."],
+["ITN","IOS","Quelle est une caractéristique d’une SVI ?",["Elle n’a jamais besoin de no shutdown","Elle est créée logiciellement et nécessite une IP et un masque pour la gestion à distance","Elle correspond à un port physique","Elle est réservée aux routeurs"],[1],"La SVI par défaut est l’interface VLAN 1. Elle est virtuelle, nécessite IP + masque + no shutdown, et une passerelle par défaut sur le switch."],
+["ITN","Bases","Quelle partie du système d’exploitation interagit directement avec le matériel ?",["Le shell","Le noyau (kernel)","La CLI","L’interface graphique"],[1],"Noyau = lien avec le matériel. Shell = interface entre l’utilisateur/les applications et le noyau. CLI/GUI = façons d’interagir."],
+["ITN","Modèles","Quelles couches OSI correspondent à la couche application TCP/IP ? (3 réponses)",["Liaison de données","Application","Session","Réseau","Présentation","Transport"],[1,2,4],"Application + Présentation + Session (OSI 7-6-5) = Application TCP/IP."],
+["ITN","Modèles","Quelles couches OSI ont un équivalent direct dans TCP/IP ? (2 réponses)",["Transport","Session","Liaison de données","Réseau","Physique"],[0,3],"Transport = Transport, Réseau = Internet. Liaison + Physique sont fusionnées dans Accès réseau."],
+["ITN","Modèles","Quelle PDU est traitée lors de la désencapsulation à la couche transport ?",["Paquet","Segment","Trame","Bit"],[1],"Données → Segment (L4) → Paquet (L3) → Trame (L2) → Bits (L1)."],
+["ITN","Physique","Quel terme décrit la quantité de bits transférés réellement sur un support pendant une période donnée ?",["Débit applicatif (goodput)","Débit (throughput)","Bande passante","Latence"],[1],"Bande passante = capacité théorique. Débit = transfert réel mesuré. Goodput = données utiles uniquement."],
+["ITN","Physique","Quelles caractéristiques de la fibre optique sont vraies ? (2 réponses)",["Le multimode transporte les signaux de plusieurs émetteurs","Elle ne conduit pas l’électricité","LED pour le monomode, laser pour le multimode","Elle a une perte de signal élevée","Elle est surtout utilisée pour le réseau fédérateur"],[1,4],"Attention au piège : monomode = laser, multimode = LED. La fibre a une faible atténuation."],
+["ITN","Physique","Quel support en cuivre est adapté aux environnements industriels à fortes interférences ?",["UTP","STP (blindé)","Coaxial","Fibre monomode"],[1],"STP est blindé contre les EMI/RFI. Coaxial = TV/câble, fibre = longue distance haut débit, sans fil = mobilité."],
+["ITN","Ethernet","Sur quelles sous-couches de liaison de données repose Ethernet ? (2 réponses)",["FCS","SFD","CSMA","MAC","LLC"],[3,4],"LLC (802.2, logiciel) et MAC (matériel). FCS et SFD sont des champs de trame, CSMA une méthode d’accès."],
+["ITN","Ethernet","Quelles fonctions sont assurées par la sous-couche LLC ? (2 réponses)",["Appliquer les adresses MAC source et destination","Ajouter des informations de contrôle Ethernet aux données du protocole réseau","Intégrer les flux 10G fibre et 1G cuivre","Implémenter CSMA/CD","Indiquer dans la trame le protocole de couche réseau encapsulé"],[1,4],"LLC communique avec la couche 3 (identifie IPv4/IPv6…). L’adressage MAC et CSMA/CD relèvent de la sous-couche MAC."],
+["ITN","Routage","Que fait un routeur en premier lorsqu’il reçoit une trame ?",["Il désencapsule la trame","Il réencapsule le paquet","Il transmet la nouvelle trame","Il détermine le meilleur chemin"],[0],"Ordre : accepter la trame → désencapsuler → déterminer le chemin → réencapsuler → transmettre."],
+["ITN","Ethernet","Pourquoi CSMA/CD n’est-il plus nécessaire aujourd’hui ?",["Les commutateurs fonctionnent en full-duplex","Le semi-duplex s’est développé","Le Gigabit Ethernet l’a supprimé","IPv6"],[0],"En full-duplex sur un switch, il n’y a plus de collisions, donc plus besoin de CSMA/CD."],
+["ITN","Bases","Quelle topologie physique LAN est hybride ?",["Maillage partiel","Étoile étendue","Bus","Anneau"],[1],"L’étoile étendue interconnecte plusieurs étoiles. Le maillage partiel est une topologie hybride WAN."],
+["ITN","Routage","Quelles entrées de la table de routage comportent une adresse de tronçon suivant ?",["Routes locales (L)","Routes directement connectées (C)","Routes C et L","Routes distantes"],[3],"Les routes distantes (S, O, D…) indiquent via 10.0.0.1. Les routes C et L n’en ont pas besoin."],
+["ITN","IPv6","Pourquoi la NAT n’est-elle pas nécessaire en IPv6 ?",["Le nombre d’adresses publiques est immense","L’en-tête IPv6 accélère les routeurs","IPv6 a une sécurité intégrée","Le nombre de routes augmente"],[0],"Avec 2^128 adresses, chaque appareil peut avoir une adresse publique, ce qui rétablit le bout-en-bout."],
+["ITN","IPv4","Si la passerelle par défaut d’un hôte est mal configurée :",["Il communique avec les réseaux distants mais pas en local","Aucun impact","Il communique en local mais pas avec les réseaux distants","Il ne communique plus du tout"],[2],"La passerelle n’est utilisée que pour sortir du réseau local."],
+["ITN","IPv4","Quel champ de l’en-tête IPv4 peut contenir une adresse unicast, multicast ou broadcast ?",["Adresse IP de destination","Durée de vie (TTL)","Protocole","Somme de contrôle"],[0],"L’adresse source est toujours unicast. La destination peut être unicast, multicast ou broadcast."],
+["ITN","Ethernet","Un switch reçoit une trame dont la MAC de destination est absente de sa table. Que fait-il ?",["Il l’ignore","Il l’envoie sur tous les ports sauf le port d’entrée","Il l’envoie sur tous les ports","Il renvoie une erreur à la source"],[1],"Destination inconnue = flooding sur tous les ports du VLAN sauf le port d’entrée."],
+["ITN","Ethernet","Quelle adresse MAC de destination est utilisée dans une requête ARP ?",["AAAA.AAAA.AAAA","0.0.0.0","255.255.255.255","FFFF.FFFF.FFFF"],[3],"La requête ARP est un broadcast L2 (FFFF.FFFF.FFFF). La réponse ARP est en unicast."],
+["ITN","Ethernet","PC1 doit envoyer un paquet à PC3 situé sur un autre réseau. Quelle adresse MAC PC1 obtient-il via ARP ?",["Celle de PC3","Celle du switch","Celle de l’interface du routeur sur le LAN de PC1","Celle de l’interface du routeur côté PC3"],[2],"Pour un réseau distant, l’hôte résout la MAC de sa passerelle par défaut, c’est-à-dire l’interface du routeur sur son propre LAN."],
+["ITN","IOS","Un routeur démarre en mode setup (configuration initiale). Pourquoi ?",["Pas de fichier de configuration en NVRAM","IOS corrompu","IOS absent de la flash","POST en échec"],[0],"Sans startup-config en NVRAM, le routeur propose le dialogue de configuration initiale."],
+["ITN","IOS","Dans quel mode saisit-on copy running-config startup-config ?",["R1>","R1#","R1(config)#","R1(config-if)#"],[1],"Mode privilégié (#). Rappel : service password-encryption → (config)#, ip address → (config-if)#, login → (config-line)#."],
+["ITN","IPv4","Un hôte du LAN « Registrar » doit joindre des réseaux distants. Quelle passerelle configurer ?",["203.0.113.3","192.168.235.234","192.168.234.114","10.234.235.254"],[1],"La passerelle est l’IP de l’interface du routeur sur le LAN de l’hôte : gi0/1 « Registrar LAN » = 192.168.235.234.","interface gi0/1\n description Connects to the Registrar LAN\n ip address 192.168.235.234 255.255.255.0\ninterface gi0/0\n description Connects to the Manager LAN\n ip address 192.168.234.114 255.255.255.0\ninterface s0/0/0\n description Connects to the ISP\n ip address 10.234.235.254 255.255.255.0"],
+["ITN","IPv4","Quel masque utiliser si 6 bits hôtes sont disponibles ?",["255.255.255.252","255.255.255.192","255.255.255.248","255.255.192.0"],[1],"6 bits hôtes → 32 − 6 = /26 = 255.255.255.192 (62 hôtes)."],
+["ITN","IPv4","Que représente 192.168.1.15/29 ?",["Une adresse de diffusion","Une adresse unicast","Une adresse de réseau","Une adresse multicast"],[0],"/29 = blocs de 8 : 192.168.1.8 à .15. Le .15 est le broadcast."],
+["ITN","IPv4","Quelle est l’adresse de diffusion du réseau de 192.168.10.77/28 ?",["192.168.10.64","192.168.10.79","192.168.10.95","192.168.10.127"],[1],"/28 = blocs de 16 : 64 à 79. Réseau .64, broadcast .79."],
+["ITN","IPv4","Quelle est l’adresse réseau de 192.168.10.35/29 ?",["192.168.10.32","192.168.10.35","192.168.10.39","192.168.10.40"],[0],"/29 = blocs de 8 : 32 à 39. Réseau .32, broadcast .39."],
+["ITN","IPv4","Quelle est l’adresse de diffusion du réseau de 192.168.10.17/30 ?",["192.168.10.16","192.168.10.18","192.168.10.19","192.168.10.20"],[2],"/30 = blocs de 4 : 16 à 19. Réseau .16, hôtes .17–.18, broadcast .19."],
+["ITN","IPv4","De quel type est l’adresse 198.133.219.162 ?",["Bouclage","Publique","Multicast","Link-local"],[1],"Hors des plages privées (10/8, 172.16/12, 192.168/16), loopback (127/8), multicast (224/4) et link-local (169.254/16)."],
+["ITN","IPv6","Forme compressée de fe80:0000:0000:0000:0220:0b3f:f0e0:0029 ?",["fe80:9ea0::2020:0:bf:e0:9290","fe80::220:b3f:f0e0:29","fe80::0220:0b3f:f0e0:0029:0","fe80::220::b3f:f0e0:29"],[1],"On supprime les 0 en tête de chaque bloc et on remplace une seule suite de blocs nuls par ::."],
+["ITN","IPv6","Que représente ::1/128 ?",["Adresse non spécifiée","Unicast globale","Link-local EUI-64","Bouclage (loopback)"],[3],"::1 = loopback IPv6 (équivalent de 127.0.0.1). :: = adresse non spécifiée."],
+["ITN","IPv6","Laquelle de ces adresses est une adresse link-local d’hôte ?",["fe80::30d0:115:3f57:fe4c/128","fe80::/64","::1/128","2001:0:9d38:6ab8:30d0:115:3f57:fe4c/128"],[0],"Link-local = fe80::/10. fe80::/64 est le préfixe réseau, pas une adresse d’hôte. 2001:… est une unicast globale."],
+["ITN","IPv6","Quels messages ICMP sont communs à IPv4 et IPv6 ? (2 réponses)",["Annonce de routeur","Protocole inaccessible","Sollicitation de routeur","Redirection de route","Sollicitation de voisin"],[1,3],"RS, RA, NS et NA appartiennent à ICMPv6/NDP. Inaccessible, délai dépassé et redirection existent dans les deux."],
+["ITN","Bases","Que teste ping 127.0.0.1 ?",["La pile TCP/IP locale","L’IP de la carte réseau","Le chemin vers un hôte","Un hôte distant"],[0],"Le loopback vérifie que TCP/IP fonctionne sur la machine, sans générer de trafic sur le réseau."],
+["ITN","Transport","Port de destination 22 : quel service est demandé ?",["SSH","DNS","DHCP","TFTP"],[0],"SSH 22, Telnet 23, SMTP 25, DNS 53, DHCP 67/68, TFTP 69, HTTP 80, POP3 110, HTTPS 443."],
+["ITN","Transport","Que spécifie la taille de fenêtre TCP ?",["La quantité de données envoyées en une fois","Un nombre aléatoire pour la connexion","Le total de bits reçus","La quantité de données envoyable avant de devoir recevoir un accusé de réception"],[3],"La fenêtre sert au contrôle de flux : c’est le nombre d’octets envoyés sans attendre d’ACK."],
+["ITN","Transport","À quelle catégorie appartient le port 414 ?",["Ports bien connus (0–1023)","Ports enregistrés (1024–49151)","Ports dynamiques/privés (49152–65535)","Ports réservés IPv6"],[0],"414 < 1024, donc port bien connu (well-known)."],
+["ITN","Application","Quelle commande interroge manuellement un serveur DNS ?",["nslookup","ipconfig /displaydns","net","tracert"],[0],"nslookup interroge le DNS. ipconfig /displaydns affiche seulement le cache local."],
+["ITN","Application","Quel service fournit POP3 ?",["Chat en temps réel","Accès distant","Récupération des e-mails en les téléchargeant vers le client","Accès distant chiffré"],[2],"POP3 (110) télécharge les e-mails. IMAP (143) les synchronise et les laisse sur le serveur. SMTP (25) envoie."],
+["ITN","Application","Deux étudiants partagent un dossier directement entre leurs PC. Quel modèle est utilisé ?",["Client","Point à point","Peer-to-peer","Maître-esclave"],[2],"P2P = échange direct entre deux appareils, sans serveur dédié."],
+["ITN","Sécurité","Comment protéger un ordinateur contre les malwares ? (2 réponses)",["Vider le cache du navigateur","Mettre à jour les logiciels","Défragmenter le disque","Utiliser un antivirus","Supprimer les logiciels inutilisés"],[1,3],"Les mises à jour corrigent les failles, l’antivirus détecte les menaces."],
+["ITN","Sécurité","login block-for 180 attempts 2 within 30 protège contre :",["Une attaque par force brute sur le mot de passe","Un ver","Une intrusion physique","L’écoute d’un lien"],[0],"Après 2 échecs en 30 s, les connexions sont bloquées pendant 180 s."],
+["ITN","Sécurité","Comparaison pare-feu à filtrage de paquets et pare-feu avec état (OSI) :",["Filtrage de paquets jusqu’à L4, pare-feu avec état jusqu’à L5 (session)","Avec état = L7, filtrage = L3 max","Les deux filtrent en L7","Filtrage = L5, avec état = L7"],[0],"Le pare-feu avec état suit les connexions (état de session), donc jusqu’à la couche 5."],
+["ITN","Sécurité","Le pare-feu de la ville est inondé de trafic et Internet est coupé. Quel type d’attaque ?",["Reconnaissance","Accès","Cheval de Troie","DoS"],[3],"Un DoS rend une ressource indisponible pour les utilisateurs légitimes."],
+["ITN","Bases","Quelle redondance rentable assure la connexion Internet d’une PME ?",["Plus de liens switch–routeur","Un 2e serveur web","Une 2e carte réseau","Une ligne DSL chez un autre FAI"],[3],"Seul un second accès chez un autre FAI protège contre la panne du lien Internet."],
+["ITN","IPv6","Comment vérifier que le routage IPv6 est activé sur un routeur ?",["show ip nat translations","show running-config","show interfaces","copy running-config startup-config"],[1],"On cherche la ligne ipv6 unicast-routing dans la configuration active."],
+["ITN","Application","Quelles commandes vérifient la résolution DNS sur Windows ? (2 réponses)",["ipconfig /flushdns","ping cisco.com","nslookup cisco.com","nbtstat cisco.com","net cisco.com"],[1,2],"ping avec un nom force une résolution DNS. nslookup interroge directement le DNS."],
+["ITN","Ethernet","Quelles causes produisent des runts et des giants ? (2 réponses)",["Carte réseau défaillante","Erreur CRC","Mauvais type de câble","Fonctionnement en semi-duplex","Interférences sur les interfaces série"],[0,3],"Les collisions en half-duplex et une carte réseau défaillante créent des trames de taille anormale. Le mauvais câble et les interférences causent plutôt des erreurs CRC."],
+["ITN","Ethernet","CRC calculé ≠ valeur du champ FCS : que fait le switch ?",["Il diffuse la trame","Il prévient la source","Il abandonne la trame","Il corrige le FCS"],[2],"Une trame corrompue est simplement abandonnée."],
+["ITN","Ethernet","Quel concept est lié à la commutation cut-through ?",["Le fragment-free est plus lent que le store-and-forward","En fast-forward, des trames erronées peuvent être relayées","Le cut-through vérifie le FCS","Le cut-through a la latence la plus élevée"],[1],"Le fast-forward transmet dès la lecture de la MAC de destination, sans vérifier le FCS. Le fragment-free lit 64 octets d’abord."]
 ];
 
-    const questionElement = document.getElementById('question');
-    const answerButtons = document.getElementById('answer-buttons');
-    const nextButton = document.getElementById('next-btn');
-    const scoreElement = document.getElementById('score');
-    const quizContainer = document.getElementById('quiz');
-    const progressElement = document.getElementById('progress');
+const Q = RAW.map((r,i)=>({id:i,course:r[0],theme:r[1],q:r[2],o:r[3],a:r[4],e:r[5],code:r[6]||""}));
+const $ = s=>document.querySelector(s);
+const store = {
+  get(k,d){try{const v=localStorage.getItem("ccna_"+k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem("ccna_"+k,JSON.stringify(v))}catch(e){}}
+};
+let errors = new Set(store.get("errors",[]));
+let selCourses = new Set(["ENSA"]);
+let selThemes = null; // null = tous
+let mode="train", count=10;
+let S=null, timerInt=null;
 
-    let currentQuestionIndex = 0;
-    let score = 0;
-    let currentQuestion;
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function esc(s){return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))}
 
-    function startQuiz() {
-        questions.sort(() => Math.random() - 0.5); // Mélanger les questions
-        currentQuestionIndex = 0;
-        score = 0;
-        scoreElement.innerHTML = `Score: 0`;
-        showQuestion();
-    }
+// ---------- Thème clair/sombre ----------
+const root=document.documentElement;
+const savedTheme=store.get("theme",null); if(savedTheme) root.dataset.theme=savedTheme;
+$("#themeBtn").onclick=()=>{
+  const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark?"light":"dark"; store.set("theme",root.dataset.theme);
+};
 
-    function showQuestion() {
-        resetState();
-        currentQuestion = questions[currentQuestionIndex];
-        let questionNo = currentQuestionIndex + 1;
-        
-        let questionTitle = currentQuestion.question;
-        if (currentQuestion.type === 'multiple') {
-            questionTitle += ` (Choisissez-en ${currentQuestion.required})`;
-        }
+// ---------- Accueil ----------
+function pool(){return Q.filter(q=>selCourses.has(q.course)&&(!selThemes||selThemes.has(q.course+"|"+q.theme)))}
+function renderHome(){
+  $("#sTotal").textContent=Q.length;
+  const best=store.get("best",null); $("#sBest").textContent=best==null?"–":best+"%";
+  $("#sErr").textContent=errors.size;
+  $("#errBtn").disabled=errors.size===0;
+  $("#errBtn").textContent=errors.size?`Revoir mes erreurs (${errors.size})`:"Aucune erreur à revoir";
+  const cc=$("#courseChips"); cc.innerHTML="";
+  [["ENSA","CCNA 3 · ENSA"],["ITN","CCNA 1 · ITN"]].forEach(([k,l])=>{
+    const n=Q.filter(q=>q.course===k).length;
+    const b=document.createElement("button"); b.className="chip"+(selCourses.has(k)?" on":"");
+    b.innerHTML=`${l}<small>${n}</small>`;
+    b.onclick=()=>{selCourses.has(k)?selCourses.delete(k):selCourses.add(k); if(!selCourses.size)selCourses.add(k); selThemes=null; renderHome()};
+    cc.appendChild(b);
+  });
+  const tc=$("#themeChips"); tc.innerHTML="";
+  const themes=[...new Set(Q.filter(q=>selCourses.has(q.course)).map(q=>q.course+"|"+q.theme))];
+  const all=document.createElement("button"); all.className="chip"+(!selThemes?" on":""); all.textContent="Tous";
+  all.onclick=()=>{selThemes=null;renderHome()}; tc.appendChild(all);
+  themes.forEach(t=>{
+    const [c,th]=t.split("|"); const n=Q.filter(q=>q.course===c&&q.theme===th).length;
+    const b=document.createElement("button"); b.className="chip"+(selThemes&&selThemes.has(t)?" on":"");
+    b.innerHTML=`${selCourses.size>1?c+" · ":""}${th}<small>${n}</small>`;
+    b.onclick=()=>{ if(!selThemes)selThemes=new Set(); selThemes.has(t)?selThemes.delete(t):selThemes.add(t); if(!selThemes.size)selThemes=null; renderHome()};
+    tc.appendChild(b);
+  });
+  $("#startBtn").textContent=`Commencer (${Math.min(count,pool().length)} questions)`;
+  $("#modeDesc").textContent = mode==="train" ? "Correction et explication après chaque question." : "1 min 30 par question, correction à la fin, comme à l’examen.";
+}
+function seg(id,cb){document.querySelectorAll(id+" button").forEach(b=>b.onclick=()=>{document.querySelectorAll(id+" button").forEach(x=>x.classList.remove("on"));b.classList.add("on");cb(b.dataset.v);renderHome()})}
+seg("#modeSeg",v=>mode=v); seg("#countSeg",v=>count=+v);
 
-        questionElement.innerHTML = questionTitle;
-        progressElement.innerHTML = `Question ${questionNo}/${questions.length}`;
+function show(id){["home","quiz","result"].forEach(s=>$("#"+s).classList.toggle("hide",s!==id));window.scrollTo(0,0)}
 
-        currentQuestion.answers.forEach(answer => {
-            const li = document.createElement("li");
-            li.innerHTML = answer.text;
-            li.classList.add("answer-item");
-            answerButtons.appendChild(li);
-            if (answer.correct) {
-                li.dataset.correct = "true";
-            }
-        });
+// ---------- Quiz ----------
+function start(list){
+  S={list:list.map(q=>({...q,order:shuffle(q.o.map((_,i)=>i))})),i:0,res:[],mode,sel:new Set(),checked:false,end:null};
+  if(mode==="exam"){S.end=Date.now()+S.list.length*90000; clearInterval(timerInt); timerInt=setInterval(tick,500); tick()} else {$("#timer").textContent=""}
+  show("quiz"); renderQ();
+}
+function tick(){
+  const left=Math.max(0,S.end-Date.now()); const m=Math.floor(left/60000), s=Math.floor(left%60000/1000);
+  $("#timer").textContent=`⏱ ${m}:${String(s).padStart(2,"0")}`;
+  if(left<=0){clearInterval(timerInt); while(S.res.length<S.list.length) S.res.push({q:S.list[S.res.length],pick:[],ok:false}); finish()}
+}
+function renderQ(){
+  const q=S.list[S.i]; S.sel=new Set(); S.checked=false;
+  $("#qCount").textContent=`Question ${S.i+1} / ${S.list.length}`;
+  $("#prog").style.width=(S.i/S.list.length*100)+"%";
+  $("#qCourse").textContent=q.course==="ENSA"?"CCNA 3":"CCNA 1"; $("#qTheme").textContent=q.theme;
+  $("#qText").textContent=q.q;
+  $("#qCode").innerHTML=q.code?`<pre class="code">${esc(q.code)}</pre>`:"";
+  const multi=q.a.length>1; $("#qMulti").classList.toggle("hide",!multi); $("#qMulti").textContent=`Choisis ${q.a.length} réponses`;
+  const box=$("#opts"); box.innerHTML="";
+  q.order.forEach((oi,k)=>{
+    const b=document.createElement("button"); b.className="opt"; b.dataset.oi=oi;
+    b.innerHTML=`<span class="k">${String.fromCharCode(65+k)}</span><span>${esc(q.o[oi])}</span>`;
+    b.onclick=()=>pick(oi); box.appendChild(b);
+  });
+  $("#fb").innerHTML=""; $("#actBtn").textContent=S.mode==="exam"&&S.i===S.list.length-1?"Terminer":"Valider"; $("#actBtn").disabled=true;
+}
+function pick(oi){
+  if(S.checked)return; const q=S.list[S.i];
+  if(q.a.length>1){S.sel.has(oi)?S.sel.delete(oi):S.sel.add(oi)} else {S.sel=new Set([oi])}
+  document.querySelectorAll(".opt").forEach(b=>b.classList.toggle("sel",S.sel.has(+b.dataset.oi)));
+  $("#actBtn").disabled = q.a.length>1 ? S.sel.size!==q.a.length : S.sel.size===0;
+}
+function act(){
+  const q=S.list[S.i];
+  if(S.checked){next();return}
+  if($("#actBtn").disabled)return;
+  const pickArr=[...S.sel]; const ok=pickArr.length===q.a.length&&pickArr.every(x=>q.a.includes(x));
+  S.res.push({q,pick:pickArr,ok});
+  if(ok) errors.delete(q.id); else errors.add(q.id);
+  store.set("errors",[...errors]);
+  if(S.mode==="exam"){next();return}
+  S.checked=true;
+  document.querySelectorAll(".opt").forEach(b=>{const oi=+b.dataset.oi;b.disabled=true;b.classList.remove("sel");
+    if(q.a.includes(oi))b.classList.add("good"); else if(S.sel.has(oi))b.classList.add("bad")});
+  $("#fb").innerHTML=`<div class="fb ${ok?"ok":"ko"}"><b>${ok?"Bonne réponse !":"Mauvaise réponse"}</b>${esc(q.e)}</div>`;
+  $("#actBtn").textContent=S.i===S.list.length-1?"Voir les résultats":"Question suivante";
+  $("#actBtn").disabled=false;
+}
+function next(){ S.i++; if(S.i>=S.list.length) finish(); else renderQ() }
+function finish(){
+  clearInterval(timerInt);
+  const n=S.res.length, good=S.res.filter(r=>r.ok).length, pct=n?Math.round(good/n*100):0;
+  const best=store.get("best",null); if(best==null||pct>best) store.set("best",pct);
+  $("#rScore").textContent=pct+"%"; $("#rScore").style.color=pct>=80?"var(--ok)":pct>=60?"var(--warn)":"var(--ko)";
+  $("#rVerdict").textContent=pct>=80?"Niveau examen atteint 🎯":pct>=60?"Presque, encore un effort":"À retravailler";
+  $("#rDetail").textContent=`${good} bonne(s) réponse(s) sur ${n}`;
+  const by={}; S.res.forEach(r=>{const k=r.q.theme;by[k]=by[k]||{g:0,n:0};by[k].n++;if(r.ok)by[k].g++});
+  $("#rThemes").innerHTML=Object.entries(by).sort((a,b)=>a[1].g/a[1].n-b[1].g/b[1].n).map(([k,v])=>{const p=Math.round(v.g/v.n*100);
+    return `<div class="trow"><span>${k}</span><div class="tbar"><i style="width:${p}%;background:${p>=80?"var(--ok)":p>=60?"var(--warn)":"var(--ko)"}"></i></div><b>${v.g}/${v.n}</b></div>`}).join("");
+  const wrong=S.res.filter(r=>!r.ok);
+  $("#rWrongCard").classList.toggle("hide",!wrong.length);
+  $("#rWrong").innerHTML=wrong.map(r=>`<div class="rev"><b>${esc(r.q.q)}</b>
+    <div class="yours">Ta réponse : ${r.pick.length?r.pick.map(i=>esc(r.q.o[i])).join(" · "):"(aucune)"}</div>
+    <div class="ans">✔ ${r.q.a.map(i=>esc(r.q.o[i])).join(" · ")}</div>
+    <p class="sub" style="font-size:.88rem;margin-top:4px">${esc(r.q.e)}</p></div>`).join("");
+  $("#prog").style.width="100%";
+  show("result");
+}
 
-        if (currentQuestion.type === 'multiple') {
-            nextButton.innerHTML = `Valider`;
-        } else {
-            nextButton.innerHTML = `Question Suivante`;
-        }
-        
-        answerButtons.addEventListener('click', selectAnswer);
-    }
-
-    function resetState() {
-        nextButton.style.display = 'none';
-        while (answerButtons.firstChild) {
-            answerButtons.removeChild(answerButtons.firstChild);
-        }
-    }
-
-    function selectAnswer(e) {
-        if (!e.target.matches('.answer-item')) return;
-        
-        const selectedBtn = e.target;
-
-        if (currentQuestion.type === 'single') {
-            answerButtons.removeEventListener('click', selectAnswer);
-            const isCorrect = selectedBtn.dataset.correct === "true";
-            if (isCorrect) {
-                selectedBtn.classList.add("correct");
-                score++;
-                scoreElement.innerHTML = `Score: ${score}`;
-            } else {
-                selectedBtn.classList.add("incorrect");
-            }
-            Array.from(answerButtons.children).forEach(button => {
-                if (button.dataset.correct === "true") {
-                    button.classList.add("correct");
-                }
-                button.classList.add("disabled");
-            });
-            nextButton.style.display = "block";
-        } else { // Multiple choice
-            selectedBtn.classList.toggle('selected');
-            if (answerButtons.querySelector('.selected')) {
-                nextButton.style.display = 'block';
-            } else {
-                nextButton.style.display = 'none';
-            }
-        }
-    }
-    
-    function checkMultipleAnswers() {
-        answerButtons.removeEventListener('click', selectAnswer);
-        const selectedNodes = answerButtons.querySelectorAll('.selected');
-        let correctSelections = 0;
-        let isPerfect = true;
-
-        Array.from(answerButtons.children).forEach(button => {
-            const isCorrect = button.dataset.correct === "true";
-            const isSelected = button.classList.contains('selected');
-            
-            if (isSelected) {
-                if (isCorrect) {
-                    button.classList.add("correct");
-                    correctSelections++;
-                } else {
-                    button.classList.add("incorrect");
-                    isPerfect = false;
-                }
-            } else {
-                if(isCorrect) {
-                   isPerfect = false; 
-                }
-            }
-            button.classList.add("disabled");
-        });
-
-        if (isPerfect && correctSelections === currentQuestion.required) {
-            score++;
-            scoreElement.innerHTML = `Score: ${score}`;
-        }
-        
-        // Show correct answers
-        Array.from(answerButtons.children).forEach(button => {
-           if (button.dataset.correct === "true") {
-               button.classList.add("correct");
-           }
-        });
-
-        nextButton.innerHTML = "Question Suivante";
-    }
-
-    function showScore() {
-        quizContainer.innerHTML = `
-            <div class="result-screen">
-                <h2>Quiz Terminé !</h2>
-                <p>Votre score final est de ${score} sur ${questions.length}.</p>
-                <button onclick="location.reload()" class="restart-btn">Recommencer le Quiz</button>
-            </div>
-        `;
-    }
-
-    function handleNextButton() {
-        if (currentQuestion.type === 'multiple' && nextButton.innerHTML === 'Valider') {
-            checkMultipleAnswers();
-        } else {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                showQuestion();
-            } else {
-                showScore();
-            }
-        }
-    }
-
-    nextButton.addEventListener('click', handleNextButton);
-
-    startQuiz();
+$("#actBtn").onclick=act;
+$("#startBtn").onclick=()=>{const p=pool(); start(shuffle(p).slice(0,Math.min(count,p.length)))};
+$("#errBtn").onclick=()=>{const l=Q.filter(q=>errors.has(q.id)); if(l.length) start(shuffle(l))};
+$("#againBtn").onclick=()=>{mode=S.mode; start(shuffle(S.list.map(q=>Q[q.id])))};
+$("#homeBtn").onclick=()=>{renderHome();show("home")};
+$("#quitBtn").onclick=()=>{if(confirm("Quitter la session en cours ?")){clearInterval(timerInt);renderHome();show("home")}};
+document.addEventListener("keydown",e=>{
+  if($("#quiz").classList.contains("hide"))return;
+  const n=parseInt(e.key); if(n>=1&&n<=6&&!S.checked){const b=document.querySelectorAll(".opt")[n-1]; if(b) pick(+b.dataset.oi)}
+  if(e.key==="Enter"){e.preventDefault();act()}
+});
+renderHome();
 </script>
-
 </body>
 </html>
